@@ -1,0 +1,29 @@
+@use "./variables" as *;
+
+@mixin tablet {
+    @media (min-width: $breakpoint-medium) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $breakpoint-large) {
+        @content;
+    }
+}
+
+@mixin flex-container($direction: row, $justify: flex-start, $align: stretch) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin reset-button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
