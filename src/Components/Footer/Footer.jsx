@@ -1,5 +1,5 @@
 import "./Footer.scss";
-
+//footer container
 function Footer() {
   return (
     <div className="footer">
