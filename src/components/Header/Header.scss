@@ -3,7 +3,7 @@
 @use "../../styles/partials/variables.scss" as *;
 
 .header {
-  background-color: black;
+  background-color: $Graphite;
   width: 100%;
   padding: 2rem 1rem;
 
@@ -15,7 +15,7 @@
   }
 
   @include desktop {
-    max-width: $breakpoint-large;
+    max-width: $breakpoint-desktop;
     margin: 0 auto;
   }
   &__logo {
@@ -34,23 +34,25 @@
   }
   &__link {
     cursor: pointer;
-    color: white;
+    color: $Cloud;
     text-decoration: none;
     padding: 0.5rem 1rem;
 
     &:hover {
-      color: grey;
+      color: $White;
       text-decoration: underline;
     }
     &:focus,
     &:active {
+      color: $White;
       border-radius: 20px;
-      background-color: blue;
+      background-color: $Instock-Black;
     }
 
     &--active {
+      color: $White;
       border-radius: 20px;
-      background-color: blue;
+      background-color: $Instock-Black;
       &:hover {
         text-decoration: underline;
       }
