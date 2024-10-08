@@ -3,13 +3,12 @@
 
 html {
     font-size: 100%;
-    font-family:$primary-font;
-
+    font-family: $primary-font,Arial, Helvetica, sans-serif;;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-    margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
