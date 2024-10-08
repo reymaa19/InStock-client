@@ -4,7 +4,7 @@
     font-family: $primary-font-fontface;
     src: url("../../assets/fonts/Titillium-Web/TitilliumWeb-Regular.woff2") format("woff2"),
          url("../../assets/fonts/Titillium-Web/TitilliumWeb-Regular.woff") format("woff");
-    font-weight: $font-weight-regular;
+    font-weight: $font-weight-regular400;
     font-style: normal;
     
 }
@@ -12,7 +12,7 @@
     font-family: $primary-font-fontface;
     src: url("../../assets/fonts/Titillium-Web/TitilliumWeb-SemiBold.woff") format("woff2"),
          url("../../assets/fonts/Titillium-Web/TitilliumWeb-SemiBold.woff") format("woff");
-    font-weight: $font-weight-semi-bold;
+    font-weight: $font-weight-semi-bold600;
     font-style: normal;
     
 }
