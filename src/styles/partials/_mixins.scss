@@ -1,15 +1,15 @@
 @use "./variables" as *;
 
 @mixin tablet {
-  @media (min-width: $breakpoint-medium) {
-    @content;
-  }
+    @media (min-width: $breakpoint-tablet) {
+        @content;
+    }
 }
 
 @mixin desktop {
-  @media (min-width: $breakpoint-large) {
-    @content;
-  }
+    @media (min-width: $breakpoint-desktop) {
+        @content;
+    }
 }
 
 @mixin flex-container($direction: row, $justify: flex-start, $align: stretch) {

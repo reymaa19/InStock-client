@@ -1,0 +1,25 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+
+  &__paragraph {
+    text-align: center;
+    color: $Slate;
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    @include tablet {
+      font-size: 0.75rem;
+      line-height: 1.125rem;
+    }
+    @include desktop {
+      font-size: 0.75rem;
+      line-height: 1.125rem;
+    }
+  }
+}
