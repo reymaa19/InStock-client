@@ -7,9 +7,12 @@
 }
 
 .warehouse {
-  width: 100%;
+  width: 60%;
   background-color: white;
-
+  position: relative;
+  top: 45rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
   &__container {
     &--top {
       @include flex-container(column);
