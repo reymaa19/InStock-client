@@ -1,3 +1,63 @@
 @use "../../styles/partials/mixins.scss" as *;
 @use "../../styles/partials/typography.scss" as *;
 @use "../../styles/partials/variables.scss" as *;
+
+.header {
+  background-color: black;
+  width: 100%;
+  padding: 2rem 1rem;
+
+  @include flex-container($direction: column, $justify: center, $align: center);
+
+  @include tablet {
+    padding: 2rem;
+    @include flex-container($justify: space-between);
+  }
+
+  @include desktop {
+    max-width: $breakpoint-large;
+    margin: 0 auto;
+  }
+  &__logo {
+    padding: 1rem;
+  }
+
+  &__nav {
+    padding: 1rem;
+    width: 100%;
+    @include flex-container($justify: space-around);
+
+    @include tablet {
+      width: 20rem;
+      @include flex-container($justify: space-between);
+    }
+  }
+  &__link {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      color: grey;
+      text-decoration: underline;
+    }
+    &:focus,
+    &:active {
+      border-radius: 20px;
+      background-color: blue;
+    }
+
+    &--active {
+      border-radius: 20px;
+      background-color: blue;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &:visited {
+      text-decoration: none;
+    }
+  }
+}
