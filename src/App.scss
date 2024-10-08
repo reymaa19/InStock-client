@@ -1,8 +1,9 @@
-@use "./styles/partials/typography";
+@use "./styles/partials/typography" as *;
+@use "./styles/partials/variables" as *;
 
 html {
-  font-size: 100%;
-  font-family: "Titillium-Web", Arial, Helvetica, sans-serif;
+    font-size: 100%;
+    font-family: $primary-font;
 }
 
 *,
