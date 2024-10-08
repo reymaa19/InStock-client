@@ -5,12 +5,11 @@
 .header {
   background-color: $Graphite;
   width: 100%;
-  padding: 2rem 1rem;
+  padding: 1rem 1rem 9rem 1rem;
 
   @include flex-container($direction: column, $justify: center, $align: center);
 
   @include tablet {
-    padding: 2rem;
     @include flex-container($justify: space-between);
   }
 
@@ -23,13 +22,14 @@
   }
 
   &__nav {
-    padding: 1rem;
     width: 100%;
-    @include flex-container($justify: space-around);
+    font-size: $m-h3-text-size;
+    @include flex-container($justify: space-around, $align: center);
 
     @include tablet {
+      font-size: $h3-text-size;
       width: 20rem;
-      @include flex-container($justify: space-between);
+      @include flex-container($justify: flex-end, $align: center);
     }
   }
   &__link {
@@ -37,7 +37,12 @@
     color: $Cloud;
     text-decoration: none;
     padding: 0.5rem 1rem;
+    width: 40%;
 
+    @include flex-container($justify: center, $align: center);
+
+    @include tablet {
+    }
     &:hover {
       color: $White;
       text-decoration: underline;
