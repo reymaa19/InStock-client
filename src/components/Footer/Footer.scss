@@ -3,10 +3,12 @@
 @use "../../styles/partials/typography" as *;
 
 .footer {
-  position: absolute;
+  display: flex;
   bottom: 0;
   width: 100%;
-  height: 80px;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 9rem 0 3rem 0;
 
   &__paragraph {
     text-align: center;
