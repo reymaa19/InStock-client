@@ -1,8 +1,10 @@
-@use "./styles/partials/typography";
+@use "./styles/partials/typography" as *;
+@use "./styles/partials/variables" as *;
 
 html {
     font-size: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:$primary-font;
+
 }
 
 *,
