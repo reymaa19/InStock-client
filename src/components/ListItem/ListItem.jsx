@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import "./ListItem.scss";
 function ListItem({ item }) {
-  console.log(item);
   return (
     <div className="list-item">
       <div className="list-item__wrapper">
         <div className="list-item__container">
           <h4 className="list-item__header">WAREHOUSE</h4>
-          <Link className="list-item__value list-item__value--link">
+          <Link to="/" className="list-item__value list-item__value--link">
             {item.warehouse_name}
           </Link>
         </div>
