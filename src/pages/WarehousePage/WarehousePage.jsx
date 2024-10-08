@@ -5,18 +5,18 @@ import "./WarehousePage.scss";
 
 function WarehousePage() {
   const [search, setSearch] = useState("");
-  //const [warehouses, setWarehouses] = useState([]);
-  //
-  //useEffect(() => {
-  //  const fetchWarehouses = async () => {
-  //    const response = await getWarehouses();
-  //    setWarehouses(response.data);
-  //  };
-  //
-  //  fetchWarehouses();
-  //}, []);
-  //
-  //console.log(warehouses);
+  const [warehouses, setWarehouses] = useState([]);
+
+  useEffect(() => {
+    const fetchWarehouses = async () => {
+      const response = await getWarehouses();
+      setWarehouses(response.data);
+    };
+
+    fetchWarehouses();
+  }, []);
+
+  console.log(warehouses);
 
   const mockData = [
     {
@@ -55,8 +55,8 @@ function WarehousePage() {
         </div>
 
         <div className="warehouse__container warehouse__container-bottom">
-          {mockData.map((data) => (
-            <ListItem key={data.id} item={data} />
+          {warehouses.map((warehouse) => (
+            <ListItem key={warehouse.id} item={warehouse} />
           ))}
         </div>
       </section>

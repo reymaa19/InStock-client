@@ -36,13 +36,13 @@
 
   &__page-header {
     color: $Instock-Black;
-    font-size: 1.75rem;
-    line-height: 2.25rem;
-    font-weight: 600;
+    font-size: $m-h1-text-size;
+    line-height: $m-h1-line-height;
+    font-weight: $font-weight-semi-bold600;
 
     @include tablet {
-      font-size: 2rem;
-      line-height: 2.5rem;
+      font-size: $h1-text-size;
+      line-height: $h1-line-height;
     }
   }
 

@@ -69,8 +69,10 @@
     line-height: 1.375rem;
   }
 
-  &:hover {
+  &:active,
+  &:focus {
     border: 0.0625rem solid $Instock-Indigo;
+    outline: none;
   }
 
   &::placeholder {
