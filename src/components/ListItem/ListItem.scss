@@ -1,0 +1,45 @@
+@use "../../styles/partials/mixins" as *;
+
+.list-item {
+  padding: 1rem;
+
+  &__wrapper {
+    @include flex-container;
+    gap: 1rem;
+
+    &--buttons {
+      justify-content: space-between;
+    }
+  }
+
+  &__container {
+    @include flex-container(column);
+  }
+
+  &__header {
+    color: $Instock-Black;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    font-weight: 600;
+
+    @include tablet {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
+  }
+
+  &__button {
+    @include reset-field;
+    background-repeat: no-repeat;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    &--edit {
+      background-image: url("../../assets/images/icons/action/edit-24px.svg");
+    }
+
+    &--delete {
+      background-image: url("../../assets/images/icons/action/delete_outline-24px.svg");
+    }
+  }
+}
