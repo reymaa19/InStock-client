@@ -1,7 +1,11 @@
-// @font-face {
-//     font-family: "Avenir Next LT Pro";
-//     src:
-//         url("/src/assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype"),
-//         url("/src/assets/fonts/AvenirNextLTPro.ttf") format("truetype");
-//     font-weight: 400;
-// }
+@font-face {
+  font-family: "Titillium-Web";
+  src: url("/src/assets/fonts/TitilliumWeb-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Titillium-Web";
+  src: url("/src/assets/fonts/TitilliumWeb-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
