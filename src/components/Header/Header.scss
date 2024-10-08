@@ -53,9 +53,7 @@
       color: $White;
       border-radius: 20px;
       background-color: $Instock-Black;
-      &:hover {
-        text-decoration: underline;
-      }
+      text-decoration: none;
     }
 
     &:visited {
