@@ -24,7 +24,7 @@ function AddNewWarehouse() {
         </div>
 
         <div className="details__contacts">
-        <h2 className="details__adress-title">Contacts Details</h2>
+        <h2 className="details__contacts-title">Contacts Details</h2>
             <label htmlFor="contact-name"className="details__contacts-name">Contact Name</label>
             <input type="text" id="contact-name" name="contact-name" placeholder="Contact Name" className="details__contacts-input"/>
             <label htmlFor="position"className="details__contacts-name">Position</label>
