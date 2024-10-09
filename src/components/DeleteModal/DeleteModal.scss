@@ -9,7 +9,10 @@
 
   @include tablet {
     margin: 0 auto;
-    width: 87.5vw;
+    width: 42rem;
+    height: 16.375rem;
+    position: relative;
+    top: 10.125rem;
   }
 
   &__overlay {
