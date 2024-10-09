@@ -14,6 +14,19 @@ export async function getWarehouses() {
   }
 }
 
+// Fetches single warehouses.
+export async function getSingleWarehouse(id) {
+  try {
+    const url = `${BASE_URL}/warehouses/${id}`;
+    const response = await axios.get(url);
+
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+}
+
 export default {
   getWarehouses,
+  getSingleWarehouse,
 };

@@ -1,0 +1,25 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.main {
+  padding: 0 1rem;
+  background-color: $Light-Grey;
+}
+
+.warehouse-inventory {
+  width: 100%;
+  background-color: white;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -7.5%);
+  border-radius: 3px;
+  box-shadow: 0 2px 5px #13182c1a;
+  @include tablet {
+    width: 95%;
+    transform: translate(-50%, -8%);
+  }
+  @include desktop {
+    width: 66%;
+  }
+}
