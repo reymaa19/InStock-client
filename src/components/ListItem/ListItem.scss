@@ -1,0 +1,71 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.list-item {
+  padding: 1rem;
+  border-bottom: 1px solid $Cloud;
+
+  &__wrapper {
+    @include flex-container;
+    gap: 1rem;
+
+    &--buttons {
+      justify-content: space-between;
+    }
+  }
+
+  &__container {
+    @include flex-container(column);
+    padding-bottom: 1rem;
+    width: 50%;
+  }
+
+  &__header {
+    color: $Slate;
+    font-size: $m-h4-text-size;
+    line-height: $m-h4-line-height;
+    font-weight: $font-weight-semi-bold600;
+
+    @include tablet {
+      font-size: $h4-text-size;
+      line-height: $h4-line-height;
+    }
+  }
+
+  &__value {
+    color: $Instock-Black;
+    font-size: $m-p2-text-size;
+    line-height: $m-p2-line-height;
+    font-weight: $font-weight-regular400;
+
+    &--link {
+      font-weight: $font-weight-semi-bold600;
+      color: $Instock-Indigo;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    @include tablet {
+      font-size: $p2-text-size;
+      line-height: $p2-line-height;
+    }
+  }
+
+  &__button {
+    @include reset-field;
+    background-repeat: no-repeat;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    &--edit {
+      background-image: url("../../assets/images/icons/action/edit-24px.svg");
+    }
+
+    &--delete {
+      background-image: url("../../assets/images/icons/action/delete_outline-24px.svg");
+    }
+  }
+}

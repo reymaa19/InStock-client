@@ -1,0 +1,143 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.details {
+  &__warehouse {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid $Cloud;
+
+    @include tablet {
+      flex-direction: row;
+      border-bottom: none;
+      width: 90%;
+    }
+  }
+
+  &__container {
+    width: 100%;
+
+    @include tablet {
+      justify-content: flex-start;
+      align-items: stretch;
+      gap: 1rem;
+      width: 50%;
+    }
+
+    &--left {
+      @include tablet {
+        width: 50%;
+      }
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    width: 100%;
+
+    &--right {
+      width: 100%;
+      gap: 1rem;
+      padding-top: 2rem;
+
+      @include tablet {
+        padding: 0 0 0 3rem;
+        justify-content: space-around;
+        border-left: 1px solid $Cloud;
+      }
+    }
+  }
+
+  &__header {
+    font-size: $m-h4-text-size;
+    color: $Slate;
+    line-height: $m-h4-line-height;
+    font-weight: $font-weight-semi-bold600;
+
+    @include tablet {
+      font-size: $h4-text-size;
+      line-height: $h4-line-height;
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  &__value {
+    font-size: $m-p2-text-size;
+    line-height: $m-p2-line-height;
+    color: $Instock-Black;
+    font-weight: $font-weight-regular400;
+
+    @include tablet {
+      font-size: $p2-text-size;
+      line-height: $p2-line-height;
+    }
+  }
+}
+
+.nav {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $Cloud;
+
+  &__name {
+    text-align: left;
+    padding-left: 1rem;
+    font-size: $m-h1-text-size;
+    line-height: $m-h2-line-height;
+    font-weight: $font-weight-semi-bold600;
+    color: $Instock-Black;
+
+    @include tablet {
+      font-size: $h1-text-size;
+      line-height: $h1-line-height;
+    }
+  }
+  &__end {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  &__color {
+    background-color: $Instock-Indigo;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+
+    @include tablet {
+      width: 5.0625rem;
+      height: 2.375rem;
+      border-radius: 1.25rem;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+  }
+
+  &__edit {
+    filter: brightness(0) invert(1);
+    width: 70%;
+
+    &-text {
+      display: none;
+
+      @include tablet {
+        display: inline-block;
+        color: $White;
+        font-size: $p2-text-size;
+        line-height: $p2-line-height;
+        font-weight: $font-weight-semi-bold600;
+      }
+    }
+
+    @include tablet {
+      width: 0.9375rem;
+      height: 0.9375rem;
+    }
+  }
+}
