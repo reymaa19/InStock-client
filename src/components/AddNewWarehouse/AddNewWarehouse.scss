@@ -2,24 +2,73 @@
 @use "../../styles/partials/variables" as *;
 
 .add-warehouse{
-    display:flex;
+    display: flex;
     flex-direction: column;
+    padding: 1rem;
+    top: 9rem;
+    background-color: white;
+    position: absolute;
+    width: 93%;
+    border-radius: 0.1875rem;
+    margin-left: 1rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    line-height: $m-h1-line-height;
+    &__header{
+        display: flex;
+        gap: 1rem;
+        border-bottom: 0.06125rem solid $Slate;
+        width:100%;
+
+    }
     &__title{
         font-weight: $font-weight-semi-bold600;
-        font-size: $m-h1-text-size;
-        line-height: $m-h1-line-height;
+        font-size: 2.5;
+        line-height: 8rem;
+
     }
     .details{
         display: flex;
         flex-direction: column;
         font-size: $m-h2-text-size;
+        line-height: $m-h2-line-height;
+        
         &__address{
             display: flex;
             flex-direction: column;
+            border-bottom: 0.06125rem solid $Cloud;
+            line-height: 3rem;
+            &-name{
+
+                
+            }
+            
+            &-label{
+                 
+            }
+            &-input{
+                border-radius: 20px;
+                height: 36px;
+                padding-left:1rem;
+                padding-right: 1rem;
+                border-color:$Cloud;
+
+
+
+            }
         }
         &__contacts{
             display: flex;
             flex-direction: column;
+            line-height: 3rem;
+            &-input{
+                border-radius: 20px;
+                height: 36px;
+                padding:1rem;
+                border-color:$Cloud;
+                padding-left:1rem;
+                padding-right: 1rem;
+
+            }
         }
     }
 

@@ -8,13 +8,16 @@ import AddNewWarehouse from "./components/AddNewWarehouse/AddNewWarehouse";
 const App = () => {
   return (
     <BrowserRouter>
+      <div className="container"> 
       <Header />
       <Routes>
         <Route path="/" element={<>default</>} />
         <Route path="/warehouse" element={<WarehousePage />} />
         <Route path="/inventory" element={<InventoryPage />} />
         <Route path="/addnewwarehouse" element={<AddNewWarehouse />} />
+      
       </Routes>
+      </div>
       <Footer />
     </BrowserRouter>
   );
