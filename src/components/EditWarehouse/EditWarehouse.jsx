@@ -1,7 +1,11 @@
 import "./EditWarehouse.scss";
+import { useNavigate } from "react-router-dom";
+import { handleNav } from "../../utils/utils";
 import arrowBackIcon from "../../assets/images/icons/navigation/arrow_back-24px.svg";
 
 function EditWarehouse() {
+  const navigate = useNavigate();
+
   return (
     <main className="main">
       <div className="edit-warehouse">
@@ -10,6 +14,7 @@ function EditWarehouse() {
             src={arrowBackIcon}
             alt="Go back"
             className="edit-warehouse__back-icon"
+            onClick={() => handleNav(navigate, "/warehouse")}
           />
           <h1 className="edit-warehouse__title">Edit Warehouse</h1>
         </div>

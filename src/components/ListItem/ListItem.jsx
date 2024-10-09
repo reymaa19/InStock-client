@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { handleNav } from "../../utils/utils.js";
 import "./ListItem.scss";
 import chevronRight from "../../assets/images/icons/navigation/chevron_right-24px.svg";
 import DeleteModal from "../../components/DeleteModal/DeleteModal.jsx";
@@ -7,10 +8,6 @@ import DeleteModal from "../../components/DeleteModal/DeleteModal.jsx";
 function ListItem({ item }) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-
-  const handelEditClick = () => {
-    navigate("/editwarehouse");
-  };
 
   return (
     <div className="list-item" id={`list-item-${item.id}`}>
@@ -60,7 +57,7 @@ function ListItem({ item }) {
           />
           <button
             className="list-item__button list-item__button--edit"
-            onClick={handelEditClick}
+            onClick={() => handleNav(navigate, "/warehouse/edit/:id")}
           />
         </div>
       </div>
