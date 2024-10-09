@@ -32,14 +32,14 @@ function DeleteModal({ isOpen, closeModal, id, name, type }) {
       </div>
       <div className="delete-modal__wrapper delete-modal__wrapper--options">
         <button
-          className="delete-modal__button delete-modal__button--cancel"
+          className="delete-modal__button delete-modal__button--secondary"
           onClick={closeModal}
           onBlur={closeModal}
         >
           Cancel
         </button>
         <button
-          className="delete-modal__button delete-modal__button--delete"
+          className="delete-modal__button delete-modal__button--primary"
           onClick={deleteSelected}
           onBlur={closeModal}
         >
