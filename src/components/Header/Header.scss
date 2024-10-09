@@ -4,19 +4,27 @@
 
 .header {
   background-color: $Graphite;
-  width: 100%;
-  padding: 1rem 1rem 5rem 1rem;
+  width: 100vw;
 
-  @include flex-container($direction: column, $justify: center, $align: center);
+  &__container {
+    padding: 1rem 1rem 5rem 1rem;
+    @include flex-container(
+      $direction: column,
+      $justify: center,
+      $align: center
+    );
 
-  @include tablet {
-    @include flex-container($justify: space-between);
+    @include tablet {
+      padding: 1rem 1rem 6.5rem 1rem;
+      @include flex-container($justify: space-between);
+    }
+
+    @include desktop {
+      max-width: 68rem;
+      margin: 0 auto;
+    }
   }
 
-  @include desktop {
-    max-width: $breakpoint-desktop;
-    margin: 0 auto;
-  }
   &__logo {
     padding: 1rem;
   }
@@ -52,13 +60,6 @@
       color: $White;
       border-radius: 20px;
       background-color: $Instock-Black;
-    }
-
-    &--active {
-      color: $White;
-      border-radius: 20px;
-      background-color: $Instock-Black;
-      text-decoration: none;
     }
 
     &:visited {
