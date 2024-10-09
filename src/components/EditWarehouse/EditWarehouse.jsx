@@ -102,11 +102,17 @@ function EditWarehouse() {
               className="details__contacts-input"
             />
           </div>
-          <div className="details__button">
-            <button type="submit" className="details__button-cancel">
+          <div className="details__button-container">
+            <button
+              type="submit"
+              className="details__button details__button-cancel"
+            >
               Cancel
             </button>
-            <button type="submit" className="details__button-submit">
+            <button
+              type="submit"
+              className="details__button details__button-save"
+            >
               Save
             </button>
           </div>

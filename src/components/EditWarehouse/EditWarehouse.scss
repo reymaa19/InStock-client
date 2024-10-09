@@ -80,86 +80,24 @@
         font-family: $primary-font;
       }
     }
-    &__button {
-      display: flex;
+    &__button-container {
+      @include flex-container;
       gap: 1rem;
-      padding: 2rem 1rem;
+      padding: 1rem;
       background-color: $Light-Grey;
-      &-cancel {
-        height: 2.25rem;
-        width: 50%;
-        font-size: $m-h3-text-size;
-        line-height: $m-h3-line-height;
-        color: $Slate;
-        background-color: $White;
-        border-radius: 1.25rem;
-        border: 0.0625rem solid $Cloud;
-        &:hover {
-          color: $Instock-Indigo;
-          border: 0.0625rem solid $Instock-Indigo;
-        }
-        @include tablet {
-          height: 2.375rem;
-          width: 50%;
-          font-size: $h3-text-size;
-          line-height: $h3-line-height;
-          color: $Instock-Indigo;
-          background-color: $White;
-          border-radius: 1.25rem;
-          border: 0.0625rem solid $Cloud;
-          padding-left: 1rem;
-          padding-right: 1rem;
-        }
-        @include desktop {
-          height: 2.375rem;
-          width: 50%;
-          font-size: $h3-text-size;
-          line-height: $h3-line-height;
-          color: $Instock-Indigo;
-          background-color: $White;
-          border-radius: 1.25rem;
-          border: 0.0625rem solid $Cloud;
-          padding-left: 1rem;
-          padding-right: 1rem;
-        }
+
+      @include tablet {
+        justify-content: flex-end;
       }
-      &-submit {
-        height: 2.25rem;
-        width: 50%;
-        font-size: $m-h3-text-size;
-        line-height: $m-h3-line-height;
-        color: $White;
-        background-color: $Instock-Indigo;
-        border-radius: 1.25rem;
-        border: 0.0625rem solid $Instock-Indigo;
-        &:hover {
-          background-color: $Instock-Black;
-          border: 0.0625rem solid $Instock-Black;
-        }
-        @include tablet {
-          height: 2.375rem;
-          width: 50%;
-          font-size: $h3-text-size;
-          line-height: $h3-line-height;
-          color: $White;
-          background-color: $Instock-Indigo;
-          border-radius: 1.25rem;
-          border: 0.0625rem solid $Instock-Indigo;
-          padding-left: 1rem;
-          padding-right: 1rem;
-        }
-        @include desktop {
-          height: 2.375rem;
-          width: 50%;
-          font-size: $h3-text-size;
-          line-height: $h3-line-height;
-          color: $White;
-          background-color: $Instock-Indigo;
-          border-radius: 1.25rem;
-          border: 0.0625rem solid $Instock-Indigo;
-          padding-left: 1rem;
-          padding-right: 1rem;
-        }
+    }
+    &__button {
+      @include reset-field;
+      @include cta-button;
+
+      &-cancel {
+        background-color: white;
+        color: $Slate;
+        border: 1px solid $Cloud;
       }
     }
   }
