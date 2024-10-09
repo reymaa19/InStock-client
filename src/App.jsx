@@ -14,7 +14,6 @@ const App = () => {
         <Route path="/warehouse" element={<WarehousePage />} />
         <Route path="/inventory" element={<InventoryPage />} />
         <Route path="/addnewwarehouse" element={<AddNewWarehouse />} />
-
       </Routes>
       <Footer />
     </BrowserRouter>

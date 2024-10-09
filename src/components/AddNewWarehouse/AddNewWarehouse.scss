@@ -1,0 +1,26 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.add-warehouse{
+    display:flex;
+    flex-direction: column;
+    &__title{
+        font-weight: $font-weight-semi-bold600;
+        font-size: $m-h1-text-size;
+        line-height: $m-h1-line-height;
+    }
+    .details{
+        display: flex;
+        flex-direction: column;
+        font-size: $m-h2-text-size;
+        &__address{
+            display: flex;
+            flex-direction: column;
+        }
+        &__contacts{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+}

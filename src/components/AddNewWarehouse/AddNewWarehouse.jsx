@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "./AddNewWarehouse.scss"
 function AddNewWarehouse() {
   return (
     <div className="add-warehouse">
@@ -25,7 +25,7 @@ function AddNewWarehouse() {
             <input type="text" id="position" name="position" placeholder="Position" />
             <label htmlFor="phone-number">Phone Number</label>
             <input type="text" id="phone-number" name="phone-number" placeholder="Phone Number" />
-            <label htmlFor="Email">Email</label>ß
+            <label htmlFor="Email">Email</label>
             <input type="text" id="Email" name="Email" placeholder="Email" />
         </div>
 
