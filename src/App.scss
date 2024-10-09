@@ -6,6 +6,11 @@ html {
     font-family: $primary-font;
 }
 
+  .container {
+    position: relative;
+   
+  }
+
 *,
 *::before,
 *::after {

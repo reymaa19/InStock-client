@@ -76,9 +76,9 @@
   }
 
   &__search {
+    width: 17.125rem;
     @include reset-field;
     @include search-field;
-    width: 17.125rem;
   }
 
   &__cta-button {
