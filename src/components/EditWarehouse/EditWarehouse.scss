@@ -1,0 +1,133 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+* {
+  box-sizing: border-box;
+}
+.main {
+  background-color: $Light-Grey;
+}
+.edit-warehouse {
+  @include page-container;
+
+  &__header {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 0.0625rem solid $Cloud;
+    width: 100%;
+    padding: 1.5rem 1rem;
+
+    @include tablet {
+      padding: 1.5rem 2rem;
+    }
+  }
+  &__title {
+    font-weight: $font-weight-semi-bold600;
+    font-size: $m-h1-text-size;
+    line-height: $m-h1-line-height;
+
+    @include tablet {
+      line-height: $h1-line-height;
+    }
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+    font-size: $m-h2-text-size;
+    line-height: $m-h2-line-height;
+
+    &__tablet-container {
+      @include tablet {
+        padding: 1rem 1rem;
+        @include flex-container($justify: space-between);
+      }
+    }
+
+    &__address {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 0.06125rem solid $Cloud;
+      line-height: 3rem;
+      font-size: $m-p2-text-size;
+      padding: 1rem;
+      padding-bottom: 2rem;
+
+      @include tablet {
+        width: 50%;
+        padding: 0 1rem 1rem 1rem;
+        border-right: 0.06125rem solid $Cloud;
+        border-bottom: none;
+      }
+
+      &-name {
+        font-weight: $font-weight-semi-bold600;
+      }
+
+      &-label {
+        font-weight: $font-weight-semi-bold600;
+      }
+      &-input {
+        border-radius: 1.25rem;
+        height: 2.25rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border: 0.0625rem solid $Cloud;
+        font-family: $primary-font;
+      }
+    }
+    &__contacts {
+      display: flex;
+      flex-direction: column;
+      line-height: 3rem;
+      font-size: $m-p2-text-size;
+      padding: 1rem;
+      padding-bottom: 2rem;
+
+      @include tablet {
+        width: 50%;
+        padding: 0 1rem 1rem 1rem;
+      }
+
+      &-title {
+        font-weight: $font-weight-semi-bold600;
+      }
+      &-name {
+        font-weight: $font-weight-semi-bold600;
+      }
+
+      &-label {
+        font-weight: $font-weight-semi-bold600;
+      }
+      &-input {
+        border-radius: 1.25rem;
+        height: 2.25rem;
+        padding: 1rem;
+        border-color: $Cloud;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border: 0.0625rem solid $Cloud;
+        font-family: $primary-font;
+      }
+    }
+    &__button-container {
+      @include flex-container;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: $Light-Grey;
+
+      @include tablet {
+        justify-content: flex-end;
+        padding: 1rem 2rem;
+      }
+    }
+    &__button {
+      @include reset-field;
+      @include cta-button;
+
+      &-cancel {
+        background-color: white;
+        color: $Slate;
+        border: 1px solid $Cloud;
+      }
+    }
+  }
+}

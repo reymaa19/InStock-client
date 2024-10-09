@@ -71,13 +71,13 @@
     @include reset-field;
     @include cta-button;
 
-    &--cancel {
+    &--secondary {
       background-color: white;
       color: $Slate;
       border: 1px solid $Cloud;
     }
 
-    &--delete {
+    &--primary {
       background-color: $Red;
     }
   }
