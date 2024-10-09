@@ -10,7 +10,6 @@ import AddNewWarehouse from "./components/AddNewWarehouse/AddNewWarehouse";
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="container"> 
       <Header />
       <Routes>
         <Route path="/" element={<WarehousePage />} />
@@ -18,9 +17,8 @@ const App = () => {
         <Route path="/warehouse/:id" element={<WarehouseInventoryPage />} />
         <Route path="/inventory" element={<InventoryPage />} />
         <Route path="/addnewwarehouse" element={<AddNewWarehouse />} />
-      
       </Routes>
-      </div>
+
       <Footer />
     </BrowserRouter>
   );

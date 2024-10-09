@@ -1,24 +1,12 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
-* {
-  box-sizing: border-box;
+
+.main{
+    background-color: $Light-Grey;
 }
 .add-warehouse {
-  display: flex;
-  flex-direction: column;
-  top: 9rem;
-  background-color:$White;
-  position: absolute;
-  width: 93%;
-  border-radius: 0.1875rem;
-  margin-left: 1rem;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  line-height: $m-h1-line-height;
-  
-  @include tablet{
-    top: 5.5rem;
+    @include page-container;
 
-}
   &__header {
     display: flex;
     gap: 1rem;
@@ -63,6 +51,7 @@
         width: 50%;
         border-bottom:none;
         border-right: 0.06125rem solid $Cloud;
+        
       }
       @include desktop{
         width: 50%;
@@ -131,14 +120,18 @@
       display: flex;
       gap: 1rem;
       padding: 1rem;
+
       @include tablet{
         flex-direction: row;
         justify-content: flex-end;
+        background-color: $Light-Grey;
 
       }
       @include desktop{
         flex-direction: row;
         justify-content: flex-end;
+        background-color: $Light-Grey;
+
 
       }
       &-cancel {
