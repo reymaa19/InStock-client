@@ -12,7 +12,6 @@ import AddEditInventory from "./components/AddEditInventory/AddEditInventory";
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="container">
         <Header />
         <Routes>
           <Route path="/" element={<WarehousePage />} />
@@ -24,7 +23,6 @@ const App = () => {
           <Route path="/inventory/new" element={<AddEditInventory />} />
           <Route path="/inventory/:id" element={<AddEditInventory />} />
         </Routes>
-      </div>
       <Footer />
     </BrowserRouter>
   );
