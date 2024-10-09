@@ -18,23 +18,6 @@ function WarehousePage() {
 
   console.log(warehouses);
 
-  const mockData = [
-    {
-      id: "abcd",
-      warehouse: "Manhattan",
-      address: "503 Broadway New York, USA",
-      contact: "Parmin Aujla",
-      contactInfo: ["+1 (629) 555-0129", "paujla@instock.com"],
-    },
-    {
-      id: "1234",
-      warehouse: "Manhattan",
-      address: "503 Broadway New York, USA",
-      contact: "Parmin Aujla",
-      contactInfo: ["+1 (629) 555-0129", "paujla@instock.com"],
-    },
-  ];
-
   return (
     <main className="main">
       <section className="warehouse">
