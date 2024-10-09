@@ -8,7 +8,7 @@ function DeleteModal({ isOpen, closeModal, id, name, type }) {
 
   async function deleteSelected() {
     if (type === "warehouse") await deleteWarehouse(id);
-    else await deleteInventory(id);
+    else if (type === "inventory") await deleteInventory(id);
 
     closeModal();
   }

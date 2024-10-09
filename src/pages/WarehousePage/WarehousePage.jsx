@@ -34,8 +34,14 @@ function WarehousePage() {
             </button>
           </div>
         </div>
-
-        <div className="warehouse__container warehouse__container-bottom">
+        <div className="warehouse__container warehouse__container--bottom">
+          <div className="warehouse__headers-container">
+            <h4 className="warehouse__header">WAREHOUSE</h4>
+            <h4 className="warehouse__header">ADDRESS</h4>
+            <h4 className="warehouse__header">CONTACT NAME</h4>
+            <h4 className="warehouse__header">CONTACT INFORMATION</h4>
+            <h4 className="warehouse__header">ACTION</h4>
+          </div>
           {warehouses.map((warehouse) => (
             <ListItem key={warehouse.id} item={warehouse} />
           ))}

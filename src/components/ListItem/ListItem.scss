@@ -3,21 +3,27 @@
 
 .list-item {
   padding: 1rem;
-  border-bottom: 1px solid $Cloud;
+  border-top: 1px solid $Cloud;
+
+  @include tablet {
+    padding: 1rem 2rem;
+  }
 
   &__wrapper {
-    @include flex-container;
-    gap: 1rem;
-
-    &--buttons {
-      justify-content: space-between;
-    }
+    @include flex-container(column, space-between);
+    align-content: space-between;
+    flex-wrap: wrap;
+    height: 9.5rem;
   }
 
   &__container {
-    @include flex-container(column);
-    padding-bottom: 1rem;
-    width: 50%;
+    box-sizing: border-box;
+    width: 44%;
+    max-width: 8.5rem;
+
+    &--edit {
+      @include flex-container(row, flex-end);
+    }
   }
 
   &__header {
@@ -27,6 +33,7 @@
     font-weight: $font-weight-semi-bold600;
 
     @include tablet {
+      display: none;
       font-size: $h4-text-size;
       line-height: $h4-line-height;
     }
@@ -39,6 +46,7 @@
     font-weight: $font-weight-regular400;
 
     &--link {
+      display: inline-flex;
       font-weight: $font-weight-semi-bold600;
       color: $Instock-Indigo;
       text-decoration: none;
@@ -52,6 +60,12 @@
       font-size: $p2-text-size;
       line-height: $p2-line-height;
     }
+  }
+
+  &__chevron {
+    padding-left: 0.25rem;
+    height: 1.25rem;
+    width: 1.25rem;
   }
 
   &__button {
