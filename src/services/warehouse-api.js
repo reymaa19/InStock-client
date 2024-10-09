@@ -14,6 +14,17 @@ export async function getWarehouses() {
   }
 }
 
+// Deletes a single warehouse.
+export async function deleteWarehouse(id) {
+  try {
+    const url = `${BASE_URL}/warehouses/${id}`;
+    const response = await axios.delete(url);
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+}
+
 // Fetches single warehouses.
 export async function getSingleWarehouse(id) {
   try {
@@ -28,5 +39,8 @@ export async function getSingleWarehouse(id) {
 
 export default {
   getWarehouses,
+
+  deleteWarehouse,
+
   getSingleWarehouse,
 };

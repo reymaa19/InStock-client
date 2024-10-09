@@ -3,21 +3,47 @@
 
 .list-item {
   padding: 1rem;
-  border-bottom: 1px solid $Cloud;
+  border-top: 1px solid $Cloud;
+
+  &:first-child {
+    border-top: none;
+  }
+
+  @include tablet {
+    padding: 1rem 2rem;
+  }
 
   &__wrapper {
-    @include flex-container;
-    gap: 1rem;
+    @include flex-container(column, space-between);
+    align-content: space-between;
+    flex-wrap: wrap;
+    height: 9.5rem;
 
-    &--buttons {
-      justify-content: space-between;
+    @include tablet {
+      flex-direction: row;
+      height: auto;
     }
   }
 
   &__container {
-    @include flex-container(column);
-    padding-bottom: 1rem;
-    width: 50%;
+    box-sizing: border-box;
+    width: 44%;
+    max-width: 8.5rem;
+
+    &--edit {
+      @include flex-container(row, flex-end, center);
+      gap: 1rem;
+      width: 6rem;
+    }
+
+    @include tablet {
+      box-sizing: content-box;
+      max-width: 7.2rem;
+    }
+
+    @include desktop {
+      max-width: 13rem;
+    }
   }
 
   &__header {
@@ -27,6 +53,7 @@
     font-weight: $font-weight-semi-bold600;
 
     @include tablet {
+      display: none;
       font-size: $h4-text-size;
       line-height: $h4-line-height;
     }
@@ -39,6 +66,7 @@
     font-weight: $font-weight-regular400;
 
     &--link {
+      display: inline-flex;
       font-weight: $font-weight-semi-bold600;
       color: $Instock-Indigo;
       text-decoration: none;
@@ -54,6 +82,12 @@
     }
   }
 
+  &__chevron {
+    padding-left: 0.25rem;
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+
   &__button {
     @include reset-field;
     background-repeat: no-repeat;
@@ -66,6 +100,16 @@
 
     &--delete {
       background-image: url("../../assets/images/icons/action/delete_outline-24px.svg");
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--primary {
+      @include tablet {
+        display: block;
+      }
     }
   }
 }
