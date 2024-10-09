@@ -12,7 +12,11 @@ function ListItem({ item }) {
       <div className="list-item__wrapper">
         <div className="list-item__container">
           <h4 className="list-item__header">WAREHOUSE</h4>
-          <Link to="/" className="list-item__value list-item__value--link">
+          <Link
+            className="list-item__value list-item__value--link"
+            key={item.id}
+            to={`/warehouse/${item.id}`}
+          >
             {item.warehouse_name}
             <img
               className="list-item__chevron"
