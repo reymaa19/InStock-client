@@ -3,6 +3,7 @@ import "./AddNewWarehouse.scss";
 import arrowBackIcon from "../../assets/images/icons/navigation/arrow_back-24px.svg"
 function AddNewWarehouse() {
   return (
+    <main className="main">
     <div className="add-warehouse">
       <div className="add-warehouse__header">
       <img src={arrowBackIcon} alt="Go back" className="add-warehouse__back-icon" />
@@ -11,6 +12,7 @@ function AddNewWarehouse() {
       </div>
     
       <form className="details">
+        <div className="details__container">
         <div className="details__address">
             <h2 className="details__adress-name">Warehouse Details</h2>
             <label htmlFor="warehouse" className="details__address-label">Warehouse Name</label>
@@ -34,6 +36,7 @@ function AddNewWarehouse() {
             <label htmlFor="Email"className="details__contacts-name">Email</label>
             <input type="text" id="Email" name="Email" placeholder="Email" className="details__contacts-input"/>
         </div>
+        </div>
         <div className="details__button">
         <button type="submit" className="details__button-cancel">Cancel</button>
         <button type="submit" className="details__button-submit">+ Add Warehouse</button>
@@ -41,6 +44,7 @@ function AddNewWarehouse() {
 
       </form>
     </div>
+    </main>
   );
 }
 
