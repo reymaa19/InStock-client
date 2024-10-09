@@ -11,8 +11,7 @@ const AddEditForm = () => {
     quantity: 0,
   });
   const { id } = useParams();
-
-  console.log(id); // DO SOMETHING WITH EDIT INVENTORY
+  console.log("my params are ", id);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -104,7 +103,11 @@ const AddEditForm = () => {
                 />
                 <label
                   htmlFor="instock"
-                  className={`inventory-form__label inventory-form__label--radio ${values.status === "In Stock" ? "inventory-form__label--selected" : ""}`}
+                  className={`inventory-form__label inventory-form__label--radio ${
+                    values.status === "In Stock"
+                      ? "inventory-form__label--selected"
+                      : ""
+                  }`}
                 >
                   In Stock
                 </label>
@@ -120,7 +123,11 @@ const AddEditForm = () => {
                 />
                 <label
                   htmlFor="out_of_stock"
-                  className={`inventory-form__label inventory-form__label--radio ${values.status === "Out of Stock" ? "inventory-form__label--selected" : ""}`}
+                  className={`inventory-form__label inventory-form__label--radio ${
+                    values.status === "Out of Stock"
+                      ? "inventory-form__label--selected"
+                      : ""
+                  }`}
                 >
                   Out of Stock
                 </label>
@@ -141,7 +148,7 @@ const AddEditForm = () => {
                 />
               </label>
               <label htmlFor="warehouse" className="inventory-form__label">
-                Quantity
+                Warehouse
                 <select
                   className="inventory-form__input inventory-form__input--select"
                   id="category"
