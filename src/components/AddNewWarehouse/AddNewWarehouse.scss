@@ -41,11 +41,11 @@
 
             &-name{
                 font-weight: $font-weight-semi-bold600;
-                // font-size: $m-p2-text-size;
             }
             
             &-label{
-                // font-size: $m-p2-text-size;
+                font-weight: $font-weight-semi-bold600;
+
             }
             &-input{
                 border-radius: 20px;
@@ -66,17 +66,19 @@
             font-size: $m-p2-text-size;
 
             &-title{
+                font-weight: $font-weight-semi-bold600;
+
 
 
             }
             &-name{
                 font-weight: $font-weight-semi-bold600;
 
-                // font-size: $m-p2-text-size;
             }
             
             &-label{
-                // font-size: $m-p2-text-size;
+                font-weight: $font-weight-semi-bold600;
+
             }
             &-input{
                 border-radius: 1.25rem;
