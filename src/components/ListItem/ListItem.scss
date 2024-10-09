@@ -5,6 +5,10 @@
   padding: 1rem;
   border-top: 1px solid $Cloud;
 
+  &:first-child {
+    border-top: none;
+  }
+
   @include tablet {
     padding: 1rem 2rem;
   }
@@ -14,6 +18,11 @@
     align-content: space-between;
     flex-wrap: wrap;
     height: 9.5rem;
+
+    @include tablet {
+      flex-direction: row;
+      height: auto;
+    }
   }
 
   &__container {
@@ -22,7 +31,18 @@
     max-width: 8.5rem;
 
     &--edit {
-      @include flex-container(row, flex-end);
+      @include flex-container(row, flex-end, center);
+      gap: 1rem;
+      width: 6rem;
+    }
+
+    @include tablet {
+      box-sizing: content-box;
+      max-width: 7.2rem;
+    }
+
+    @include desktop {
+      max-width: 13rem;
     }
   }
 
@@ -80,6 +100,16 @@
 
     &--delete {
       background-image: url("../../assets/images/icons/action/delete_outline-24px.svg");
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--primary {
+      @include tablet {
+        display: block;
+      }
     }
   }
 }

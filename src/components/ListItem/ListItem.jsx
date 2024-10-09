@@ -8,7 +8,7 @@ function ListItem({ item }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="list-item">
+    <div className="list-item" id={`list-item-${item.id}`}>
       <div className="list-item__wrapper">
         <div className="list-item__container">
           <h4 className="list-item__header">WAREHOUSE</h4>
@@ -45,16 +45,22 @@ function ListItem({ item }) {
         </div>
 
         <div className="list-item__container list-item__container--edit">
+          <button
+            className="list-item__button list-item__button--delete list-item__button--primary"
+            onClick={() => setIsOpen(true)}
+          />
           <button className="list-item__button list-item__button--edit" />
         </div>
       </div>
-      <DeleteModal
-        isOpen={isOpen}
-        closeModal={() => setIsOpen(false)}
-        id={item.id}
-        name={item.warehouse_name}
-        type="warehouse"
-      />
+      {isOpen && (
+        <DeleteModal
+          isOpen={isOpen}
+          closeModal={() => setIsOpen(false)}
+          id={item.id}
+          name={item.warehouse_name}
+          type="warehouse"
+        />
+      )}
     </div>
   );
 }

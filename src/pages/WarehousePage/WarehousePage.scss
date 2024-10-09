@@ -8,6 +8,10 @@
   @include tablet {
     padding: 0 2rem;
   }
+
+  @include desktop {
+    padding: 0;
+  }
 }
 
 .warehouse {
@@ -23,8 +27,13 @@
     bottom: 5.5rem;
   }
 
+  @include desktop {
+    width: 1020px;
+    margin: 0 auto;
+  }
+
   &__container {
-    &--top {
+    &--search {
       @include flex-container(column);
       gap: 1rem;
       padding: 1.5rem 1rem;
@@ -34,6 +43,14 @@
         justify-content: space-between;
         padding: 1.5rem 2rem;
       }
+    }
+
+    &--headers {
+      @include flex-container(row, space-between);
+      padding: 1rem 2rem;
+      background-color: $Light-Grey;
+      position: relative;
+      top: 1px;
     }
   }
 
@@ -61,15 +78,12 @@
   &__search {
     @include reset-field;
     @include search-field;
+    width: 17.125rem;
   }
 
   &__cta-button {
     @include reset-field;
     @include cta-button;
-  }
-
-  &__headers-container {
-    @include flex-container;
   }
 
   &__header {
@@ -81,8 +95,26 @@
 
     @include tablet {
       display: block;
+      display: inline-flex;
       font-size: $h4-text-size;
       line-height: $h4-line-height;
+      max-width: 9.1rem;
+    }
+
+    &--contact-name {
+      position: relative;
+      left: 1rem;
+    }
+  }
+
+  &__sort {
+    padding-left: 0.25rem;
+    height: 1rem;
+    width: 1rem;
+    align-content: baseline;
+
+    &:hover {
+      cursor: pointer;
     }
   }
 }
