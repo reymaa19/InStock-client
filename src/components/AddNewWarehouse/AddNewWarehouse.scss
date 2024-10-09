@@ -48,7 +48,7 @@
 
             }
             &-input{
-                border-radius: 20px;
+                border-radius:1.25rem;
                 height: 2.25rem;
                 padding-left:1rem;
                 padding-right: 1rem;
@@ -93,6 +93,37 @@
 
             }
            
+        }
+        &__button{
+
+            display: flex;
+            gap:1rem;
+            &-cancel{
+                height: 2.25rem;
+                width: 50%;
+                font-size:$m-h3-text-size;
+                line-height:$m-h3-line-height;
+                color:$Instock-Indigo;
+                background-color: $White;
+                border-radius: 1.25rem;
+                border: 0.0625rem solid $Cloud;
+
+
+            }
+            &-submit{
+                height: 2.25rem;
+                width: 50%;
+                font-size:$m-h3-text-size;
+                line-height:$m-h3-line-height;
+                color:$White;
+                background-color: $Instock-Indigo;
+                border-radius: 1.25rem;
+                border: 0.0625rem solid $Instock-Indigo;
+
+
+            }
+      
+      
         }
     }
 

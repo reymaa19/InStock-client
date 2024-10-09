@@ -34,9 +34,10 @@ function AddNewWarehouse() {
             <label htmlFor="Email"className="details__contacts-name">Email</label>
             <input type="text" id="Email" name="Email" placeholder="Email" className="details__contacts-input"/>
         </div>
-
-        <button type="submit">Cancel</button>
-        <button type="submit">Submit</button>
+        <div className="details__button">
+        <button type="submit" className="details__button-cancel">Cancel</button>
+        <button type="submit" className="details__button-submit">+ Add Warehouse</button>
+        </div>
 
       </form>
     </div>
