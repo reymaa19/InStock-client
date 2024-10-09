@@ -97,10 +97,15 @@
         width: 50%;
         font-size: $m-h3-text-size;
         line-height: $m-h3-line-height;
-        color: $Instock-Indigo;
+        color: $Slate;
         background-color: $White;
         border-radius: 1.25rem;
         border: 0.0625rem solid $Cloud;
+        &:hover{
+            color: $Instock-Indigo;
+            border: 0.0625rem solid $Instock-Indigo;
+
+        }
         @include tablet {
           height: 2.375rem;
           width: 50%;
@@ -135,6 +140,11 @@
         background-color: $Instock-Indigo;
         border-radius: 1.25rem;
         border: 0.0625rem solid $Instock-Indigo;
+        &:hover{
+            background-color: $Instock-Black;
+            border: 0.0625rem solid $Instock-Black;
+
+        }
         @include tablet {
           height: 2.375rem;
           width: 50%;
