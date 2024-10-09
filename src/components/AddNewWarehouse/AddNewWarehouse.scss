@@ -14,23 +14,43 @@
   margin-left: 1rem;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   line-height: $m-h1-line-height;
+  
+  @include tablet{
+    top: 5.5rem;
+
+}
   &__header {
     display: flex;
     gap: 1rem;
     border-bottom: 0.0625rem solid $Cloud;
     width: 100%;
     padding: 1rem;
+    
   }
   &__title {
     font-weight: $font-weight-semi-bold600;
     font-size: 2.5;
     line-height: 8rem;
+    @include tablet{
+        line-height: 4rem;
+    }
   }
   .details {
     display: flex;
     flex-direction: column;
     font-size: $m-h2-text-size;
     line-height: $m-h2-line-height;
+    &__container{
+     @include tablet{
+        padding-top:1rem;
+        display: flex;
+        flex-direction: row;
+        width:100%;
+
+
+    }
+    }
+   
     &__address {
       display: flex;
       flex-direction: column;
@@ -39,6 +59,11 @@
       font-size: $m-p2-text-size;
       padding: 1rem;
       padding-bottom: 2rem;
+      @include tablet{
+        width: 50%;
+        border-bottom:none;
+        border-right: 0.06125rem solid $Cloud;
+      }
 
 
       &-name {
@@ -64,6 +89,10 @@
       font-size: $m-p2-text-size;
       padding: 1rem;
       padding-bottom: 2rem;
+      @include tablet{
+        width: 50%;
+        border-bottom:none;
+      }
 
 
       &-title {
