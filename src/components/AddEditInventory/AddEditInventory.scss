@@ -1,0 +1,171 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.inventory-form {
+  background-color: $Light-Grey;
+  padding: 0 1rem;
+
+  @include tablet {
+    padding: 0 3rem;
+  }
+
+  @include desktop {
+    padding: 0;
+  }
+
+  &__wrapper {
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    bottom: 4rem;
+    background-color: white;
+    border-radius: 0.1875rem;
+    box-shadow: 0rem 0.125rem 0.3125rem 0rem #13182c1a;
+
+    @include tablet {
+      width: 87.5vw;
+      max-width: 1020px;
+      bottom: 5.5rem;
+      margin: 0 auto;
+    }
+
+    @include desktop {
+      width: 1020px;
+    }
+
+    &--header {
+      @include flex-container($align: baseline);
+      border-bottom: 0.0625rem solid $Cloud;
+      padding: 1.5rem;
+    }
+
+    &--body {
+      @include flex-container(column);
+    }
+
+    &--section {
+      padding: 1.5rem;
+      &:first-child {
+        border-bottom: 0.0625rem solid $Cloud;
+      }
+    }
+
+    &--options {
+      @include flex-container;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: $Light-Grey;
+    }
+
+    &--radio {
+      @include flex-container(row, space-between, center);
+    }
+  }
+
+  &__container {
+    @include flex-container(row, space-between, center);
+    gap: 1rem;
+  }
+
+  &__back-button {
+    @include reset-field;
+    margin-right: 0.25rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-image: url("../../assets/images/icons/navigation/arrow_back-24px.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__page-header {
+    color: $Instock-Black;
+    font-size: $m-h1-text-size;
+    line-height: $m-h1-line-height;
+    font-weight: $font-weight-semi-bold600;
+
+    @include tablet {
+      font-size: $h1-text-size;
+      line-height: $h1-line-height;
+    }
+  }
+
+  &__section-header {
+    color: $Instock-Black;
+    font-size: $m-h2-text-size;
+    line-height: $m-h2-line-height;
+    font-weight: $font-weight-semi-bold600;
+
+    @include tablet {
+      font-size: $h2-text-size;
+      line-height: $h2-line-height;
+    }
+  }
+
+  &__label {
+    @include flex-container(column);
+    margin-top: 1.5rem;
+    color: $Instock-Black;
+    font-size: $m-h3-text-size;
+    line-height: $m-h3-line-height;
+    font-weight: $font-weight-semi-bold600;
+
+    @include tablet {
+      font-size: $h3-text-size;
+      line-height: $h3-line-height;
+    }
+
+    &--radio {
+      flex-direction: row;
+      margin-top: 0;
+      color: $Slate;
+      font-size: $m-p2-text-size;
+      line-height: $m-p2-line-height;
+      font-weight: $font-weight-regular400;
+
+      @include tablet {
+        font-size: $p2-text-size;
+        line-height: $p2-line-height;
+      }
+    }
+    &--selected {
+      color: $Instock-Black;
+    }
+  }
+
+  &__input {
+    @include reset-field;
+    @include search-field;
+    background-image: none;
+    margin-top: 4px;
+
+    &--text-area {
+      height: 7.375rem;
+      resize: none;
+      overflow: hidden;
+      padding-top: 0.5rem;
+    }
+
+    &--select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("../../assets/images/icons/navigation/arrow_drop_down-24px.svg");
+    }
+
+    &::placeholder {
+      color: $Cloud;
+      font-weight: $font-weight-regular400;
+    }
+  }
+
+  &__button {
+    @include reset-field;
+    @include cta-button;
+
+    &--secondary {
+      background-color: white;
+      color: $Slate;
+      border: 1px solid $Cloud;
+    }
+  }
+}
