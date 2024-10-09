@@ -7,12 +7,21 @@
 }
 
 .warehouse {
-  width: 60%;
+  width: 100%;
   background-color: white;
   position: relative;
-  top: 45rem;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -7.5%);
+  border-radius: 3px;
+  box-shadow: 0 2px 5px #13182c1a;
+  @include tablet {
+    width: 95%;
+  }
+  @include desktop {
+    width: 66%;
+  }
+
   &__container {
     &--top {
       @include flex-container(column);
