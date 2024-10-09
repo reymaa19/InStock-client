@@ -8,11 +8,14 @@ function WarehouseDetails(details) {
   return (
     <div className="details">
       <div className="nav">
-        <img className="nav__arrow" src={arrow} alt="Return to Warehouses" />
+        <Link to="/warehouse" className="nav__link">
+          <img className="nav__arrow" src={arrow} alt="Return to Warehouses" />
+        </Link>
         <h1 className="nav__name">{warehouse.warehouse_name}</h1>
         <div className="nav__end">
           <div className="nav__color">
             <img className="nav__edit" src={editHeader} alt="Edit Warehouse" />
+
             <p className="nav__edit-text">Edit</p>
           </div>
         </div>
