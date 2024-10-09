@@ -16,7 +16,7 @@
     &__header{
         display: flex;
         gap: 1rem;
-        border-bottom: 0.06125rem solid $Slate;
+        border-bottom: 0.0625rem solid $Cloud;
         width:100%;
 
     }
@@ -52,7 +52,7 @@
                 height: 2.25rem;
                 padding-left:1rem;
                 padding-right: 1rem;
-                border-color:$Cloud;
+                border: 0.0625rem solid $Cloud;
 
 
 
@@ -84,6 +84,8 @@
                 border-color:$Cloud;
                 padding-left:1rem;
                 padding-right: 1rem;
+                border: 0.0625rem solid $Cloud;
+
 
             }
            
