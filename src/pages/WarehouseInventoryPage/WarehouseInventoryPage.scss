@@ -2,7 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 .main {
-  padding: 0 1rem;
+  // padding: 0 1rem; // temporarily commented out b/c affecting warehousepage. -rey
   background-color: $Light-Grey;
 }
 

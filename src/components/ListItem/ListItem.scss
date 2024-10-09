@@ -9,6 +9,10 @@
     border-top: none;
   }
 
+  &:hover {
+    background-color: #f0f4fd;
+  }
+
   @include tablet {
     padding: 1rem 2rem;
   }
@@ -107,6 +111,8 @@
     }
 
     &--primary {
+      display: none;
+
       @include tablet {
         display: block;
       }
