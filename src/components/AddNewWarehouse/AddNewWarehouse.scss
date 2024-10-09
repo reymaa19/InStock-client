@@ -1,130 +1,165 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
-
-.add-warehouse{
+* {
+  box-sizing: border-box;
+}
+.add-warehouse {
+  display: flex;
+  flex-direction: column;
+  // padding: 1rem;
+  top: 9rem;
+  background-color: white;
+  position: absolute;
+  width: 93%;
+  border-radius: 0.1875rem;
+  margin-left: 1rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  line-height: $m-h1-line-height;
+  &__header {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 0.0625rem solid $Cloud;
+    width: 100%;
+    padding: 1rem;
+  }
+  &__title {
+    font-weight: $font-weight-semi-bold600;
+    font-size: 2.5;
+    line-height: 8rem;
+  }
+  .details {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
-    top: 9rem;
-    background-color: white;
-    position: absolute;
-    width: 93%;
-    border-radius: 0.1875rem;
-    margin-left: 1rem;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    line-height: $m-h1-line-height;
-    &__header{
-        display: flex;
-        gap: 1rem;
-        border-bottom: 0.0625rem solid $Cloud;
-        width:100%;
+    font-size: $m-h2-text-size;
+    line-height: $m-h2-line-height;
+    &__address {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 0.06125rem solid $Cloud;
+      line-height: 3rem;
+      font-size: $m-p2-text-size;
+      padding: 1rem;
+      padding-bottom: 2rem;
 
-    }
-    &__title{
+
+      &-name {
         font-weight: $font-weight-semi-bold600;
-        font-size: 2.5;
-        line-height: 8rem;
+      }
 
+      &-label {
+        font-weight: $font-weight-semi-bold600;
+      }
+      &-input {
+        border-radius: 1.25rem;
+        height: 2.25rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border: 0.0625rem solid $Cloud;
+        font-family: $primary-font;
+      }
     }
-    .details{
-        display: flex;
-        flex-direction: column;
-        font-size: $m-h2-text-size;
-        line-height: $m-h2-line-height;
-        
-        &__address{
-            display: flex;
-            flex-direction: column;
-            border-bottom: 0.06125rem solid $Cloud;
-            line-height: 3rem;
-            font-size: $m-p2-text-size;
-
-            &-name{
-                font-weight: $font-weight-semi-bold600;
-            }
-            
-            &-label{
-                font-weight: $font-weight-semi-bold600;
-
-            }
-            &-input{
-                border-radius:1.25rem;
-                height: 2.25rem;
-                padding-left:1rem;
-                padding-right: 1rem;
-                border: 0.0625rem solid $Cloud;
-                font-family: $primary-font;
+    &__contacts {
+      display: flex;
+      flex-direction: column;
+      line-height: 3rem;
+      font-size: $m-p2-text-size;
+      padding: 1rem;
+      padding-bottom: 2rem;
 
 
+      &-title {
+        font-weight: $font-weight-semi-bold600;
+      }
+      &-name {
+        font-weight: $font-weight-semi-bold600;
+      }
 
-            }
-        }
-        &__contacts{
-            display: flex;
-            flex-direction: column;
-            line-height: 3rem;
-            font-size: $m-p2-text-size;
-
-            &-title{
-                font-weight: $font-weight-semi-bold600;
-
-
-
-            }
-            &-name{
-                font-weight: $font-weight-semi-bold600;
-
-            }
-            
-            &-label{
-                font-weight: $font-weight-semi-bold600;
-
-            }
-            &-input{
-                border-radius: 1.25rem;
-                height: 2.25rem;
-                padding:1rem;
-                border-color:$Cloud;
-                padding-left:1rem;
-                padding-right: 1rem;
-                border: 0.0625rem solid $Cloud;
-                font-family: $primary-font;
-
-
-            }
-           
-        }
-        &__button{
-
-            display: flex;
-            gap:1rem;
-            &-cancel{
-                height: 2.25rem;
-                width: 50%;
-                font-size:$m-h3-text-size;
-                line-height:$m-h3-line-height;
-                color:$Instock-Indigo;
-                background-color: $White;
-                border-radius: 1.25rem;
-                border: 0.0625rem solid $Cloud;
-
-
-            }
-            &-submit{
-                height: 2.25rem;
-                width: 50%;
-                font-size:$m-h3-text-size;
-                line-height:$m-h3-line-height;
-                color:$White;
-                background-color: $Instock-Indigo;
-                border-radius: 1.25rem;
-                border: 0.0625rem solid $Instock-Indigo;
-
-
-            }
-      
-      
-        }
+      &-label {
+        font-weight: $font-weight-semi-bold600;
+      }
+      &-input {
+        border-radius: 1.25rem;
+        height: 2.25rem;
+        padding: 1rem;
+        border-color: $Cloud;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border: 0.0625rem solid $Cloud;
+        font-family: $primary-font;
+      }
     }
-
+    &__button {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      &-cancel {
+        height: 2.25rem;
+        width: 50%;
+        font-size: $m-h3-text-size;
+        line-height: $m-h3-line-height;
+        color: $Instock-Indigo;
+        background-color: $White;
+        border-radius: 1.25rem;
+        border: 0.0625rem solid $Cloud;
+        @include tablet {
+          height: 2.375rem;
+          width: 50%;
+          font-size: $h3-text-size;
+          line-height: $h3-line-height;
+          color: $Instock-Indigo;
+          background-color: $White;
+          border-radius: 1.25rem;
+          border: 0.0625rem solid $Cloud;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        @include desktop {
+          height: 2.375rem;
+          width: 50%;
+          font-size: $h3-text-size;
+          line-height: $h3-line-height;
+          color: $Instock-Indigo;
+          background-color: $White;
+          border-radius: 1.25rem;
+          border: 0.0625rem solid $Cloud;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
+      &-submit {
+        height: 2.25rem;
+        width: 50%;
+        font-size: $m-h3-text-size;
+        line-height: $m-h3-line-height;
+        color: $White;
+        background-color: $Instock-Indigo;
+        border-radius: 1.25rem;
+        border: 0.0625rem solid $Instock-Indigo;
+        @include tablet {
+          height: 2.375rem;
+          width: 50%;
+          font-size: $h3-text-size;
+          line-height: $h3-line-height;
+          color: $White;
+          background-color: $Instock-Indigo;
+          border-radius: 1.25rem;
+          border: 0.0625rem solid $Instock-Indigo;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        @include desktop {
+          height: 2.375rem;
+          width: 50%;
+          font-size: $h3-text-size;
+          line-height: $h3-line-height;
+          color: $White;
+          background-color: $Instock-Indigo;
+          border-radius: 1.25rem;
+          border: 0.0625rem solid $Instock-Indigo;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
+    }
+  }
 }
