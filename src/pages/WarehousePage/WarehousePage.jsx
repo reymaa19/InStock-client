@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ListItem from "../../components/ListItem/ListItem.jsx";
 import { getWarehouses } from "../../services/warehouse-api.js";
+import unfoldMore from "../../assets/images/icons/navigation/sort-24px.svg";
 import "./WarehousePage.scss";
 
 function WarehousePage() {
@@ -16,29 +17,10 @@ function WarehousePage() {
     fetchWarehouses();
   }, []);
 
-  console.log(warehouses);
-
-  const mockData = [
-    {
-      id: "abcd",
-      warehouse: "Manhattan",
-      address: "503 Broadway New York, USA",
-      contact: "Parmin Aujla",
-      contactInfo: ["+1 (629) 555-0129", "paujla@instock.com"],
-    },
-    {
-      id: "1234",
-      warehouse: "Manhattan",
-      address: "503 Broadway New York, USA",
-      contact: "Parmin Aujla",
-      contactInfo: ["+1 (629) 555-0129", "paujla@instock.com"],
-    },
-  ];
-
   return (
     <main className="main">
       <section className="warehouse">
-        <div className="warehouse__container warehouse__container--top">
+        <div className="warehouse__container warehouse__container--search">
           <h1 className="warehouse__page-header">Warehouses</h1>
           <div className="warehouse__wrapper">
             <input
@@ -53,12 +35,28 @@ function WarehousePage() {
             </button>
           </div>
         </div>
-
-        <div className="warehouse__container warehouse__container-bottom">
-          {warehouses.map((warehouse) => (
-            <ListItem key={warehouse.id} item={warehouse} />
-          ))}
+        <div className="warehouse__container--headers">
+          <h4 className="warehouse__header">
+            WAREHOUSE{" "}
+            <img className="warehouse__sort" src={unfoldMore} alt="sort" />
+          </h4>
+          <h4 className="warehouse__header">
+            ADDRESS{" "}
+            <img className="warehouse__sort" src={unfoldMore} alt="sort" />
+          </h4>
+          <h4 className="warehouse__header warehouse__header--contact-name">
+            CONTACT NAME{" "}
+            <img className="warehouse__sort" src={unfoldMore} alt="sort" />
+          </h4>
+          <h4 className="warehouse__header">
+            CONTACT INFORMATION{" "}
+            <img className="warehouse__sort" src={unfoldMore} alt="sort" />
+          </h4>
+          <h4 className="warehouse__header">ACTION</h4>
         </div>
+        {warehouses.map((warehouse) => (
+          <ListItem key={warehouse.id} item={warehouse} />
+        ))}
       </section>
     </main>
   );

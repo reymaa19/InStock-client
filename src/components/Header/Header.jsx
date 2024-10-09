@@ -5,26 +5,20 @@ import logo from "../../assets/images/logo/logo.svg";
 function Header() {
   return (
     <header className="header">
-      <NavLink to="/warehouse">
-        <img src={logo} alt="InStock-logo" className="header__logo" />
-      </NavLink>
+      <section className="header__container">
+        <NavLink to="/warehouse">
+          <img src={logo} alt="InStock-logo" className="header__logo" />
+        </NavLink>
 
-      <nav className="header__nav">
-        <NavLink
-          to="/warehouse"
-          className="header__link"
-          activeClassName="header__link--active"
-        >
-          <h3>Warehouses</h3>
-        </NavLink>
-        <NavLink
-          to="/inventory"
-          className="header__link"
-          activeClassName="header__link--active"
-        >
-          <h3>Inventory</h3>
-        </NavLink>
-      </nav>
+        <nav className="header__nav">
+          <NavLink to="/warehouse" className="header__link">
+            <h3>Warehouses</h3>
+          </NavLink>
+          <NavLink to="/inventory" className="header__link">
+            <h3>Inventory</h3>
+          </NavLink>
+        </nav>
+      </section>
     </header>
   );
 }

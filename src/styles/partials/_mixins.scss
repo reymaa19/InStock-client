@@ -30,6 +30,7 @@
 
 @mixin cta-button {
   height: 2.25rem;
+  width: 100%;
   font-size: 0.8125rem;
   line-height: 1.25rem;
   color: white;
@@ -77,5 +78,26 @@
 
   &::placeholder {
     color: $Cloud;
+  }
+}
+
+@mixin page-container {
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  bottom: 3.25rem;
+  background-color: white;
+  border-radius: 0.1875rem;
+  box-shadow: 0rem 0.125rem 0.3125rem 0rem #13182c1a;
+
+  @include tablet {
+    width: 87.5vw;
+    max-width: 1020px;
+    bottom: 5.5rem;
+    margin: 0 auto;
+  }
+
+  @include desktop {
+    width: 1020px;
   }
 }

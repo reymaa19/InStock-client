@@ -1,0 +1,84 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.delete-modal {
+  @include flex-container(column, space-between);
+  background-color: white;
+  height: 100vh;
+  padding: 1rem;
+
+  @include tablet {
+    margin: 0 auto;
+    width: 42rem;
+    height: 16.375rem;
+    position: relative;
+    top: 10.125rem;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &__close-button {
+    @include reset-field;
+    display: block;
+    margin-left: auto;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-image: url("../../assets/images/icons/action/close-24px.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__wrapper {
+    &--options {
+      @include flex-container;
+      gap: 1rem;
+    }
+  }
+
+  &__page-header {
+    padding: 1rem 0;
+    color: $Instock-Black;
+    font-size: $m-h1-text-size;
+    line-height: $m-h1-line-height;
+    font-weight: $font-weight-semi-bold600;
+
+    @include tablet {
+      font-size: $h1-text-size;
+      line-height: $h1-line-height;
+    }
+  }
+
+  &__description {
+    color: $Instock-Black;
+    font-size: $m-p1-text-size;
+    line-height: $m-p1-line-height;
+    font-weight: $font-weight-regular400;
+
+    @include tablet {
+      font-size: $p1-text-size;
+      line-height: $p1-line-height;
+    }
+  }
+
+  &__button {
+    @include reset-field;
+    @include cta-button;
+
+    &--cancel {
+      background-color: white;
+      color: $Slate;
+      border: 1px solid $Cloud;
+    }
+
+    &--delete {
+      background-color: $Red;
+    }
+  }
+}
