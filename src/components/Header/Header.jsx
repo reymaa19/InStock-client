@@ -10,18 +10,10 @@ function Header() {
       </NavLink>
 
       <nav className="header__nav">
-        <NavLink
-          to="/warehouse"
-          className="header__link"
-          activeClassName="header__link--active"
-        >
+        <NavLink to="/warehouse" className="header__link header__link--active">
           <h3>Warehouses</h3>
         </NavLink>
-        <NavLink
-          to="/inventory"
-          className="header__link"
-          activeClassName="header__link--active"
-        >
+        <NavLink to="/inventory" className="header__link header__link--active">
           <h3>Inventory</h3>
         </NavLink>
       </nav>

@@ -16,8 +16,6 @@ function WarehousePage() {
     fetchWarehouses();
   }, []);
 
-  console.log(warehouses);
-
   return (
     <main className="main">
       <section className="warehouse">

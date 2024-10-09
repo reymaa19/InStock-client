@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./ListItem.scss";
+import DeleteModal from "../../components/DeleteModal/DeleteModal.jsx";
+
 function ListItem({ item }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="list-item">
       <div className="list-item__wrapper">
@@ -27,9 +32,19 @@ function ListItem({ item }) {
         </div>
       </div>
       <div className="list-item__wrapper list-item__wrapper--buttons">
-        <button className="list-item__button list-item__button--delete" />
+        <button
+          className="list-item__button list-item__button--delete"
+          onClick={() => setIsOpen(true)}
+        />
         <button className="list-item__button list-item__button--edit" />
       </div>
+      <DeleteModal
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
+        id={item.id}
+        name={item.warehouse_name}
+        type="warehouse"
+      />
     </div>
   );
 }
