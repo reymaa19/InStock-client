@@ -37,6 +37,19 @@ export async function getSingleWarehouse(id) {
   }
 }
 
+
+// edit single warehouse
+export async function editSingleWarehouse(id, data) {
+  try {
+    const url = `${BASE_URL}/warehouses/${id}`;
+    const response = await axios.put(url, data);
+
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+}
+
 export async function addWarehouse(warehouseData) {
   try {
     const url = `${BASE_URL}/warehouses`;
@@ -51,12 +64,11 @@ export async function addWarehouse(warehouseData) {
     return err.response ? err.response.data : { error: 'An error occurred while adding the warehouse.' };
   }
 }
+
 export default {
   getWarehouses,
-
   deleteWarehouse,
-
   getSingleWarehouse,
-  
+  editSingleWarehouse,
   addWarehouse,
 };
