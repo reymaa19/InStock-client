@@ -9,14 +9,14 @@ import { handleNav } from "../../utils/utils";
 function AddNewWarehouse() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    warehouse: '',
+    warehouse_name: '',
     address: '',
     city: '',
     country: '',
-    contactName: '',
-    position: '',
-    phoneNumber: '',
-    email: ''
+    contact_name: '',
+    contact_phone: '',
+    contact_position: '',
+    contact_email: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -38,13 +38,13 @@ function AddNewWarehouse() {
     });
 
     // Validate phone number
-    if (formData.phoneNumber && !validator.isMobilePhone(formData.phoneNumber, 'any', { strict: false })) {
-      newErrors.phoneNumber = 'Phone number is invalid';
+    if (formData.contact_phone&& !validator.isMobilePhone(formData.contact_phone, 'any', { strict: false })) {
+      newErrors.contact_phone = 'Phone number is invalid';
     }
 
     // Validate email
-    if (formData.email && !validator.isEmail(formData.email)) {
-      newErrors.email = 'Email is invalid';
+    if (formData.contact_email && !validator.isEmail(formData.contact_email)) {
+      newErrors.contact_email = 'Email is invalid';
     }
 
     setErrors(newErrors);
@@ -69,15 +69,16 @@ function AddNewWarehouse() {
         } else {
           console.log('Warehouse added successfully:', await response.json());
           setFormData({
-            warehouse: '',
+            warehouse_name: '',
             address: '',
             city: '',
             country: '',
-            contactName: '',
-            position: '',
-            phoneNumber: '',
-            email: ''
+            contact_name: '',
+            contact_phone: '',
+            contact_position: '',
+            contact_email: ''
           });
+          navigate("/warehouse");
         }
       } catch (error) {
         console.error('Error submitting form:', error);
@@ -89,27 +90,14 @@ function AddNewWarehouse() {
     <main className="main">
     <div className="add-warehouse">
       <div className="add-warehouse__header">
-        {/* <Link to ="/"> */}
         <img
             src={arrowBackIcon}
             alt="Go back"
             className="edit-warehouse__back-icon"
             onClick={() => handleNav(navigate, "/warehouse")}
           />
-       
-        {/* </Link> */}
         <h1 className="add-warehouse__title">Add New Warehouse</h1>
       </div>
-
-      {/* <div className="edit-warehouse__header">
-          <img
-            src={arrowBackIcon}
-            alt="Go back"
-            className="edit-warehouse__back-icon"
-            onClick={() => handleNav(navigate, "/warehouse")}
-          />
-          <h1 className="edit-warehouse__title">Edit Warehouse</h1>
-        </div> */}
       
         <form className="details" onSubmit={handleSubmit}>
         <div className="details__container">
