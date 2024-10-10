@@ -34,7 +34,7 @@ const AddEditForm = () => {
     const { name, value } = e.target;
 
     if (name === "status" && value === "Out of Stock")
-      setValues({ ...values, warehouse_id: 1, quantity: 0, [name]: value });
+      setValues({ ...values, warehouse_id: "", quantity: 0, [name]: value });
     else setValues({ ...values, [name]: value });
   };
 
@@ -75,6 +75,18 @@ const AddEditForm = () => {
     "Chicago",
   ]; // QUERY DATABASE LATER Manhattan id is 1 (warehouse_id is incorrect still)
 
+  const errorNotification = (errorMessage) => {
+    if (!errorMessage) return;
+    return (
+      <>
+        <p className="inventory-form__label inventory-form__label--error">
+          <img src={errorIcon} alt="error" className="inventory-form__icon" />
+          {errorMessage}
+        </p>
+      </>
+    );
+  };
+
   return (
     <form className="inventory-form" onSubmit={handleFormSubmit}>
       <div className="inventory-form__wrapper inventory-form__wrapper--header">
@@ -97,18 +109,7 @@ const AddEditForm = () => {
               type="text"
               placeholder="Item Name"
             />
-            {error.item_name && (
-              <>
-                <p className="inventory-form__label inventory-form__label--error">
-                  <img
-                    src={errorIcon}
-                    alt="error"
-                    className="inventory-form__icon"
-                  />
-                  {error.item_name}
-                </p>
-              </>
-            )}
+            {errorNotification(error.item_name)}
           </label>
           <label htmlFor="description" className="inventory-form__label">
             Description
@@ -120,18 +121,7 @@ const AddEditForm = () => {
               onChange={handleChange}
               placeholder="Please enter a brief item description..."
             />
-            {error.description && (
-              <>
-                <p className="inventory-form__label inventory-form__label--error">
-                  <img
-                    src={errorIcon}
-                    alt="error"
-                    className="inventory-form__icon"
-                  />
-                  {error.description}
-                </p>
-              </>
-            )}
+            {errorNotification(error.description)}
           </label>
           <label htmlFor="category" className="inventory-form__label">
             Category
@@ -151,18 +141,7 @@ const AddEditForm = () => {
                 </option>
               ))}
             </select>
-            {error.category && (
-              <>
-                <p className="inventory-form__label inventory-form__label--error">
-                  <img
-                    src={errorIcon}
-                    alt="error"
-                    className="inventory-form__icon"
-                  />
-                  {error.category}
-                </p>
-              </>
-            )}
+            {errorNotification(error.category)}
           </label>
         </div>
         <div className="inventory-form__wrapper--section inventory-form__wrapper--right">
@@ -213,18 +192,7 @@ const AddEditForm = () => {
                 </label>
               </div>
             </div>
-            {error.status && (
-              <>
-                <p className="inventory-form__label inventory-form__label--error">
-                  <img
-                    src={errorIcon}
-                    alt="error"
-                    className="inventory-form__icon"
-                  />
-                  {error.status}
-                </p>
-              </>
-            )}
+            {errorNotification(error.status)}
           </label>
           {values.status === "In Stock" && (
             <>
@@ -238,18 +206,7 @@ const AddEditForm = () => {
                   onChange={handleChange}
                   type="number"
                 />
-                {error.quantity && (
-                  <>
-                    <p className="inventory-form__label inventory-form__label--error">
-                      <img
-                        src={errorIcon}
-                        alt="error"
-                        className="inventory-form__icon"
-                      />
-                      {error.quantity}
-                    </p>
-                  </>
-                )}
+                {errorNotification(error.quantity)}
               </label>
               <label htmlFor="warehouse" className="inventory-form__label">
                 Warehouse
@@ -269,18 +226,7 @@ const AddEditForm = () => {
                     </option>
                   ))}
                 </select>
-                {error.warehouse_id && (
-                  <>
-                    <p className="inventory-form__label inventory-form__label--error">
-                      <img
-                        src={errorIcon}
-                        alt="error"
-                        className="inventory-form__icon"
-                      />
-                      {error.warehouse_id}
-                    </p>
-                  </>
-                )}
+                {errorNotification(error.warehouse_id)}
               </label>
             </>
           )}
