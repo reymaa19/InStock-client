@@ -162,9 +162,22 @@
         line-height: $p2-line-height;
       }
     }
+
     &--selected {
       color: $Instock-Black;
     }
+
+    &--error {
+      @include flex-container($align: center);
+      margin-top: 0.25rem;
+      color: $Red;
+    }
+  }
+
+  &__icon {
+    height: 1rem;
+    width: 1rem;
+    margin-right: 0.25rem;
   }
 
   &__input {
@@ -198,6 +211,10 @@
     &::placeholder {
       color: $Cloud;
       font-weight: $font-weight-regular400;
+    }
+
+    &--error {
+      border-color: $Red;
     }
   }
 
