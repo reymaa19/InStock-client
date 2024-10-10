@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import {
+  getSingleItem,
+  updateInventoryItem,
+} from "../../services/inventory-api.js";
 import "./AddEditInventory.scss";
 
 const AddEditForm = () => {
@@ -11,12 +15,36 @@ const AddEditForm = () => {
     quantity: 0,
   });
   const { id } = useParams();
+  const [radioValue, setRadioValue] = useState("In Stock");
 
-  console.log(id); // DO SOMETHING WITH EDIT INVENTORY
+  useState(() => {
+    const fetchInventoryItem = async () => {
+      try {
+        const response = await getSingleItem(id);
+        setValues(response.data);
+        setRadioValue(response.data.status);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchInventoryItem();
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
+  };
+
+  const handleFormSubmit = async () => {
+    if (id) {
+      const updatedData = values;
+      delete updatedData.id;
+      delete updatedData.created_at;
+      delete updatedData.updated_at;
+      delete updatedData.warehouse_name;
+      const response = await updateInventoryItem(id, updatedData);
+      return response;
+    }
   };
 
   const options = ["Health", "Gear", "Electronics", "Apparel", "Accessories"]; // QUERY DATABASE LATER
@@ -37,13 +65,15 @@ const AddEditForm = () => {
   return (
     <form className="inventory-form">
       <div className="inventory-form__wrapper inventory-form__wrapper--header">
-        <button className="inventory-form__back-button" />
+        <Link to="/inventory">
+          <button className="inventory-form__back-button" />
+        </Link>
         <h1 className="inventory-form__header">
           {id ? "Edit Inventory Item" : "Add New Inventory Item"}
         </h1>
       </div>
       <div className="inventory-form__wrapper inventory-form__wrapper--body">
-        <div className="inventory-form__wrapper--section">
+        <div className="inventory-form__wrapper--section inventory-form__wrapper--left">
           <h2 className="inventory-form__section-header">Item Details</h2>
           <label htmlFor="item_name" className="inventory-form__label">
             Item Name
@@ -88,39 +118,49 @@ const AddEditForm = () => {
             </select>
           </label>
         </div>
-        <div className="inventory-form__wrapper--section">
+        <div className="inventory-form__wrapper--section inventory-form__wrapper--right">
           <h2 className="inventory-form__section-header">Item Availability</h2>
           <label htmlFor="status" className="inventory-form__label">
             Status
             <div className="inventory-form__wrapper--radio">
               <div className="inventory-form__container">
                 <input
-                  className="inventory-form__input"
+                  className="inventory-form__input inventory-form__input--radio"
                   id="instock"
                   name="status"
                   value="In Stock"
                   onChange={handleChange}
                   type="radio"
+                  checked={values.status == "In Stock"}
                 />
                 <label
                   htmlFor="instock"
-                  className={`inventory-form__label inventory-form__label--radio ${values.status === "In Stock" ? "inventory-form__label--selected" : ""}`}
+                  className={`inventory-form__label inventory-form__label--radio ${
+                    values.status === "In Stock"
+                      ? "inventory-form__label--selected"
+                      : ""
+                  }`}
                 >
                   In Stock
                 </label>
               </div>
-              <div className="inventory-form__container">
+              <div className="inventory-form__container inventory-form__container--right">
                 <input
-                  className="inventory-form__input"
+                  className="inventory-form__input inventory-form__input--radio"
                   id="out_of_stock"
                   name="status"
                   value="Out of Stock"
                   onChange={handleChange}
                   type="radio"
+                  checked={values.status == "Out of Stock"}
                 />
                 <label
                   htmlFor="out_of_stock"
-                  className={`inventory-form__label inventory-form__label--radio ${values.status === "Out of Stock" ? "inventory-form__label--selected" : ""}`}
+                  className={`inventory-form__label inventory-form__label--radio ${
+                    values.status === "Out of Stock"
+                      ? "inventory-form__label--selected"
+                      : ""
+                  }`}
                 >
                   Out of Stock
                 </label>
@@ -132,7 +172,7 @@ const AddEditForm = () => {
               <label htmlFor="quantity" className="inventory-form__label">
                 Quantity
                 <input
-                  className="inventory-form__input"
+                  className="inventory-form__input inventory-form__input--select"
                   id="quantity"
                   name="quantity"
                   value={values.quantity}
@@ -141,9 +181,9 @@ const AddEditForm = () => {
                 />
               </label>
               <label htmlFor="warehouse" className="inventory-form__label">
-                Quantity
+                Warehouse
                 <select
-                  className="inventory-form__input inventory-form__input--select"
+                  className="inventory-form__input inventory-form__input--select inventory-form__input--warehouse"
                   id="category"
                   name="category"
                   value={values.category}
@@ -164,12 +204,19 @@ const AddEditForm = () => {
         </div>
       </div>
       <div className="inventory-form__wrapper inventory-form__wrapper--options">
-        <button className="inventory-form__button inventory-form__button--secondary">
-          Cancel
-        </button>
-        <button className="inventory-form__button inventory-form__button--primary">
-          Save
-        </button>
+        <Link to="/inventory" className="inventory-form__link">
+          <button className="inventory-form__button inventory-form__button--secondary">
+            Cancel
+          </button>
+        </Link>
+        <Link to="/inventory" className="inventory-form__link">
+          <button
+            className="inventory-form__button inventory-form__button--primary"
+            onClick={handleFormSubmit}
+          >
+            Save
+          </button>
+        </Link>
       </div>
     </form>
   );

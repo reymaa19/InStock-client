@@ -14,6 +14,30 @@ export async function getInventory() {
   }
 }
 
+// Fetches single inventory item.
+export async function getSingleItem(id) {
+  try {
+    const url = `${BASE_URL}/inventories/${id}`;
+    const response = await axios.get(url);
+    return response;
+  } catch (err) {
+    return err.response;
+  }
+}
+
+//Updates single inventory item
+export async function updateInventoryItem(id, data) {
+  try {
+    const url = `${BASE_URL}/inventories/${id}`;
+    await axios.put(url, data);
+    return "OK";
+  } catch (err) {
+    return err.response;
+  }
+}
+
 export default {
   getInventory,
+  getSingleItem,
+  updateInventoryItem,
 };
