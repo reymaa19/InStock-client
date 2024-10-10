@@ -46,8 +46,19 @@ export async function addInventoryItem(newItem) {
   }
 }
 
+export async function deleteInventoryItem(id) {
+  try {
+    const url = `${BASE_URL}/inventories/${id}`;
+    const response = await axios.delete(url);
+    return response;
+  } catch(error) {
+    return error.response;
+  }
+}
+
 export default {
   getInventory,
+  deleteInventoryItem,
   getSingleItem,
   updateInventoryItem,
   addInventoryItem,
