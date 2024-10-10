@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { getSingleItem } from "../../services/inventory-api.js";
 import "./AddEditInventory.scss";
 
 const AddEditForm = () => {
@@ -12,6 +13,24 @@ const AddEditForm = () => {
   });
   const { id } = useParams();
   console.log("my params are ", id);
+  const [radioValue, setRadioValue] = useState("In Stock");
+
+  useState(() => {
+    console.log("my selected id is ", id);
+
+    const fetchInventoryItem = async () => {
+      try {
+        const response = await getSingleItem(id);
+        console.log("my item is ", response.data);
+        setValues(response.data);
+        setRadioValue(response.data.status);
+        console.log("my status is ", response.data.status);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchInventoryItem();
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -100,6 +119,7 @@ const AddEditForm = () => {
                   value="In Stock"
                   onChange={handleChange}
                   type="radio"
+                  checked={values.status == "In Stock"}
                 />
                 <label
                   htmlFor="instock"
@@ -120,6 +140,7 @@ const AddEditForm = () => {
                   value="Out of Stock"
                   onChange={handleChange}
                   type="radio"
+                  checked={values.status == "Out of Stock"}
                 />
                 <label
                   htmlFor="out_of_stock"

@@ -15,7 +15,7 @@ export async function getInventory() {
 }
 
 // Fetches single inventory item.
-export async function getSingleWarehouse(id) {
+export async function getSingleItem(id) {
   try {
     const url = `${BASE_URL}/inventories/${id}`;
     const response = await axios.get(url);
