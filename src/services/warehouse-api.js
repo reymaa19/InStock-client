@@ -3,9 +3,9 @@ import axios from "axios";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // Fetches all the warehouses.
-export async function getWarehouses() {
+export async function getWarehouses(query) {
   try {
-    const url = `${BASE_URL}/warehouses`;
+    const url = `${BASE_URL}/warehouses${query ? "?" + query : ""}`;
     const response = await axios.get(url);
 
     return response;

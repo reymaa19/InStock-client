@@ -5,6 +5,7 @@ import {
   updateInventoryItem,
   addInventoryItem,
 } from "../../services/inventory-api.js";
+import { getWarehouses } from "../../services/warehouse-api.js";
 import errorIcon from "../../assets/images/icons/notification/error-24px.svg";
 import "./AddEditInventory.scss";
 
@@ -19,6 +20,7 @@ const AddEditForm = () => {
     status: "",
     quantity: 0,
   });
+  const [warehouseOptions, setWarehouseOptions] = useState([]);
   const [error, setError] = useState({});
 
   useEffect(() => {
@@ -27,6 +29,12 @@ const AddEditForm = () => {
       setValues(response.data);
     };
 
+    const fetchWarehouses = async () => {
+      const response = await getWarehouses("id, warehouse_name");
+      setWarehouseOptions(response.data);
+    };
+
+    fetchWarehouses();
     id && fetchInventoryItem();
   }, [id]);
 
@@ -63,17 +71,6 @@ const AddEditForm = () => {
   };
 
   const options = ["Health", "Gear", "Electronics", "Apparel", "Accessories"]; // QUERY DATABASE LATER
-  const HARD_CODED_WAREHOUSE_OPTIONS = [
-    "Manhattan",
-    "Washington",
-    "Jersey",
-    "SF",
-    "Santa Moncica",
-    "Seatle",
-    "Miami",
-    "Boston",
-    "Chicago",
-  ]; // QUERY DATABASE LATER Manhattan id is 1 (warehouse_id is incorrect still)
 
   const errorNotification = (errorMessage) => {
     if (!errorMessage) return;
@@ -220,9 +217,9 @@ const AddEditForm = () => {
                   <option value="" disabled hidden default>
                     Please select
                   </option>
-                  {HARD_CODED_WAREHOUSE_OPTIONS.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
+                  {warehouseOptions.map((option) => (
+                    <option key={option.id} value={option.id}>
+                      {option.warehouse_name}
                     </option>
                   ))}
                 </select>
