@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import './AddNewWarehouse.scss';
 import arrowBackIcon from '../../assets/images/icons/navigation/arrow_back-24px.svg';
 import validator from 'validator';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { handleNav } from "../../utils/utils";
-
 
 function AddNewWarehouse() {
   const navigate = useNavigate();
@@ -38,7 +37,7 @@ function AddNewWarehouse() {
     });
 
     // Validate phone number
-    if (formData.contact_phone&& !validator.isMobilePhone(formData.contact_phone, 'any', { strict: false })) {
+    if (formData.contact_phone && !validator.isMobilePhone(formData.contact_phone, 'any', { strict: false })) {
       newErrors.contact_phone = 'Phone number is invalid';
     }
 
@@ -88,123 +87,125 @@ function AddNewWarehouse() {
 
   return (
     <main className="main">
-    <div className="add-warehouse">
-      <div className="add-warehouse__header">
-        <img
-            src={arrowBackIcon}
-            alt="Go back"
-            className="edit-warehouse__back-icon"
-            onClick={() => handleNav(navigate, "/warehouse")}
-          />
-        <h1 className="add-warehouse__title">Add New Warehouse</h1>
-      </div>
-      
-        <form className="details" onSubmit={handleSubmit}>
-        <div className="details__container">
-          <div className="details__address">
-            <h2 className="details__address-name">Warehouse Details</h2>
-            <label htmlFor="warehouse" className="details__address-label">Warehouse Name</label>
-            <input
-              type="text"
-              id="warehouse"
-              name="warehouse"
-              placeholder="Warehouse Name"
-              className="details__address-input"
-              value={formData.warehouse}
-              onChange={handleChange}
+      <div className="add-warehouse">
+        <div className="add-warehouse__header">
+          <img
+              src={arrowBackIcon}
+              alt="Go back"
+              className="edit-warehouse__back-icon"
+              onClick={() => handleNav(navigate, "/warehouse")}
             />
-            {errors.warehouse && <span className="error">{errors.warehouse}</span>}
-
-            <label htmlFor="address" className="details__address-label">Street Address</label>
-            <input
-              type="text"
-              id="address"
-              name="address"
-              placeholder="Street Address"
-              className="details__address-input"
-              value={formData.address}
-              onChange={handleChange}
-            />
-            {errors.address && <span className="error">{errors.address}</span>}
-
-            <label htmlFor="city" className="details__address-label">City</label>
-            <input
-              type="text"
-              id="city"
-              name="city"
-              placeholder="City"
-              className="details__address-input"
-              value={formData.city}
-              onChange={handleChange}
-            />
-            {errors.city && <span className="error">{errors.city}</span>}
-
-            <label htmlFor="country" className="details__address-label">Country</label>
-            <input
-              type="text"
-              id="country"
-              name="country"
-              placeholder="Country"
-              className="details__address-input"
-              value={formData.country}
-              onChange={handleChange}
-            />
-            {errors.country && <span className="error">{errors.country}</span>}
-          </div>
-
-          <div className="details__contacts">
-            <h2 className="details__contacts-title">Contacts Details</h2>
-            <label htmlFor="contactName" className="details__contacts-name">Contact Name</label>
-            <input
-              type="text"
-              id="contactName"
-              name="contactName"
-              placeholder="Contact Name"
-              className="details__contacts-input"
-              value={formData.contactName}
-              onChange={handleChange}
-            />
-            {errors.contactName && <span className="error">{errors.contactName}</span>}
-
-            <label htmlFor="position" className="details__contacts-name">Position</label>
-            <input
-              type="text"
-              id="position"
-              name="position"
-              placeholder="Position"
-              className="details__contacts-input"
-              value={formData.position}
-              onChange={handleChange}
-            />
-            {errors.position && <span className="error">{errors.position}</span>}
-
-            <label htmlFor="phoneNumber" className="details__contacts-name">Phone Number</label>
-            <input
-              type="text"
-              id="phoneNumber"
-              name="phoneNumber"
-              placeholder="Phone Number"
-              className="details__contacts-input"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-            />
-            {errors.phoneNumber && <span className="error">{errors.phoneNumber}</span>}
-
-            <label htmlFor="email" className="details__contacts-name">Email</label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              placeholder="Email"
-              className="details__contacts-input"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            {errors.email && <span className="error">{errors.email}</span>}
-          </div>
+          <h1 className="add-warehouse__title">Add New Warehouse</h1>
         </div>
-        <div className="details__button-container">
         
+        <form className="details" onSubmit={handleSubmit}>
+          <div className="details__container">
+            <div className="details__address">
+              <h2 className="details__address-name">Warehouse Details</h2>
+
+              <label htmlFor="warehouse" className="details__address-label">Warehouse Name</label>
+              <input
+                type="text"
+                id="warehouse"
+                name="warehouse_name"
+                placeholder="Warehouse Name"
+                className="details__address-input"
+                value={formData.warehouse_name}
+                onChange={handleChange}
+              />
+              {errors.warehouse_name && <span className="error">{errors.warehouse_name}</span>}
+
+              <label htmlFor="address" className="details__address-label">Street Address</label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                placeholder="Street Address"
+                className="details__address-input"
+                value={formData.address}
+                onChange={handleChange}
+              />
+              {errors.address && <span className="error">{errors.address}</span>}
+
+              <label htmlFor="city" className="details__address-label">City</label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                placeholder="City"
+                className="details__address-input"
+                value={formData.city}
+                onChange={handleChange}
+              />
+              {errors.city && <span className="error">{errors.city}</span>}
+
+              <label htmlFor="country" className="details__address-label">Country</label>
+              <input
+                type="text"
+                id="country"
+                name="country"
+                placeholder="Country"
+                className="details__address-input"
+                value={formData.country}
+                onChange={handleChange}
+              />
+              {errors.country && <span className="error">{errors.country}</span>}
+            </div>
+
+            <div className="details__contacts">
+              <h2 className="details__contacts-title">Contacts Details</h2>
+              
+              <label htmlFor="contactName" className="details__contacts-name">Contact Name</label>
+              <input
+                type="text"
+                id="contactName"
+                name="contact_name"
+                placeholder="Contact Name"
+                className="details__contacts-input"
+                value={formData.contact_name}
+                onChange={handleChange}
+              />
+              {errors.contact_name && <span className="error">{errors.contact_name}</span>}
+
+              <label htmlFor="position" className="details__contacts-name">Position</label>
+              <input
+                type="text"
+                id="position"
+                name="contact_position"
+                placeholder="Position"
+                className="details__contacts-input"
+                value={formData.contact_position}
+                onChange={handleChange}
+              />
+              {errors.contact_position && <span className="error">{errors.contact_position}</span>}
+
+              <label htmlFor="phoneNumber" className="details__contacts-name">Phone Number</label>
+              <input
+                type="text"
+                id="phoneNumber"
+                name="contact_phone"
+                placeholder="Phone Number"
+                className="details__contacts-input"
+                value={formData.contact_phone}
+                onChange={handleChange}
+              />
+              {errors.contact_phone && <span className="error">{errors.contact_phone}</span>}
+
+              <label htmlFor="email" className="details__contacts-name">Email</label>
+              <input
+                type="text"
+                id="email"
+                name="contact_email"
+                placeholder="Email"
+                className="details__contacts-input"
+                value={formData.contact_email}
+                onChange={handleChange}
+              />
+              {errors.contact_email && <span className="error">{errors.contact_email}</span>}
+            </div>
+          </div>
+
+          <div className="details__button-container">
             <button
               type="button"
               className="details__button details__button-cancel"
@@ -212,20 +213,18 @@ function AddNewWarehouse() {
             >
               Cancel
             </button>
-         
+
             <button
               type="submit"
               className="details__button details__button-save"
             >
               + Add Warehouse
             </button>
-          
           </div>
-      </form>
-    </div>
+        </form>
+      </div>
     </main>
   );
 }
 
 export default AddNewWarehouse;
-
