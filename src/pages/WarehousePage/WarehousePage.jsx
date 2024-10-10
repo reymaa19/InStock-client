@@ -3,8 +3,13 @@ import ListItem from "../../components/ListItem/ListItem.jsx";
 import { getWarehouses } from "../../services/warehouse-api.js";
 import unfoldMore from "../../assets/images/icons/navigation/sort-24px.svg";
 import "./WarehousePage.scss";
+import {useNavigate} from 'react-router-dom';
+import { handleNav } from "../../utils/utils";
+
+
 
 function WarehousePage() {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [warehouses, setWarehouses] = useState([]);
 
@@ -30,9 +35,11 @@ function WarehousePage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <button className="warehouse__cta-button">
+            <button className="warehouse__cta-button"  onClick={() => handleNav(navigate, "/warehouse/add")}>
               + Add New Warehouse
+              
             </button>
+           
           </div>
         </div>
         <div className="warehouse__container--headers">

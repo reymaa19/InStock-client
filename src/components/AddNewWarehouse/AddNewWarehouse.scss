@@ -1,11 +1,11 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.main{
-    background-color: $Light-Grey;
+.main {
+  background-color: $Light-Grey;
 }
 .add-warehouse {
-    @include page-container;
+  @include page-container;
 
   &__header {
     display: flex;
@@ -13,14 +13,13 @@
     border-bottom: 0.0625rem solid $Cloud;
     width: 100%;
     padding: 1rem;
-    
   }
   &__title {
     font-weight: $font-weight-semi-bold600;
-    font-size: 2.5;
-    line-height: 8rem;
-    @include tablet{
-        line-height: 4rem;
+    font-size: $m-h1-text-size;
+    line-height: $m-h1-line-height;
+    @include tablet {
+      line-height: $h1-line-height;
     }
   }
   .details {
@@ -28,17 +27,21 @@
     flex-direction: column;
     font-size: $m-h2-text-size;
     line-height: $m-h2-line-height;
-    &__container{
-     @include tablet{
-        padding-top:1rem;
+    &__container {
+      @include tablet {
+        padding-top: 1rem;
         display: flex;
         flex-direction: row;
-        width:100%;
-
-
+        width: 100%;
+      }
+      @include desktop {
+        padding-top: 1rem;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+      }
     }
-    }
-   
+
     &__address {
       display: flex;
       flex-direction: column;
@@ -47,20 +50,16 @@
       font-size: $m-p2-text-size;
       padding: 1rem;
       padding-bottom: 2rem;
-      @include tablet{
+      @include tablet {
         width: 50%;
-        border-bottom:none;
-        border-right: 0.06125rem solid $Cloud;
-        
-      }
-      @include desktop{
-        width: 50%;
-        border-bottom:none;
+        border-bottom: none;
         border-right: 0.06125rem solid $Cloud;
       }
-
-
-
+      @include desktop {
+        width: 50%;
+        border-bottom: none;
+        border-right: 0.06125rem solid $Cloud;
+      }
       &-name {
         font-weight: $font-weight-semi-bold600;
       }
@@ -84,16 +83,14 @@
       font-size: $m-p2-text-size;
       padding: 1rem;
       padding-bottom: 2rem;
-      @include tablet{
+      @include tablet {
         width: 50%;
-        border-bottom:none;
+        border-bottom: none;
       }
-      @include desktop{
+      @include desktop {
         width: 50%;
-        border-bottom:none;
+        border-bottom: none;
       }
-
-
 
       &-title {
         font-weight: $font-weight-semi-bold600;
@@ -116,102 +113,31 @@
         font-family: $primary-font;
       }
     }
-    &__button {
-      display: flex;
+
+    &__button-container {
+      @include flex-container;
       gap: 1rem;
       padding: 1rem;
+      background-color: $Light-Grey;
 
-      @include tablet{
-        flex-direction: row;
+      @include tablet {
         justify-content: flex-end;
-        background-color: $Light-Grey;
-
+        padding: 1rem 2rem;
       }
-      @include desktop{
-        flex-direction: row;
-        justify-content: flex-end;
-        background-color: $Light-Grey;
+    }
+    &__button {
+      @include reset-field;
+      @include cta-button;
 
-
-      }
       &-cancel {
-        height: 2.25rem;
-        width: 50%;
-        font-size: $m-h3-text-size;
-        line-height: $m-h3-line-height;
+        background-color: white;
         color: $Slate;
-        background-color: $White;
-        border-radius: 1.25rem;
-        border: 0.0625rem solid $Cloud;
-        transition: all 0.3s;
-        &:hover{
-            color: $Instock-Indigo;
-            border: 0.0625rem solid $Instock-Indigo;
+        border: 1px solid $Cloud;
 
-        }
-        @include tablet {
-          height: 2.375rem;
-          width:max-content;
-          font-size: $h3-text-size;
-          line-height: $h3-line-height;
-          color: $Instock-Indigo;
+        &:hover {
           background-color: $White;
-          border-radius: 1.25rem;
-          border: 0.0625rem solid $Cloud;
-          padding-left: 1rem;
-          padding-right: 1rem;
-        }
-        @include desktop {
-          height: 2.375rem;
-          width:max-content;
-          font-size: $h3-text-size;
-          line-height: $h3-line-height;
           color: $Instock-Indigo;
-          background-color: $White;
-          border-radius: 1.25rem;
-          border: 0.0625rem solid $Cloud;
-          padding-left: 1rem;
-          padding-right: 1rem;
-        }
-      }
-      &-submit {
-        height: 2.25rem;
-        width: 50%;
-        font-size: $m-h3-text-size;
-        line-height: $m-h3-line-height;
-        color: $White;
-        background-color: $Instock-Indigo;
-        border-radius: 1.25rem;
-        border: 0.0625rem solid $Instock-Indigo;
-        transition: all 0.3s;
-        &:hover{
-            background-color: $Instock-Black;
-            border: 0.0625rem solid $Instock-Black;
-
-        }
-        @include tablet {
-          height: 2.375rem;
-          width:max-content;
-          font-size: $h3-text-size;
-          line-height: $h3-line-height;
-          color: $White;
-          background-color: $Instock-Indigo;
-          border-radius: 1.25rem;
-          border: 0.0625rem solid $Instock-Indigo;
-          padding-left: 1rem;
-          padding-right: 1rem;
-        }
-        @include desktop {
-          height: 2.375rem;
-          width:max-content;
-          font-size: $h3-text-size;
-          line-height: $h3-line-height;
-          color: $White;
-          background-color: $Instock-Indigo;
-          border-radius: 1.25rem;
-          border: 0.0625rem solid $Instock-Indigo;
-          padding-left: 1rem;
-          padding-right: 1rem;
+          border: 1px solid $Instock-Indigo;
         }
       }
     }

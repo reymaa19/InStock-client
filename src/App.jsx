@@ -18,14 +18,10 @@ const App = () => {
         <Route path="/warehouse" element={<WarehousePage />} />
         <Route path="/warehouse/:id" element={<WarehouseInventoryPage />} />
         <Route path="/inventory" element={<InventoryPage />} />
-<<<<<<< HEAD
         <Route path="/warehouse/add" element={<AddNewWarehouse />} />
-=======
-        <Route path="/addnewwarehouse" element={<AddNewWarehouse />} />
         <Route path="/warehouse/edit/:id" element={<EditWarehouse />} />
         <Route path="/inventory/new" element={<AddEditInventory />} />
         <Route path="/inventory/:id" element={<AddEditInventory />} />
->>>>>>> 7bc4669946d257692d7ea61e6b4894d656e38db6
       </Routes>
       <Footer />
     </BrowserRouter>
