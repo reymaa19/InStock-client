@@ -5,6 +5,7 @@ import {
   updateInventoryItem,
   addInventoryItem,
 } from "../../services/inventory-api.js";
+import errorIcon from "../../assets/images/icons/notification/error-24px.svg";
 import "./AddEditInventory.scss";
 
 const AddEditForm = () => {
@@ -15,7 +16,7 @@ const AddEditForm = () => {
     item_name: "",
     description: "",
     category: "",
-    status: "In Stock",
+    status: "",
     quantity: 0,
   });
   const [error, setError] = useState({});
@@ -50,7 +51,14 @@ const AddEditForm = () => {
     } else {
       const result = await addInventoryItem(values);
       if (result.status === 201) return navigate("/");
-      else setError(result.data.error); // DO SOMETHING WITH ERROR HANDLE HERE
+      else
+        setError(
+          result.data.message.reduce((errors, message) => {
+            const [key, value] = Object.entries(message)[0];
+            errors[key] = value;
+            return errors;
+          }, {}),
+        );
     }
   };
 
@@ -65,7 +73,19 @@ const AddEditForm = () => {
     "Miami",
     "Boston",
     "Chicago",
-  ]; // QUERY DATABASE LATER
+  ]; // QUERY DATABASE LATER Manhattan id is 1 (warehouse_id is incorrect still)
+
+  const errorNotification = (errorMessage) => {
+    if (!errorMessage) return;
+    return (
+      <>
+        <p className="inventory-form__label inventory-form__label--error">
+          <img src={errorIcon} alt="error" className="inventory-form__icon" />
+          {errorMessage}
+        </p>
+      </>
+    );
+  };
 
   return (
     <form className="inventory-form" onSubmit={handleFormSubmit}>
@@ -81,7 +101,7 @@ const AddEditForm = () => {
           <label htmlFor="item_name" className="inventory-form__label">
             Item Name
             <input
-              className="inventory-form__input"
+              className={`inventory-form__input ${error.item_name && "inventory-form__input--error"}`}
               id="item_name"
               name="item_name"
               value={values.item_name}
@@ -89,22 +109,24 @@ const AddEditForm = () => {
               type="text"
               placeholder="Item Name"
             />
+            {errorNotification(error.item_name)}
           </label>
           <label htmlFor="description" className="inventory-form__label">
             Description
             <textarea
-              className="inventory-form__input inventory-form__input--text-area"
+              className={`inventory-form__input inventory-form__input--text-area ${error.description && "inventory-form__input--error"}`}
               id="description"
               name="description"
               value={values.description}
               onChange={handleChange}
               placeholder="Please enter a brief item description..."
             />
+            {errorNotification(error.description)}
           </label>
           <label htmlFor="category" className="inventory-form__label">
             Category
             <select
-              className="inventory-form__input inventory-form__input--select"
+              className={`inventory-form__input inventory-form__input--select ${error.category && "inventory-form__input--error"}`}
               id="category"
               name="category"
               value={values.category}
@@ -119,6 +141,7 @@ const AddEditForm = () => {
                 </option>
               ))}
             </select>
+            {errorNotification(error.category)}
           </label>
         </div>
         <div className="inventory-form__wrapper--section inventory-form__wrapper--right">
@@ -169,24 +192,26 @@ const AddEditForm = () => {
                 </label>
               </div>
             </div>
+            {errorNotification(error.status)}
           </label>
           {values.status === "In Stock" && (
             <>
               <label htmlFor="quantity" className="inventory-form__label">
                 Quantity
                 <input
-                  className="inventory-form__input"
+                  className={`inventory-form__input ${error.quantity && "inventory-form__input--error"}`}
                   id="quantity"
                   name="quantity"
                   value={values.quantity}
                   onChange={handleChange}
                   type="number"
                 />
+                {errorNotification(error.quantity)}
               </label>
               <label htmlFor="warehouse" className="inventory-form__label">
                 Warehouse
                 <select
-                  className="inventory-form__input inventory-form__input--select"
+                  className={`inventory-form__input inventory-form__input--select ${error.warehouse_id && "inventory-form__input--error"}`}
                   id="warehouse"
                   name="warehouse_id"
                   value={values.warehouse_id}
@@ -201,6 +226,7 @@ const AddEditForm = () => {
                     </option>
                   ))}
                 </select>
+                {errorNotification(error.warehouse_id)}
               </label>
             </>
           )}
@@ -218,7 +244,7 @@ const AddEditForm = () => {
           type="submit"
           className="inventory-form__button inventory-form__button--primary"
         >
-          Save
+          {id ? "Save" : "+ Add Item"}
         </button>
       </div>
     </form>
