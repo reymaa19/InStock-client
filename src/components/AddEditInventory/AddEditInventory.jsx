@@ -210,7 +210,7 @@ const AddEditForm = () => {
         <button
           type="button"
           className="inventory-form__button inventory-form__button--secondary"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/inventory")}
         >
           Cancel
         </button>
