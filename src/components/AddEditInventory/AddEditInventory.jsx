@@ -73,7 +73,7 @@ const AddEditForm = () => {
         </h1>
       </div>
       <div className="inventory-form__wrapper inventory-form__wrapper--body">
-        <div className="inventory-form__wrapper--section">
+        <div className="inventory-form__wrapper--section inventory-form__wrapper--left">
           <h2 className="inventory-form__section-header">Item Details</h2>
           <label htmlFor="item_name" className="inventory-form__label">
             Item Name
@@ -118,14 +118,14 @@ const AddEditForm = () => {
             </select>
           </label>
         </div>
-        <div className="inventory-form__wrapper--section">
+        <div className="inventory-form__wrapper--section inventory-form__wrapper--right">
           <h2 className="inventory-form__section-header">Item Availability</h2>
           <label htmlFor="status" className="inventory-form__label">
             Status
             <div className="inventory-form__wrapper--radio">
               <div className="inventory-form__container">
                 <input
-                  className="inventory-form__input"
+                  className="inventory-form__input inventory-form__input--radio"
                   id="instock"
                   name="status"
                   value="In Stock"
@@ -144,9 +144,9 @@ const AddEditForm = () => {
                   In Stock
                 </label>
               </div>
-              <div className="inventory-form__container">
+              <div className="inventory-form__container inventory-form__container--right">
                 <input
-                  className="inventory-form__input"
+                  className="inventory-form__input inventory-form__input--radio"
                   id="out_of_stock"
                   name="status"
                   value="Out of Stock"
@@ -172,7 +172,7 @@ const AddEditForm = () => {
               <label htmlFor="quantity" className="inventory-form__label">
                 Quantity
                 <input
-                  className="inventory-form__input"
+                  className="inventory-form__input inventory-form__input--select"
                   id="quantity"
                   name="quantity"
                   value={values.quantity}
@@ -183,7 +183,7 @@ const AddEditForm = () => {
               <label htmlFor="warehouse" className="inventory-form__label">
                 Warehouse
                 <select
-                  className="inventory-form__input inventory-form__input--select"
+                  className="inventory-form__input inventory-form__input--select inventory-form__input--warehouse"
                   id="category"
                   name="category"
                   value={values.category}
@@ -204,12 +204,12 @@ const AddEditForm = () => {
         </div>
       </div>
       <div className="inventory-form__wrapper inventory-form__wrapper--options">
-        <Link to="/inventory">
+        <Link to="/inventory" className="inventory-form__link">
           <button className="inventory-form__button inventory-form__button--secondary">
             Cancel
           </button>
         </Link>
-        <Link to="/inventory">
+        <Link to="/inventory" className="inventory-form__link">
           <button
             className="inventory-form__button inventory-form__button--primary"
             onClick={handleFormSubmit}

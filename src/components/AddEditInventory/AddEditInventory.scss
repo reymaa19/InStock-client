@@ -22,6 +22,10 @@
     border-radius: 0.1875rem;
     box-shadow: 0rem 0.125rem 0.3125rem 0rem #13182c1a;
 
+    &--left {
+      border-right: 0.0625rem solid $Cloud;
+    }
+
     @include tablet {
       width: 87.5vw;
       max-width: 1020px;
@@ -37,34 +41,65 @@
       @include flex-container($align: baseline);
       border-bottom: 0.0625rem solid $Cloud;
       padding: 1.5rem;
+      line-height: 2.1rem;
     }
 
     &--body {
       @include flex-container(column);
+
+      @include tablet {
+        padding: 1rem 1rem;
+        @include flex-container($justify: space-between);
+      }
     }
 
     &--section {
       padding: 1.5rem;
+
+      @include tablet {
+        width: 50%;
+        padding: 0 1rem 1rem 1rem;
+        border-bottom: none;
+      }
+
       &:first-child {
         border-bottom: 0.0625rem solid $Cloud;
+
+        @include tablet {
+          border-bottom: none;
+        }
       }
     }
 
     &--options {
-      @include flex-container;
+      @include flex-container(row, space-between, center);
       gap: 1rem;
       padding: 1rem;
       background-color: $Light-Grey;
+
+      @include tablet {
+        @include flex-container(row, flex-end, flex-end);
+      }
     }
 
     &--radio {
       @include flex-container(row, space-between, center);
+
+      @include tablet {
+        justify-content: flex-start;
+      }
     }
   }
 
   &__container {
     @include flex-container(row, space-between, center);
     gap: 1rem;
+
+    &--right {
+      @include tablet {
+        padding-left: 2rem;
+      }
+    }
   }
 
   &__back-button {
@@ -138,6 +173,15 @@
     background-image: none;
     margin-top: 4px;
 
+    @include tablet {
+      width: 100%;
+    }
+
+    &--radio {
+      width: 1rem;
+      height: 1rem;
+    }
+
     &--text-area {
       height: 7.375rem;
       resize: none;
@@ -158,9 +202,19 @@
     }
   }
 
+  &__link {
+    width: 100%;
+
+    @include tablet {
+      justify-content: flex-end;
+      width: 10%;
+    }
+  }
+
   &__button {
     @include reset-field;
     @include cta-button;
+    width: 100%;
 
     &--secondary {
       background-color: white;
