@@ -84,7 +84,8 @@
 
   &__search {
     @include reset-field;
-    @include search-field;
+    @include form-field;
+    background-image: url("../../assets/images/icons/action/search-24px.svg");
   }
 
   &__cta-button {

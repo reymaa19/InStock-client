@@ -50,7 +50,7 @@
   }
 }
 
-@mixin search-field {
+@mixin form-field {
   padding: 0 1rem;
   height: 2.25rem;
   font-size: 0.8125rem;
@@ -59,7 +59,6 @@
   background-color: white;
   border-radius: 1.25rem;
   border: 0.0625rem solid $Cloud;
-  background-image: url("../../assets/images/icons/action/search-24px.svg");
   background-repeat: no-repeat;
   background-position: right 1rem center;
 

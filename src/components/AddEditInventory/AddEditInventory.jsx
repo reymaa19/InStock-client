@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./AddEditInventory.scss";
 
 const AddEditForm = () => {
   const [values, setValues] = useState({
+    warehouse_id: "",
     item_name: "",
     description: "",
     category: "",
@@ -11,6 +12,7 @@ const AddEditForm = () => {
     quantity: 0,
   });
   const { id } = useParams();
+  const navigate = useNavigate();
 
   console.log(id); // DO SOMETHING WITH EDIT INVENTORY
 
@@ -31,13 +33,17 @@ const AddEditForm = () => {
     "Boston",
     "Chicago",
   ]; // QUERY DATABASE LATER
-  // add padding to description textarea
-  // add cloud color to placeholder text
+
+  // Clear values for quantity and warehouse when Out of Stock radio button is selected
 
   return (
     <form className="inventory-form">
       <div className="inventory-form__wrapper inventory-form__wrapper--header">
-        <button className="inventory-form__back-button" />
+        <button
+          type="button"
+          className="inventory-form__back-button"
+          onClick={() => navigate(-1)}
+        />
         <h1 className="inventory-form__header">
           {id ? "Edit Inventory Item" : "Add New Inventory Item"}
         </h1>
@@ -141,12 +147,12 @@ const AddEditForm = () => {
                 />
               </label>
               <label htmlFor="warehouse" className="inventory-form__label">
-                Quantity
+                Warehouse
                 <select
                   className="inventory-form__input inventory-form__input--select"
-                  id="category"
-                  name="category"
-                  value={values.category}
+                  id="warehouse"
+                  name="warehouse_id"
+                  value={values.warehouse_id}
                   onChange={handleChange}
                 >
                   <option value="" disabled hidden default>
@@ -164,10 +170,17 @@ const AddEditForm = () => {
         </div>
       </div>
       <div className="inventory-form__wrapper inventory-form__wrapper--options">
-        <button className="inventory-form__button inventory-form__button--secondary">
+        <button
+          type="button"
+          className="inventory-form__button inventory-form__button--secondary"
+          onClick={() => navigate(-1)}
+        >
           Cancel
         </button>
-        <button className="inventory-form__button inventory-form__button--primary">
+        <button
+          type="submit"
+          className="inventory-form__button inventory-form__button--primary"
+        >
           Save
         </button>
       </div>

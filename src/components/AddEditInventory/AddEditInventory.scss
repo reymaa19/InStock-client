@@ -133,10 +133,9 @@
   }
 
   &__input {
-    @include reset-field;
-    @include search-field;
-    background-image: none;
     margin-top: 4px;
+    @include reset-field;
+    @include form-field;
 
     &--text-area {
       height: 7.375rem;
