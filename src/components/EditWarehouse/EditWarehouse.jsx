@@ -111,8 +111,9 @@ function EditWarehouse() {
           </div>
           <div className="details__button-container">
             <button
-              type="submit"
+              type="button"
               className="details__button details__button-cancel"
+              onClick={() => handleNav(navigate, "/warehouse")}
             >
               Cancel
             </button>
