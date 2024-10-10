@@ -1,99 +1,219 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.add-warehouse{
+.main{
+    background-color: $Light-Grey;
+}
+.add-warehouse {
+    @include page-container;
+
+  &__header {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 0.0625rem solid $Cloud;
+    width: 100%;
+    padding: 1rem;
+    
+  }
+  &__title {
+    font-weight: $font-weight-semi-bold600;
+    font-size: 2.5;
+    line-height: 8rem;
+    @include tablet{
+        line-height: 4rem;
+    }
+  }
+  .details {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
-    top: 9rem;
-    background-color: white;
-    position: absolute;
-    width: 93%;
-    border-radius: 0.1875rem;
-    margin-left: 1rem;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    line-height: $m-h1-line-height;
-    &__header{
+    font-size: $m-h2-text-size;
+    line-height: $m-h2-line-height;
+    &__container{
+     @include tablet{
+        padding-top:1rem;
         display: flex;
-        gap: 1rem;
-        border-bottom: 0.0625rem solid $Cloud;
+        flex-direction: row;
         width:100%;
 
-    }
-    &__title{
-        font-weight: $font-weight-semi-bold600;
-        font-size: 2.5;
-        line-height: 8rem;
 
     }
-    .details{
-        display: flex;
-        flex-direction: column;
-        font-size: $m-h2-text-size;
-        line-height: $m-h2-line-height;
+    }
+   
+    &__address {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 0.06125rem solid $Cloud;
+      line-height: 3rem;
+      font-size: $m-p2-text-size;
+      padding: 1rem;
+      padding-bottom: 2rem;
+      @include tablet{
+        width: 50%;
+        border-bottom:none;
+        border-right: 0.06125rem solid $Cloud;
         
-        &__address{
-            display: flex;
-            flex-direction: column;
-            border-bottom: 0.06125rem solid $Cloud;
-            line-height: 3rem;
-            font-size: $m-p2-text-size;
-
-            &-name{
-                font-weight: $font-weight-semi-bold600;
-            }
-            
-            &-label{
-                font-weight: $font-weight-semi-bold600;
-
-            }
-            &-input{
-                border-radius: 20px;
-                height: 2.25rem;
-                padding-left:1rem;
-                padding-right: 1rem;
-                border: 0.0625rem solid $Cloud;
-                font-family: $primary-font;
+      }
+      @include desktop{
+        width: 50%;
+        border-bottom:none;
+        border-right: 0.06125rem solid $Cloud;
+      }
 
 
 
-            }
-        }
-        &__contacts{
-            display: flex;
-            flex-direction: column;
-            line-height: 3rem;
-            font-size: $m-p2-text-size;
+      &-name {
+        font-weight: $font-weight-semi-bold600;
+      }
 
-            &-title{
-                font-weight: $font-weight-semi-bold600;
-
-
-
-            }
-            &-name{
-                font-weight: $font-weight-semi-bold600;
-
-            }
-            
-            &-label{
-                font-weight: $font-weight-semi-bold600;
-
-            }
-            &-input{
-                border-radius: 1.25rem;
-                height: 2.25rem;
-                padding:1rem;
-                border-color:$Cloud;
-                padding-left:1rem;
-                padding-right: 1rem;
-                border: 0.0625rem solid $Cloud;
-                font-family: $primary-font;
-
-
-            }
-           
-        }
+      &-label {
+        font-weight: $font-weight-semi-bold600;
+      }
+      &-input {
+        border-radius: 1.25rem;
+        height: 2.25rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border: 0.0625rem solid $Cloud;
+        font-family: $primary-font;
+      }
     }
+    &__contacts {
+      display: flex;
+      flex-direction: column;
+      line-height: 3rem;
+      font-size: $m-p2-text-size;
+      padding: 1rem;
+      padding-bottom: 2rem;
+      @include tablet{
+        width: 50%;
+        border-bottom:none;
+      }
+      @include desktop{
+        width: 50%;
+        border-bottom:none;
+      }
 
+
+
+      &-title {
+        font-weight: $font-weight-semi-bold600;
+      }
+      &-name {
+        font-weight: $font-weight-semi-bold600;
+      }
+
+      &-label {
+        font-weight: $font-weight-semi-bold600;
+      }
+      &-input {
+        border-radius: 1.25rem;
+        height: 2.25rem;
+        padding: 1rem;
+        border-color: $Cloud;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border: 0.0625rem solid $Cloud;
+        font-family: $primary-font;
+      }
+    }
+    &__button {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+
+      @include tablet{
+        flex-direction: row;
+        justify-content: flex-end;
+        background-color: $Light-Grey;
+
+      }
+      @include desktop{
+        flex-direction: row;
+        justify-content: flex-end;
+        background-color: $Light-Grey;
+
+
+      }
+      &-cancel {
+        height: 2.25rem;
+        width: 50%;
+        font-size: $m-h3-text-size;
+        line-height: $m-h3-line-height;
+        color: $Slate;
+        background-color: $White;
+        border-radius: 1.25rem;
+        border: 0.0625rem solid $Cloud;
+        transition: all 0.3s;
+        &:hover{
+            color: $Instock-Indigo;
+            border: 0.0625rem solid $Instock-Indigo;
+
+        }
+        @include tablet {
+          height: 2.375rem;
+          width:max-content;
+          font-size: $h3-text-size;
+          line-height: $h3-line-height;
+          color: $Instock-Indigo;
+          background-color: $White;
+          border-radius: 1.25rem;
+          border: 0.0625rem solid $Cloud;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        @include desktop {
+          height: 2.375rem;
+          width:max-content;
+          font-size: $h3-text-size;
+          line-height: $h3-line-height;
+          color: $Instock-Indigo;
+          background-color: $White;
+          border-radius: 1.25rem;
+          border: 0.0625rem solid $Cloud;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
+      &-submit {
+        height: 2.25rem;
+        width: 50%;
+        font-size: $m-h3-text-size;
+        line-height: $m-h3-line-height;
+        color: $White;
+        background-color: $Instock-Indigo;
+        border-radius: 1.25rem;
+        border: 0.0625rem solid $Instock-Indigo;
+        transition: all 0.3s;
+        &:hover{
+            background-color: $Instock-Black;
+            border: 0.0625rem solid $Instock-Black;
+
+        }
+        @include tablet {
+          height: 2.375rem;
+          width:max-content;
+          font-size: $h3-text-size;
+          line-height: $h3-line-height;
+          color: $White;
+          background-color: $Instock-Indigo;
+          border-radius: 1.25rem;
+          border: 0.0625rem solid $Instock-Indigo;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        @include desktop {
+          height: 2.375rem;
+          width:max-content;
+          font-size: $h3-text-size;
+          line-height: $h3-line-height;
+          color: $White;
+          background-color: $Instock-Indigo;
+          border-radius: 1.25rem;
+          border: 0.0625rem solid $Instock-Indigo;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
+    }
+  }
 }
