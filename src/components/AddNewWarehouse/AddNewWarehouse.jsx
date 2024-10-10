@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import "./AddNewWarehouse.scss"; 
-import arrowBackIcon from "../../assets/images/icons/navigation/arrow_back-24px.svg"; 
-import validator from "validator"; 
+import "./AddNewWarehouse.scss";
+import arrowBackIcon from "../../assets/images/icons/navigation/arrow_back-24px.svg";
+import errorIcon from "../../assets/images/icons/notification/error-24px.svg";
+import validator from "validator";
 import { useNavigate } from "react-router-dom";
-import { handleNav } from "../../utils/utils"; 
-import { addWarehouse } from "../../services/warehouse-api.js"; 
+import { handleNav } from "../../utils/utils";
+import { addWarehouse } from "../../services/warehouse-api.js";
 
 const AddNewWarehouse = () => {
   const navigate = useNavigate();
-  
+
   // State for form data and errors
   const [formData, setFormData] = useState({
     warehouse_name: "",
@@ -22,7 +23,6 @@ const AddNewWarehouse = () => {
   });
 
   const [errors, setErrors] = useState({});
-
   // Reset form data on mount
   useEffect(() => {
     setFormData({
@@ -35,8 +35,7 @@ const AddNewWarehouse = () => {
       contact_position: "",
       contact_email: "",
     });
-  }, []); 
-
+  }, []);
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,17 +43,14 @@ const AddNewWarehouse = () => {
     setErrors({ ...errors, [name]: "" });
   };
 
-  // Validate form data
   const validateForm = () => {
     const newErrors = {};
-
-    // Required fields validation
+    // Required Field Warning flag
     Object.keys(formData).forEach((key) => {
       if (!formData[key]) {
         newErrors[key] = "This field is required";
       }
     });
-
     // Validate phone number
     if (
       formData.contact_phone &&
@@ -62,7 +58,6 @@ const AddNewWarehouse = () => {
     ) {
       newErrors.contact_phone = "Phone number is invalid";
     }
-
     // Validate email
     if (formData.contact_email && !validator.isEmail(formData.contact_email)) {
       newErrors.contact_email = "Email is invalid";
@@ -71,23 +66,16 @@ const AddNewWarehouse = () => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       try {
-        console.log('Form data before submission:', formData);
-  
         const response = await addWarehouse(formData);
-        // If the response has an error, handle it
         if (response.error) {
           setErrors(response.error.errors || {});
         } else {
-          console.log("Warehouse added successfully:", response);
-          
-          // Reset form data
           setFormData({
             warehouse_name: "",
             address: "",
@@ -98,16 +86,16 @@ const AddNewWarehouse = () => {
             contact_position: "",
             contact_email: "",
           });
-          
-          navigate("/warehouse"); 
+
+          navigate("/warehouse");
         }
       } catch (error) {
-        console.error("Error submitting form:", error);
-        setErrors({ general: 'An unexpected error occurred. Please try again.' });
+        setErrors({
+          general: "An unexpected error occurred. Please try again.",
+        });
       }
     }
   };
-  
 
   return (
     <main className="main">
@@ -126,8 +114,11 @@ const AddNewWarehouse = () => {
           <div className="details__container">
             <div className="details__address">
               <h2 className="details__address-name">Warehouse Details</h2>
-              
-              <label htmlFor="warehouse_name" className="details__address-label">
+
+              <label
+                htmlFor="warehouse_name"
+                className="details__address-label"
+              >
                 Warehouse Name
               </label>
               <input
@@ -139,8 +130,13 @@ const AddNewWarehouse = () => {
                 value={formData.warehouse_name}
                 onChange={handleChange}
               />
-              {errors.warehouse_name && <span className="error">{errors.warehouse_name}</span>}
-              
+              {errors.warehouse_name && (
+                <span className="details__error">
+                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  {errors.warehouse_name}
+                </span>
+              )}
+
               <label htmlFor="address" className="details__address-label">
                 Address
               </label>
@@ -153,8 +149,13 @@ const AddNewWarehouse = () => {
                 value={formData.address}
                 onChange={handleChange}
               />
-              {errors.address && <span className="error">{errors.address}</span>}
-              
+              {errors.address && (
+                <span className="details__error">
+                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  {errors.address}
+                </span>
+              )}
+
               <label htmlFor="city" className="details__address-label">
                 City
               </label>
@@ -167,8 +168,13 @@ const AddNewWarehouse = () => {
                 value={formData.city}
                 onChange={handleChange}
               />
-              {errors.city && <span className="error">{errors.city}</span>}
-              
+              {errors.city && (
+                <span className="details__error">
+                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  {errors.city}
+                </span>
+              )}
+
               <label htmlFor="country" className="details__address-label">
                 Country
               </label>
@@ -181,11 +187,16 @@ const AddNewWarehouse = () => {
                 value={formData.country}
                 onChange={handleChange}
               />
-              {errors.country && <span className="error">{errors.country}</span>}
+              {errors.country && (
+                <span className="details__error">
+                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  {errors.country}
+                </span>
+              )}
             </div>
             <div className="details__contacts">
               <h2 className="details__contacts-title">Contacts Details</h2>
-              
+
               <label htmlFor="contact_name" className="details__contacts-label">
                 Contact Name
               </label>
@@ -198,9 +209,17 @@ const AddNewWarehouse = () => {
                 value={formData.contact_name}
                 onChange={handleChange}
               />
-              {errors.contact_name && <span className="error">{errors.contact_name}</span>}
-              
-              <label htmlFor="contact_phone" className="details__contacts-label">
+              {errors.contact_name && (
+                <span className="details__error">
+                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  {errors.contact_name}
+                </span>
+              )}
+
+              <label
+                htmlFor="contact_phone"
+                className="details__contacts-label"
+              >
                 Contact Phone
               </label>
               <input
@@ -212,9 +231,17 @@ const AddNewWarehouse = () => {
                 value={formData.contact_phone}
                 onChange={handleChange}
               />
-              {errors.contact_phone && <span className="error">{errors.contact_phone}</span>}
-              
-              <label htmlFor="contact_position" className="details__contacts-label">
+              {errors.contact_phone && (
+                <span className="details__error">
+                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  {errors.contact_phone}
+                </span>
+              )}
+
+              <label
+                htmlFor="contact_position"
+                className="details__contacts-label"
+              >
                 Contact Position
               </label>
               <input
@@ -226,9 +253,17 @@ const AddNewWarehouse = () => {
                 value={formData.contact_position}
                 onChange={handleChange}
               />
-              {errors.contact_position && <span className="error">{errors.contact_position}</span>}
-              
-              <label htmlFor="contact_email" className="details__contacts-label">
+              {errors.contact_position && (
+                <span className="details__error">
+                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  {errors.contact_position}
+                </span>
+              )}
+
+              <label
+                htmlFor="contact_email"
+                className="details__contacts-label"
+              >
                 Contact Email
               </label>
               <input
@@ -240,7 +275,12 @@ const AddNewWarehouse = () => {
                 value={formData.contact_email}
                 onChange={handleChange}
               />
-              {errors.contact_email && <span className="error">{errors.contact_email}</span>}
+              {errors.contact_email && (
+                <span className="details__error">
+                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  {errors.contact_email}
+                </span>
+              )}
             </div>
           </div>
 
@@ -253,7 +293,10 @@ const AddNewWarehouse = () => {
               Cancel
             </button>
 
-            <button type="submit" className="details__button details__button-save">
+            <button
+              type="submit"
+              className="details__button details__button-save"
+            >
               + Add Warehouse
             </button>
           </div>
