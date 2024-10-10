@@ -13,11 +13,11 @@ function InventoryListItem({ item }) {
         <div className="list-item" id={`list-item-${item.id}`}>
           <div className="list-item__wrapper">
             <div className="list-item__container">
-              <h4 className="list-item__header">WAREHOUSE</h4>
+              <h4 className="list-item__header">INVENTORY ITEM</h4>
                 <Link
                     className="list-item__value list-item__value--link"
                     key={item.id}
-                    to={`/inventory/${item.id}`}
+                    to={``}
                 >
                 {item.item_name}
                 <img
