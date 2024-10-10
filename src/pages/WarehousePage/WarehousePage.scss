@@ -83,8 +83,9 @@
   }
 
   &__search {
+    background-image: url("../../assets/images/icons/action/search-24px.svg");
     @include reset-field;
-    @include search-field;
+    @include form-field;
   }
 
   &__cta-button {

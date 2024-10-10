@@ -1,41 +1,44 @@
-import { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import {
   getSingleItem,
   updateInventoryItem,
+  addInventoryItem,
 } from "../../services/inventory-api.js";
 import "./AddEditInventory.scss";
 
 const AddEditForm = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [values, setValues] = useState({
+    warehouse_id: "",
     item_name: "",
     description: "",
     category: "",
-    status: "",
+    status: "In Stock",
     quantity: 0,
   });
-  const { id } = useParams();
-  const [radioValue, setRadioValue] = useState("In Stock");
+  const [error, setError] = useState({});
 
-  useState(() => {
+  useEffect(() => {
     const fetchInventoryItem = async () => {
-      try {
-        const response = await getSingleItem(id);
-        setValues(response.data);
-        setRadioValue(response.data.status);
-      } catch (error) {
-        console.log(error);
-      }
+      const response = await getSingleItem(id);
+      setValues(response.data);
     };
-    fetchInventoryItem();
+
+    id && fetchInventoryItem();
   }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
+
+    if (name === "status" && value === "Out of Stock")
+      setValues({ ...values, warehouse_id: "", quantity: 0, [name]: value });
+    else setValues({ ...values, [name]: value });
   };
 
-  const handleFormSubmit = async () => {
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
     if (id) {
       const updatedData = values;
       delete updatedData.id;
@@ -44,6 +47,10 @@ const AddEditForm = () => {
       delete updatedData.warehouse_name;
       const response = await updateInventoryItem(id, updatedData);
       return response;
+    } else {
+      const result = await addInventoryItem(values);
+      if (result.status === 201) return navigate("/");
+      else setError(result.data.error); // DO SOMETHING WITH ERROR HANDLE HERE
     }
   };
 
@@ -59,15 +66,11 @@ const AddEditForm = () => {
     "Boston",
     "Chicago",
   ]; // QUERY DATABASE LATER
-  // add padding to description textarea
-  // add cloud color to placeholder text
 
   return (
-    <form className="inventory-form">
+    <form className="inventory-form" onSubmit={handleFormSubmit}>
       <div className="inventory-form__wrapper inventory-form__wrapper--header">
-        <Link to="/inventory">
-          <button className="inventory-form__back-button" />
-        </Link>
+        <Link className="inventory-form__back-button" to="/inventory" />
         <h1 className="inventory-form__header">
           {id ? "Edit Inventory Item" : "Add New Inventory Item"}
         </h1>
@@ -172,7 +175,7 @@ const AddEditForm = () => {
               <label htmlFor="quantity" className="inventory-form__label">
                 Quantity
                 <input
-                  className="inventory-form__input inventory-form__input--select"
+                  className="inventory-form__input"
                   id="quantity"
                   name="quantity"
                   value={values.quantity}
@@ -183,10 +186,10 @@ const AddEditForm = () => {
               <label htmlFor="warehouse" className="inventory-form__label">
                 Warehouse
                 <select
-                  className="inventory-form__input inventory-form__input--select inventory-form__input--warehouse"
-                  id="category"
-                  name="category"
-                  value={values.category}
+                  className="inventory-form__input inventory-form__input--select"
+                  id="warehouse"
+                  name="warehouse_id"
+                  value={values.warehouse_id}
                   onChange={handleChange}
                 >
                   <option value="" disabled hidden default>
@@ -204,19 +207,19 @@ const AddEditForm = () => {
         </div>
       </div>
       <div className="inventory-form__wrapper inventory-form__wrapper--options">
-        <Link to="/inventory" className="inventory-form__link">
-          <button className="inventory-form__button inventory-form__button--secondary">
-            Cancel
-          </button>
-        </Link>
-        <Link to="/inventory" className="inventory-form__link">
-          <button
-            className="inventory-form__button inventory-form__button--primary"
-            onClick={handleFormSubmit}
-          >
-            Save
-          </button>
-        </Link>
+        <button
+          type="button"
+          className="inventory-form__button inventory-form__button--secondary"
+          onClick={() => navigate("/inventory")}
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          className="inventory-form__button inventory-form__button--primary"
+        >
+          Save
+        </button>
       </div>
     </form>
   );

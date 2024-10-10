@@ -168,10 +168,9 @@
   }
 
   &__input {
-    @include reset-field;
-    @include search-field;
-    background-image: none;
     margin-top: 4px;
+    @include reset-field;
+    @include form-field;
 
     @include tablet {
       width: 100%;
@@ -214,7 +213,6 @@
   &__button {
     @include reset-field;
     @include cta-button;
-    width: 100%;
 
     &--secondary {
       background-color: white;
