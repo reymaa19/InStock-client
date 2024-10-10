@@ -38,10 +38,10 @@ export async function getSingleWarehouse(id) {
 }
 
 // edit single warehouse
-export async function editSingleWarehouse(id) {
+export async function editSingleWarehouse(id, data) {
   try {
     const url = `${BASE_URL}/warehouses/${id}`;
-    const response = await axios.get(url);
+    const response = await axios.put(url, data);
 
     return response;
   } catch (err) {
