@@ -52,7 +52,7 @@ function EditWarehouse() {
       try {
         //call editSingleWarehouse function, pass the warehouse id and updated data
         await editSingleWarehouse(id, values);
-        // navigate("/warehouse");
+        navigate("/warehouse");
       } catch (err) {
         console.error("Error updating warehouse: ", err);
       }
