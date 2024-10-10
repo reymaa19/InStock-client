@@ -1,6 +1,9 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { getSingleItem } from "../../services/inventory-api.js";
+import { useParams, Link } from "react-router-dom";
+import {
+  getSingleItem,
+  updateInventoryItem,
+} from "../../services/inventory-api.js";
 import "./AddEditInventory.scss";
 
 const AddEditForm = () => {
@@ -12,19 +15,14 @@ const AddEditForm = () => {
     quantity: 0,
   });
   const { id } = useParams();
-  console.log("my params are ", id);
   const [radioValue, setRadioValue] = useState("In Stock");
 
   useState(() => {
-    console.log("my selected id is ", id);
-
     const fetchInventoryItem = async () => {
       try {
         const response = await getSingleItem(id);
-        console.log("my item is ", response.data);
         setValues(response.data);
         setRadioValue(response.data.status);
-        console.log("my status is ", response.data.status);
       } catch (error) {
         console.log(error);
       }
@@ -35,6 +33,18 @@ const AddEditForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
+  };
+
+  const handleFormSubmit = async () => {
+    if (id) {
+      const updatedData = values;
+      delete updatedData.id;
+      delete updatedData.created_at;
+      delete updatedData.updated_at;
+      delete updatedData.warehouse_name;
+      const response = await updateInventoryItem(id, updatedData);
+      return response;
+    }
   };
 
   const options = ["Health", "Gear", "Electronics", "Apparel", "Accessories"]; // QUERY DATABASE LATER
@@ -55,7 +65,9 @@ const AddEditForm = () => {
   return (
     <form className="inventory-form">
       <div className="inventory-form__wrapper inventory-form__wrapper--header">
-        <button className="inventory-form__back-button" />
+        <Link to="/inventory">
+          <button className="inventory-form__back-button" />
+        </Link>
         <h1 className="inventory-form__header">
           {id ? "Edit Inventory Item" : "Add New Inventory Item"}
         </h1>
@@ -192,12 +204,19 @@ const AddEditForm = () => {
         </div>
       </div>
       <div className="inventory-form__wrapper inventory-form__wrapper--options">
-        <button className="inventory-form__button inventory-form__button--secondary">
-          Cancel
-        </button>
-        <button className="inventory-form__button inventory-form__button--primary">
-          Save
-        </button>
+        <Link to="/inventory">
+          <button className="inventory-form__button inventory-form__button--secondary">
+            Cancel
+          </button>
+        </Link>
+        <Link to="/inventory">
+          <button
+            className="inventory-form__button inventory-form__button--primary"
+            onClick={handleFormSubmit}
+          >
+            Save
+          </button>
+        </Link>
       </div>
     </form>
   );
