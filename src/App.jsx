@@ -12,17 +12,17 @@ import AddEditInventory from "./components/AddEditInventory/AddEditInventory";
 const App = () => {
   return (
     <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<WarehousePage />} />
-          <Route path="/warehouse" element={<WarehousePage />} />
-          <Route path="/warehouse/:id" element={<WarehouseInventoryPage />} />
-          <Route path="/inventory" element={<InventoryPage />} />
-          <Route path="/addnewwarehouse" element={<AddNewWarehouse />} />
-          <Route path="/editwarehouse" element={<EditWarehouse />} />
-          <Route path="/inventory/new" element={<AddEditInventory />} />
-          <Route path="/inventory/:id" element={<AddEditInventory />} />
-        </Routes>
+      <Header />
+      <Routes>
+        <Route path="/" element={<WarehousePage />} />
+        <Route path="/warehouse" element={<WarehousePage />} />
+        <Route path="/warehouse/:id" element={<WarehouseInventoryPage />} />
+        <Route path="/inventory" element={<InventoryPage />} />
+        <Route path="/addnewwarehouse" element={<AddNewWarehouse />} />
+        <Route path="/warehouse/edit/:id" element={<EditWarehouse />} />
+        <Route path="/inventory/new" element={<AddEditInventory />} />
+        <Route path="/inventory/:id" element={<AddEditInventory />} />
+      </Routes>
       <Footer />
     </BrowserRouter>
   );

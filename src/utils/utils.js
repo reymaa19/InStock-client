@@ -32,3 +32,8 @@ export const sortByLatest = (data) => {
     return new Date(b.timestamp) - new Date(a.timestamp);
   });
 };
+
+// navigation function
+export const handleNav = (navigation, path) => {
+  navigation(path);
+};

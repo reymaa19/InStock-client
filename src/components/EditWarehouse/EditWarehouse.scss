@@ -9,6 +9,10 @@
 .edit-warehouse {
   @include page-container;
 
+  &__back-icon {
+    cursor: pointer;
+  }
+
   &__header {
     display: flex;
     gap: 1rem;
@@ -127,6 +131,12 @@
         background-color: white;
         color: $Slate;
         border: 1px solid $Cloud;
+
+        &:hover {
+          background-color: $White;
+          color: $Instock-Indigo;
+          border: 1px solid $Instock-Indigo;
+        }
       }
     }
   }
