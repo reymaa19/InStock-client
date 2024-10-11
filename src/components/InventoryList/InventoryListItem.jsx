@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { handleNav } from "../../utils/utils.js";
 import "./InventoryListItem.scss";
 import chevronRight from "../../assets/images/icons/navigation/chevron_right-24px.svg";
 import DeleteModal from "../../components/DeleteModal/DeleteModal.jsx";
@@ -8,6 +9,7 @@ import DeleteModal from "../../components/DeleteModal/DeleteModal.jsx";
 
 function InventoryListItem({ item }) {
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
     
     return (
         <div className="list-item" id={`list-item-${item.id}`}>
@@ -17,7 +19,7 @@ function InventoryListItem({ item }) {
                 <Link
                     className="list-item__value list-item__value--link"
                     key={item.id}
-                    to={``}
+                    to={`/inventory/${item.id}`}
                 >
                 {item.item_name}
                 <img
@@ -57,6 +59,7 @@ function InventoryListItem({ item }) {
                 onClick={() => setIsOpen(true)}
               />
               <button className="list-item__button list-item__button--edit" />
+              onClick={() => handleNav(navigate, "/inventory/edit/:id")}
             </div>
           </div>
           {isOpen && (

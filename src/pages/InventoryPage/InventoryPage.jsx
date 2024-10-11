@@ -1,13 +1,16 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./InventoryPage.scss";
 import InventoryListItem from "../../components/InventoryList/InventoryListItem.jsx";
 import { useState, useEffect } from "react";
 import { getInventory } from "../../services/inventory-api.js";
 import unfoldMore from "../../assets/images/icons/navigation/sort-24px.svg";
+import { handleNav } from "../../utils/utils.js";
 
 function InventoryPage() {
-  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
   const [inventory, setInventory] = useState([]);
+  const [search, setSearch] = useState("");
+
   useEffect(() => {
     const fetchInventory = async () => {
       const response = await getInventory();
@@ -31,8 +34,9 @@ function InventoryPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               />
-              <button className="warehouse__cta-button"> 
+              <button className="warehouse__cta-button" onClick={() => handleNav(navigate, "/")}> 
                 + Add New Item 
+
               </button> 
            </div> 
           </div> 
