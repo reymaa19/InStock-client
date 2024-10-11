@@ -118,7 +118,7 @@ const AddEditForm = () => {
           <label htmlFor="item_name" className="inventory-form__label">
             Item Name
             <input
-              className={`inventory-form__input inventory-form__input--text ${error.item_name && "inventory-form__input--error"}`}
+              className={`inventory-form__input inventory-form__input--text ${error.item_name ? "inventory-form__input--error" : ""}`}
               id="item_name"
               name="item_name"
               value={values.item_name}
@@ -132,7 +132,7 @@ const AddEditForm = () => {
             Description
             <textarea
               className={`inventory-form__input inventory-form__input--text-area ${
-                error.description && "inventory-form__input--error"
+                error.description ? "inventory-form__input--error" : ""
               }`}
               id="description"
               name="description"
@@ -146,7 +146,7 @@ const AddEditForm = () => {
             Category
             <select
               className={`inventory-form__input inventory-form__input--select ${
-                error.category && "inventory-form__input--error"
+                error.category ? "inventory-form__input--error" : ""
               }`}
               id="category"
               name="category"
@@ -255,7 +255,7 @@ const AddEditForm = () => {
             <label htmlFor="quantity" className="inventory-form__label">
               Quantity
               <input
-                className={`inventory-form__input  inventory-form__input--text ${error.quantity && "inventory-form__input--error"}`}
+                className={`inventory-form__input inventory-form__input--text ${error.quantity && "inventory-form__input--error"}`}
                 id="quantity"
                 name="quantity"
                 value={values.quantity}

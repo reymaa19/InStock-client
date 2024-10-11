@@ -1,6 +1,5 @@
-import React from "react";
-import "./InventoryPage.scss";
 import InventoryListItem from "../../components/InventoryList/InventoryListItem.jsx";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getInventory } from "../../services/inventory-api.js";
 import { getWarehouses } from "../../services/warehouse-api.js";
@@ -18,12 +17,13 @@ function InventoryPage() {
     setInventory(response.data);
   };
 
-  useEffect(() => {
-    const fetchWarehouses = async () => {
-      const response = await getWarehouses(["id", "warehouse_name"]);
-      setWarehouses(response.data);
-    };
+  const fetchWarehouses = async () => {
+    const response = await getWarehouses();
+    setWarehouses(response.data);
+    scrollToTop();
+  };
 
+  useEffect(() => {
     fetchWarehouses();
     fetchInventory();
   }, []);
@@ -42,28 +42,30 @@ function InventoryPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
-              <button className="warehouse__cta-button">+ Add New Item</button>
+              <Link className="warehouse__cta-button" to="/inventory/new">
+                + Add New Item
+              </Link>
             </div>
           </div>
           <div className="warehouse__container--headers">
             <h4 className="warehouse__header">
-              INVENTORY ITEM{" "}
+              INVENTORY ITEM
               <img className="warehouse__sort" src={unfoldMore} alt="sort" />
             </h4>
             <h4 className="warehouse__header">
-              CATEGORY{" "}
+              CATEGORY
               <img className="warehouse__sort" src={unfoldMore} alt="sort" />
             </h4>
             <h4 className="warehouse__header warehouse__header--contact-name">
-              STATUS{" "}
+              STATUS
               <img className="warehouse__sort" src={unfoldMore} alt="sort" />
             </h4>
             <h4 className="warehouse__header">
-              QTY{" "}
+              QTY
               <img className="warehouse__sort" src={unfoldMore} alt="sort" />
             </h4>
             <h4 className="warehouse__header">
-              WAREHOUSE{" "}
+              WAREHOUSE
               <img className="warehouse__sort" src={unfoldMore} alt="sort" />
             </h4>
             <h4 className="warehouse__header">ACTIONS</h4>

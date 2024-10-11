@@ -59,7 +59,10 @@ function InventoryListItem({ item, fetchItems, warehouses }) {
             className="list-item__button list-item__button--delete list-item__button--primary"
             onClick={() => setIsOpen(true)}
           />
-          <button className="list-item__button list-item__button--edit" />
+          <Link
+            className="list-item__button list-item__button--edit"
+            to={`/inventory/${item.id}`}
+          />
         </div>
       </div>
       {isOpen && (
@@ -76,4 +79,3 @@ function InventoryListItem({ item, fetchItems, warehouses }) {
 }
 
 export default InventoryListItem;
-

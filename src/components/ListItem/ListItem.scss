@@ -2,7 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 .list-item {
-  padding: 1rem;
+  padding: 1.5rem;
   border-top: 1px solid $Cloud;
 
   &:first-child {
@@ -19,9 +19,32 @@
 
   &__wrapper {
     @include flex-container(column, space-between);
-    align-content: space-between;
+    align-content: space-around;
     flex-wrap: wrap;
     height: 9.5rem;
+
+    &--group-first {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      gap: 3.7rem;
+      align-items: flex-start;
+      width: 600px;
+    }
+
+    &--group-second {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      width: 300px;
+    }
+
+    &--inventory {
+      gap: 2rem;
+      @include tablet {
+        flex-wrap: nowrap;
+      }
+    }
 
     @include tablet {
       flex-direction: row;
@@ -30,14 +53,21 @@
   }
 
   &__container {
-    box-sizing: border-box;
     width: 44%;
     max-width: 8.5rem;
 
-    &--edit {
+    &--inventory {
+      width: 8rem;
+      max-width: none;
+    }
+
+    &--actions {
       @include flex-container(row, flex-end, center);
       gap: 1rem;
-      width: 6rem;
+
+      @include tablet {
+        width: 6rem;
+      }
     }
 
     @include tablet {
@@ -86,6 +116,18 @@
     }
   }
 
+  &__status {
+    @include stock-tag;
+
+    color: $Red;
+    background-color: rgba($Red, 0.07);
+
+    &--in-stock {
+      color: $Green;
+      background-color: rgba($Green, 0.07);
+    }
+  }
+
   &__chevron {
     padding-left: 0.25rem;
     height: 1.25rem;
@@ -116,6 +158,10 @@
       @include tablet {
         display: block;
       }
+    }
+
+    &--inventory {
+      margin-top: 1.1rem;
     }
   }
 }
