@@ -28,8 +28,9 @@
     flex-direction: column;
     font-size: $m-h2-text-size;
     line-height: $m-h2-line-height;
-    padding:1rem 1rem;
     &__container {
+      padding-right:1rem;
+      padding-left:1rem;
       @include tablet {
         font-size: $h1-text-size;
         line-height: $h1-line-height;
