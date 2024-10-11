@@ -17,7 +17,7 @@ const AddEditForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [values, setValues] = useState({
-    warehouse_id: 1,
+    warehouse_id: "",
     item_name: "",
     description: "",
     category: "",
@@ -51,7 +51,7 @@ const AddEditForm = () => {
     if (message) setError({ ...error, [name]: message });
 
     if (name === "status" && value === "Out of Stock")
-      setValues({ ...values, warehouse_id: 1, quantity: 0, [name]: value });
+      setValues({ ...values, warehouse_id: "", quantity: 0, [name]: value });
     else setValues({ ...values, [name]: value });
   };
 
@@ -70,10 +70,13 @@ const AddEditForm = () => {
       delete updatedData.created_at;
       delete updatedData.updated_at;
       delete updatedData.warehouse_name;
+      if (values.warehouse_id === "") updatedData.warehouse_id = 1;
       const response = await updateInventoryItem(id, updatedData);
       return response;
     } else {
-      const result = await addInventoryItem(values);
+      const result = await addInventoryItem(
+        values.warehouse_id === 0 ? { ...values, warehouse_id: 1 } : values,
+      );
 
       if (result.status === 201) return navigate("/inventory");
       else
@@ -87,7 +90,7 @@ const AddEditForm = () => {
     }
   };
 
-  const options = ["Health", "Gear", "Electronics", "Apparel", "Accessories"]; // QUERY DATABASE LATER
+  const options = ["Health", "Gear", "Electronics", "Apparel", "Accessories"];
 
   const errorNotification = (errorMessage) => {
     if (!errorMessage) return;
@@ -115,7 +118,7 @@ const AddEditForm = () => {
           <label htmlFor="item_name" className="inventory-form__label">
             Item Name
             <input
-              className={`inventory-form__input ${error.item_name && "inventory-form__input--error"}`}
+              className={`inventory-form__input inventory-form__input--text ${error.item_name && "inventory-form__input--error"}`}
               id="item_name"
               name="item_name"
               value={values.item_name}
@@ -146,11 +149,21 @@ const AddEditForm = () => {
               value={values.category}
               onChange={handleChange}
             >
-              <option value="" disabled hidden default>
+              <option
+                value=""
+                disabled
+                hidden
+                default
+                className="inventory-form__option"
+              >
                 Please select
               </option>
               {options.map((option) => (
-                <option key={option} value={option}>
+                <option
+                  key={option}
+                  value={option}
+                  className="inventory-form__option"
+                >
                   {option}
                 </option>
               ))}
@@ -163,7 +176,14 @@ const AddEditForm = () => {
           <label htmlFor="status" className="inventory-form__label">
             Status
             <div className="inventory-form__wrapper--radio">
-              <div className="inventory-form__container">
+              <label
+                htmlFor="instock"
+                className={`inventory-form__label inventory-form__label--radio ${
+                  values.status === "In Stock"
+                    ? "inventory-form__label--selected"
+                    : ""
+                }`}
+              >
                 <input
                   className="inventory-form__input inventory-form__input--radio"
                   id="instock"
@@ -173,20 +193,18 @@ const AddEditForm = () => {
                   type="radio"
                   checked={values.status == "In Stock"}
                 />
-                <label
-                  htmlFor="instock"
-                  className={`inventory-form__label inventory-form__label--radio ${
-                    values.status === "In Stock"
-                      ? "inventory-form__label--selected"
-                      : ""
-                  }`}
-                >
-                  In Stock
-                </label>
-              </div>
-              <div className="inventory-form__container inventory-form__container--right">
+                In Stock
+              </label>
+              <label
+                htmlFor="out_of_stock"
+                className={`inventory-form__label inventory-form__label--radio ${
+                  values.status === "Out of Stock"
+                    ? "inventory-form__label--selected"
+                    : ""
+                }`}
+              >
                 <input
-                  className="inventory-form__input inventory-form__input--radio"
+                  className="inventory-form__input inventory-form__input--radio inventory-form__input--right"
                   id="out_of_stock"
                   name="status"
                   value="Out of Stock"
@@ -194,55 +212,55 @@ const AddEditForm = () => {
                   type="radio"
                   checked={values.status == "Out of Stock"}
                 />
-                <label
-                  htmlFor="out_of_stock"
-                  className={`inventory-form__label inventory-form__label--radio ${
-                    values.status === "Out of Stock"
-                      ? "inventory-form__label--selected"
-                      : ""
-                  }`}
-                >
-                  Out of Stock
-                </label>
-              </div>
+                Out of Stock
+              </label>
             </div>
             {errorNotification(error.status)}
           </label>
-          {values.status === "In Stock" && (
-            <>
-              <label htmlFor="quantity" className="inventory-form__label">
-                Quantity
-                <input
-                  className={`inventory-form__input ${error.quantity && "inventory-form__input--error"}`}
-                  id="quantity"
-                  name="quantity"
-                  value={values.quantity}
-                  onChange={handleChange}
-                  type="number"
-                />
-                {errorNotification(error.quantity)}
-              </label>
-              <label htmlFor="warehouse" className="inventory-form__label">
-                Warehouse
-                <select
-                  className={`inventory-form__input inventory-form__input--select ${error.warehouse_id && "inventory-form__input--error"}`}
-                  id="warehouse"
-                  name="warehouse_id"
-                  value={values.warehouse_id}
-                  onChange={handleChange}
+
+          <label htmlFor="warehouse" className="inventory-form__label">
+            Warehouse
+            <select
+              className={`inventory-form__input inventory-form__input--select ${error.warehouse_id && "inventory-form__input--error"}`}
+              id="warehouse"
+              name="warehouse_id"
+              value={values.warehouse_id}
+              onChange={handleChange}
+            >
+              <option
+                value=""
+                disabled
+                hidden
+                default
+                className="inventory-form__option"
+              >
+                please select
+              </option>
+              {warehouseOptions.map((option) => (
+                <option
+                  key={option.id}
+                  value={option.id}
+                  className="inventory-form__option"
                 >
-                  <option value={1} disabled hidden default>
-                    Please select
-                  </option>
-                  {warehouseOptions.map((option) => (
-                    <option key={option.id} value={option.id}>
-                      {option.warehouse_name}
-                    </option>
-                  ))}
-                </select>
-                {errorNotification(error.warehouse_id)}
-              </label>
-            </>
+                  {option.warehouse_name}
+                </option>
+              ))}
+            </select>
+            {errorNotification(error.warehouse_id)}
+          </label>
+          {values.status === "In Stock" && (
+            <label htmlFor="quantity" className="inventory-form__label">
+              Quantity
+              <input
+                className={`inventory-form__input  inventory-form__input--text ${error.quantity && "inventory-form__input--error"}`}
+                id="quantity"
+                name="quantity"
+                value={values.quantity}
+                onChange={handleChange}
+                type="number"
+              />
+              {errorNotification(error.quantity)}
+            </label>
           )}
         </div>
       </div>

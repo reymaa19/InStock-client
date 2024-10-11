@@ -75,6 +75,12 @@
       background-color: white;
       color: $Slate;
       border: 1px solid $Cloud;
+
+      &:hover {
+        background-color: white;
+        color: $Instock-Indigo;
+        border: 1px solid $Instock-Indigo;
+      }
     }
 
     &--primary {
