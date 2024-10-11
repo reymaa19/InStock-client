@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./InventoryPage.scss";
-import InventoryListItem from "../../components/InventoryList/InventoryListItem.jsx";
+import InventoryListItem from "../../components/InventoryListItem/InventoryListItem.jsx";
 import { useState, useEffect } from "react";
 import { getInventory } from "../../services/inventory-api.js";
 import unfoldMore from "../../assets/images/icons/navigation/sort-24px.svg";
@@ -34,7 +34,7 @@ function InventoryPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               />
-              <button className="warehouse__cta-button" onClick={() => handleNav(navigate, "/")}> 
+              <button className="warehouse__cta-button" onClick={() => handleNav(navigate, "/inventory/new")}>
                 + Add New Item 
 
               </button> 

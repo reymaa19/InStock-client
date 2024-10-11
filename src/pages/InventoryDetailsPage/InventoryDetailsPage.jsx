@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "InventoryDetailsPage.scss";
+import "./InventoryDetailsPage.scss";
 import InventoryDetails from "../../components/InventoryDetails/InventoryDetails.jsx";
 import {
     getInventory,
-    getOneInventory
+    getSingleItem
 } from "../../services/inventory-api.js";
 
 function InventoryDetailsPage(details) {
@@ -17,7 +17,7 @@ function InventoryDetailsPage(details) {
     useState(() => {
       setId(params.id);
       const fetchSingleInventory = async () => {
-        const response = await getOneInventory(params.id);
+        const response = await getSingleItem(params.id);
         setSelectedInventory(response.data);
         console.log("my inventory item is ", response.data);
         setId(params.id);
