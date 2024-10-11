@@ -7,6 +7,7 @@ import WarehouseInventoryPage from "./pages/WarehouseInventoryPage/WarehouseInve
 import AddNewWarehouse from "./components/AddNewWarehouse/AddNewWarehouse";
 import EditWarehouse from "./components/EditWarehouse/EditWarehouse.jsx";
 import AddEditInventory from "./components/AddEditInventory/AddEditInventory";
+import InventoryDetailsPage from "./pages/InventoryDetailsPage/InventoryDetailsPage.jsx";
 
 const App = () => {
   return (

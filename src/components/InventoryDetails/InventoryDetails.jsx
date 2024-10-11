@@ -14,9 +14,14 @@ function InventoryDetails(details) {
         <h1 className="nav__name">{inventory.item_name}</h1>
         <div className="nav__end">
           <div className="nav__color">
-            <img className="nav__edit" src={editHeader} alt="Edit Inventory" />
-
-            <p className="nav__edit-text">Edit</p>
+            <Link to={`/inventory/edit/${inventory.id}`} className="nav__link">
+              <img
+                className="nav__edit"
+                src={editHeader}
+                alt="Edit Inventory"
+              />
+              <p className="nav__edit-text">Edit</p>
+            </Link>
           </div>
         </div>
       </div>

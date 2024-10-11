@@ -33,7 +33,7 @@ function DeleteModal({ isOpen, closeModal, id, name, type }) {
           className="delete-modal__close-button"
           onClick={closeModal}
         />
-        <h1 className="delete-modal__page-header">{`Delete ${name} ${type === "warehouse" ? "Warehouse" : "Inventory item"}?`}</h1>
+        <h1 className="delete-modal__page-header">{`Delete ${name} ${type === "warehouse" ? "Warehouse" : "inventory item"}?`}</h1>
         <p className="delete-modal__description">{`Please confirm that you’d like to delete the ${name} from the ${type === "warehouse" ? "list of  warehouses" : "inventory list"}. You won’t be able to undo this action.`}</p>
       </div>
       <div className="delete-modal__wrapper delete-modal__wrapper--options">
