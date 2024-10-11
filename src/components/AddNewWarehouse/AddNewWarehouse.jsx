@@ -147,7 +147,7 @@ const AddNewWarehouse = () => {
               )}
 
               <label htmlFor="address" className="details__address-label">
-                Address
+                Street Address
               </label>
               <input
                 type="text"
@@ -248,18 +248,45 @@ const AddNewWarehouse = () => {
                   {errors.contact_name}
                 </span>
               )}
+              <label
+                htmlFor="contact_position"
+                className="details__contacts-label"
+              >
+                Position
+              </label>
+              <input
+                type="text"
+                id="contact_position"
+                name="contact_position"
+                placeholder="Position"
+                className={`details__contacts-input ${
+                  errors.contact_position ? "error" : ""
+                }`}
+                value={formData.contact_position}
+                onChange={handleChange}
+              />
+              {errors.contact_position && (
+                <span className="details__error">
+                  <img
+                    src={errorIcon}
+                    alt="Warning Icon"
+                    className="details__error-icon"
+                  />
+                  {errors.contact_position}
+                </span>
+              )}
 
               <label
                 htmlFor="contact_phone"
                 className="details__contacts-label"
               >
-                Contact Phone
+                Phone Number
               </label>
               <input
                 type="text"
                 id="contact_phone"
                 name="contact_phone"
-                placeholder="Contact Phone"
+                placeholder="Phone Number"
                 className={`details__contacts-input ${
                   errors.contact_phone ? "error" : ""
                 }`}
@@ -278,44 +305,16 @@ const AddNewWarehouse = () => {
               )}
 
               <label
-                htmlFor="contact_position"
-                className="details__contacts-label"
-              >
-                Contact Position
-              </label>
-              <input
-                type="text"
-                id="contact_position"
-                name="contact_position"
-                placeholder="Contact Position"
-                className={`details__contacts-input ${
-                  errors.contact_position ? "error" : ""
-                }`} 
-                value={formData.contact_position}
-                onChange={handleChange}
-              />
-              {errors.contact_position && (
-                <span className="details__error">
-                  <img
-                    src={errorIcon}
-                    alt="Warning Icon"
-                    className="details__error-icon"
-                  />
-                  {errors.contact_position}
-                </span>
-              )}
-
-              <label
                 htmlFor="contact_email"
                 className="details__contacts-label"
               >
-                Contact Email
+                Email
               </label>
               <input
                 type="email"
                 id="contact_email"
                 name="contact_email"
-                placeholder="Contact Email"
+                placeholder="Email"
                 className={`details__contacts-input ${
                   errors.contact_email ? "error" : ""
                 }`}
@@ -344,7 +343,7 @@ const AddNewWarehouse = () => {
               Cancel
             </button>
             <button type="submit" className="details__button">
-              Add New Warehouse
+              + Add Warehouse
             </button>
           </div>
 

@@ -70,3 +70,4 @@ function WarehousePage() {
 }
 
 export default WarehousePage;
+

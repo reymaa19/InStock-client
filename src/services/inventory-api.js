@@ -51,8 +51,8 @@ export async function deleteInventoryItem(id) {
     const url = `${BASE_URL}/inventories/${id}`;
     const response = await axios.delete(url);
     return response;
-  } catch(err) {
-    return err.response;
+  } catch (error) {
+    return error.response;
   }
 }
 

@@ -5,7 +5,7 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 // Fetches all the warehouses.
 export async function getWarehouses(query) {
   try {
-    const url = `${BASE_URL}/warehouses${query ? "?" + query : ""}`;
+    const url = `${BASE_URL}/warehouses${query ? "?" + query.join(",") : ""}`;
     const response = await axios.get(url);
 
     return response;
@@ -37,7 +37,6 @@ export async function getSingleWarehouse(id) {
   }
 }
 
-
 // edit single warehouse
 export async function editSingleWarehouse(id, data) {
   try {
@@ -53,15 +52,15 @@ export async function editSingleWarehouse(id, data) {
 export async function addWarehouse(warehouseData) {
   try {
     const url = `${BASE_URL}/warehouses`;
-    console.log("Sending data:", warehouseData);
-
     const response = await axios.post(url, warehouseData);
-    
+
     return response.data;
   } catch (err) {
     // Log the error response if available, otherwise log the error message
-    console.error('Error adding warehouse:', err.response || err.message);
-    return err.response ? err.response.data : { error: 'An error occurred while adding the warehouse.' };
+    console.error("Error adding warehouse:", err.response || err.message);
+    return err.response
+      ? err.response.data
+      : { error: "An error occurred while adding the warehouse." };
   }
 }
 
