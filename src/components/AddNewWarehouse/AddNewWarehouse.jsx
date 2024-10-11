@@ -67,7 +67,7 @@ const AddNewWarehouse = () => {
     // Validate email
     if (formData.contact_email && !validateEmail(formData.contact_email)) {
       newErrors.contact_email =
-        "Email is invalid. Please enter a valid one(e.g., example@example.com)";
+        "Email is invalid. Please enter a valid one (e.g., example@example.com)";
     }
 
     setErrors(newErrors);
