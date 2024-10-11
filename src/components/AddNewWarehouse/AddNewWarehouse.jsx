@@ -3,7 +3,11 @@ import "./AddNewWarehouse.scss";
 import arrowBackIcon from "../../assets/images/icons/navigation/arrow_back-24px.svg";
 import errorIcon from "../../assets/images/icons/notification/error-24px.svg";
 import { useNavigate } from "react-router-dom";
-import { handleNav, validatePhoneNumber,validateEmail } from "../../utils/utils";
+import {
+  handleNav,
+  validatePhoneNumber,
+  validateEmail,
+} from "../../utils/utils";
 import { addWarehouse } from "../../services/warehouse-api.js";
 
 const AddNewWarehouse = () => {
@@ -57,11 +61,13 @@ const AddNewWarehouse = () => {
       formData.contact_phone &&
       !validatePhoneNumber(formData.contact_phone, "any", { strict: false })
     ) {
-      newErrors.contact_phone = "Phone number is invalid";
+      newErrors.contact_phone =
+        "Phone number is invalid. Please enter a valid one (e.g., +1 (123) 456-7890)";
     }
     // Validate email
     if (formData.contact_email && !validateEmail(formData.contact_email)) {
-      newErrors.contact_email = "Email is invalid";
+      newErrors.contact_email =
+        "Email is invalid. Please enter a valid one(e.g., example@example.com)";
     }
 
     setErrors(newErrors);
