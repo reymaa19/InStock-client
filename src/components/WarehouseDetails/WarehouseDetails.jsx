@@ -14,8 +14,13 @@ function WarehouseDetails(details) {
         <h1 className="nav__name">{warehouse.warehouse_name}</h1>
         <div className="nav__end">
           <div className="nav__color">
-            <img className="nav__edit" src={editHeader} alt="Edit Warehouse" />
-
+            <Link to={`/warehouse/edit/${warehouse.id}`} className="nav__link">
+              <img
+                className="nav__edit"
+                src={editHeader}
+                alt="Edit Warehouse"
+              />
+            </Link>
             <p className="nav__edit-text">Edit</p>
           </div>
         </div>
