@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ListItem from "../../components/ListItem/ListItem.jsx";
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails.jsx";
 import {
   getWarehouses,
