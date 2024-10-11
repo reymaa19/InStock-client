@@ -57,8 +57,10 @@ function InventoryListItem({ item }) {
                 className="list-item__button list-item__button--delete list-item__button--primary"
                 onClick={() => setIsOpen(true)}
               />
-              <button className="list-item__button list-item__button--edit" />
-              onClick={() => handleNav(navigate, "/inventory/edit/:id")}
+              <button 
+                className="list-item__button list-item__button--edit" 
+                onClick={() => handleNav(navigate, `/inventory/edit/${item.id}`)}
+              />
             </div>
           </div>
           {isOpen && (
@@ -66,8 +68,8 @@ function InventoryListItem({ item }) {
               isOpen={isOpen}
               closeModal={() => setIsOpen(false)}
               id={item.id}
-              name={item.warehouse_name}
-              type="warehouse"
+              name={item.item_name}
+              type="inventory"
             />
           )}
         </div>

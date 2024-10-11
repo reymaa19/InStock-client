@@ -59,7 +59,7 @@ function WarehousePage() {
             CONTACT INFORMATION{" "}
             <img className="warehouse__sort" src={unfoldMore} alt="sort" />
           </h4>
-          <h4 className="warehouse__header">ACTION</h4>
+          <h4 className="warehouse__header">ACTIONS</h4>
         </div>
         {warehouses.map((warehouse) => (
           <ListItem key={warehouse.id} item={warehouse} />

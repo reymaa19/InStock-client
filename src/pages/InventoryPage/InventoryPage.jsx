@@ -38,9 +38,9 @@ function InventoryPage() {
                 + Add New Item 
 
               </button> 
-           </div> 
+            </div> 
           </div> 
-          <div className="warehouse__container--headers"> 
+          <div className="warehouse__container--headers">
            <h4 className="warehouse__header"> 
                INVENTORY ITEM{" "} 
                <img className="warehouse__sort" src={unfoldMore} alt="sort" /> 
@@ -61,7 +61,7 @@ function InventoryPage() {
                WAREHOUSE{" "} 
                <img className="warehouse__sort" src={unfoldMore} alt="sort" /> 
              </h4> 
-             <h4 className="warehouse__header">ACTIONS</h4> 
+             <h4 className="warehouse__header">ACTIONS</h4>
            </div> 
             {inventory.map((invItem) => (  
             <InventoryListItem key={invItem.id} item={invItem} /> 
