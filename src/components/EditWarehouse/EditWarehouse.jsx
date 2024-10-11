@@ -8,6 +8,10 @@ import {
   getSingleWarehouse,
   editSingleWarehouse,
 } from "../../services/warehouse-api";
+import {
+  validateRequiredFields,
+  validateRequiredField,
+} from "../../utils/utils";
 
 function EditWarehouse() {
   const navigate = useNavigate();
@@ -25,6 +29,8 @@ function EditWarehouse() {
     contact_email: "",
   });
 
+  const [error, setError] = useState({});
+
   //fetch warehouse data when component mounts or when "id" changes
   useEffect(() => {
     const fetchWarehouse = async () => {
@@ -37,16 +43,33 @@ function EditWarehouse() {
   }, [id]);
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    //perform validation on the field being changed
+    const message = validateRequiredField({ name, value });
+    //remove error messgae for this filed if validation passes
+    delete error[name];
+
+    if (message) setError({ ...error, [name]: message });
+
     setValues({
       ...values, //copy the existing value
-      [e.target.name]: e.target.value, //update the fields that changed
+      [name]: value, //update the fields that changed
     });
   };
 
   //handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    /* add validation here */
+
+    const foundError = validateRequiredFields(values);
+
+    //if there are any validation errors
+    //set the error state and prevent submission
+    if (Object.keys(foundError).length > 0) {
+      setError(foundError);
+      return;
+    }
 
     if (id) {
       try {
@@ -57,6 +80,16 @@ function EditWarehouse() {
         console.error("Error updating warehouse: ", err);
       }
     }
+  };
+
+  const errorNotification = (errorMessage) => {
+    if (!errorMessage) return null;
+    return (
+      <p className="details__address-label details__address-label--error">
+        <img src={errorIcon} alt="error-icon" className="details__error-icon" />
+        {errorMessage}
+      </p>
+    );
   };
 
   return (
@@ -86,8 +119,11 @@ function EditWarehouse() {
                 value={values.warehouse_name}
                 onChange={handleChange}
                 placeholder="Warehouse Name"
-                className="details__address-input"
+                className={`details__address-input ${
+                  error.warehouse_name && "details__address-input--error"
+                }`}
               />
+              {errorNotification(error.warehouse_name)}
               <label htmlFor="address" className="details__address-name">
                 Street Address
               </label>
@@ -98,8 +134,11 @@ function EditWarehouse() {
                 value={values.address}
                 onChange={handleChange}
                 placeholder="Street Address"
-                className="details__address-input"
+                className={`details__address-input ${
+                  error.address && "details__address-input--error"
+                }`}
               />
+              {errorNotification(error.address)}
               <label htmlFor="city" className="details__address-label">
                 City
               </label>
