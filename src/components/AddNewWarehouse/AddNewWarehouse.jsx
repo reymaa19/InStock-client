@@ -62,12 +62,12 @@ const AddNewWarehouse = () => {
       !validatePhoneNumber(formData.contact_phone, "any", { strict: false })
     ) {
       newErrors.contact_phone =
-        "Phone number is invalid.(e.g., +1 (123) 456-7890)";
+        "Phone number is invalid. Please enter a valid one (e.g., +1 (123) 456-7890)";
     }
     // Validate email
     if (formData.contact_email && !validateEmail(formData.contact_email)) {
       newErrors.contact_email =
-        "Email is invalid.(e.g., example@example.com)";
+        "Email is invalid. Please enter a valid one(e.g., example@example.com)";
     }
 
     setErrors(newErrors);
