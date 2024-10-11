@@ -1,14 +1,20 @@
 import React from "react";
 import Modal from "react-modal";
 import { deleteWarehouse } from "../../services/warehouse-api.js";
+import { deleteInventoryItem } from "../../services/inventory-api.js";
 import "./DeleteModal.scss";
 
 function DeleteModal({ isOpen, closeModal, id, name, type }) {
   Modal.setAppElement("#root");
 
   async function deleteSelected() {
-    if (type === "warehouse") await deleteWarehouse(id);
-    else if (type === "inventory") await deleteInventory(id);
+    if (type === "warehouse") {
+      const result = await deleteWarehouse(id);
+      if (result.status === 204) closeModal(true);
+    } else if (type === "inventory") {
+      const result = await deleteInventoryItem(id);
+      if (result.status === 204) closeModal(true);
+    }
 
     closeModal();
   }
@@ -34,7 +40,6 @@ function DeleteModal({ isOpen, closeModal, id, name, type }) {
         <button
           className="delete-modal__button delete-modal__button--secondary"
           onClick={closeModal}
-          onBlur={closeModal}
         >
           Cancel
         </button>

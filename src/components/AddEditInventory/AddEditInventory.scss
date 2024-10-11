@@ -19,17 +19,18 @@
     position: relative;
     bottom: 4rem;
     background-color: white;
-    border-radius: 0.1875rem;
     box-shadow: 0rem 0.125rem 0.3125rem 0rem #13182c1a;
 
     &--left {
-      border-right: 0.0625rem solid $Cloud;
+      @include tablet {
+        border-right: 0.0625rem solid $Cloud;
+      }
     }
 
     @include tablet {
       width: 87.5vw;
       max-width: 1020px;
-      bottom: 5.5rem;
+      bottom: 5.1619rem;
       margin: 0 auto;
     }
 
@@ -42,13 +43,15 @@
       border-bottom: 0.0625rem solid $Cloud;
       padding: 1.5rem;
       line-height: 2.1rem;
+      border-top-left-radius: 0.1875rem;
+      border-top-right-radius: 0.1875rem;
     }
 
     &--body {
       @include flex-container(column);
 
       @include tablet {
-        padding: 1rem 1rem;
+        padding: 1.75rem 0;
         @include flex-container($justify: space-between);
       }
     }
@@ -58,7 +61,7 @@
 
       @include tablet {
         width: 50%;
-        padding: 0 1rem 1rem 1rem;
+        padding: 0 3rem 0.5rem 3rem;
         border-bottom: none;
       }
 
@@ -76,6 +79,8 @@
       gap: 1rem;
       padding: 1rem;
       background-color: $Light-Grey;
+      border-bottom-left-radius: 0.1875rem;
+      border-bottom-right-radius: 0.1875rem;
 
       @include tablet {
         @include flex-container(row, flex-end, flex-end);
@@ -87,17 +92,7 @@
 
       @include tablet {
         justify-content: flex-start;
-      }
-    }
-  }
-
-  &__container {
-    @include flex-container(row, space-between, center);
-    gap: 1rem;
-
-    &--right {
-      @include tablet {
-        padding-left: 2rem;
+        gap: 2rem;
       }
     }
   }
@@ -145,17 +140,26 @@
     font-weight: $font-weight-semi-bold600;
 
     @include tablet {
+      gap: 0.25rem;
       font-size: $h3-text-size;
       line-height: $h3-line-height;
     }
 
     &--radio {
       flex-direction: row;
+      justify-content: space-between;
+      gap: 0.5rem;
       margin-top: 0;
       color: $Slate;
       font-size: $m-p2-text-size;
       line-height: $m-p2-line-height;
       font-weight: $font-weight-regular400;
+
+      &--right {
+        @include tablet {
+          padding-left: 2rem;
+        }
+      }
 
       @include tablet {
         font-size: $p2-text-size;
@@ -189,16 +193,21 @@
       width: 100%;
     }
 
+    &--text {
+      cursor: text;
+    }
+
     &--radio {
       width: 1rem;
       height: 1rem;
     }
 
     &--text-area {
-      height: 7.375rem;
+      height: 7.5rem;
       resize: none;
       overflow: hidden;
       padding-top: 0.5rem;
+      cursor: text;
     }
 
     &--select {
@@ -206,6 +215,11 @@
       -moz-appearance: none;
       appearance: none;
       background-image: url("../../assets/images/icons/navigation/arrow_drop_down-24px.svg");
+      color: #000;
+
+      &:not(:focus):not([value=""]) {
+        color: #999;
+      }
     }
 
     &::placeholder {
@@ -216,6 +230,10 @@
     &--error {
       border-color: $Red;
     }
+  }
+
+  &__option {
+    color: #000;
   }
 
   &__link {
@@ -235,6 +253,12 @@
       background-color: white;
       color: $Slate;
       border: 1px solid $Cloud;
+
+      &:hover {
+        background-color: white;
+        color: $Instock-Indigo;
+        border: 1px solid $Instock-Indigo;
+      }
     }
   }
 }

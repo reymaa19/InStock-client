@@ -5,9 +5,14 @@ import "./ListItem.scss";
 import chevronRight from "../../assets/images/icons/navigation/chevron_right-24px.svg";
 import DeleteModal from "../../components/DeleteModal/DeleteModal.jsx";
 
-function ListItem({ item }) {
+function ListItem({ item, fetchItems }) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+
+  const handleCloseModal = (deleted = false) => {
+    if (deleted) fetchItems();
+    setIsOpen(false);
+  };
 
   return (
     <div className="list-item" id={`list-item-${item.id}`}>
@@ -64,7 +69,7 @@ function ListItem({ item }) {
       {isOpen && (
         <DeleteModal
           isOpen={isOpen}
-          closeModal={() => setIsOpen(false)}
+          closeModal={handleCloseModal}
           id={item.id}
           name={item.warehouse_name}
           type="warehouse"

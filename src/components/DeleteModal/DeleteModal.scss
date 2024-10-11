@@ -5,7 +5,12 @@
   @include flex-container(column, space-between);
   background-color: white;
   height: 100vh;
-  padding: 1rem;
+  padding: 1rem 1rem 2rem 1rem;
+  border-radius: 0.1875rem;
+
+  @include tablet {
+    padding: 1rem 1rem 2.5rem 4rem;
+  }
 
   @include tablet {
     margin: 0 auto;
@@ -39,6 +44,11 @@
     &--options {
       @include flex-container;
       gap: 1rem;
+
+      @include tablet {
+        justify-content: flex-end;
+        padding-right: 3rem;
+      }
     }
   }
 
@@ -62,6 +72,7 @@
     font-weight: $font-weight-regular400;
 
     @include tablet {
+      padding-right: 5rem;
       font-size: $p1-text-size;
       line-height: $p1-line-height;
     }
@@ -75,6 +86,12 @@
       background-color: white;
       color: $Slate;
       border: 1px solid $Cloud;
+
+      &:hover {
+        background-color: white;
+        color: $Instock-Indigo;
+        border: 1px solid $Instock-Indigo;
+      }
     }
 
     &--primary {
