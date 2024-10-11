@@ -78,6 +78,7 @@
         padding: 0 1rem 1rem 1rem;
         border-right: 0.06125rem solid $Cloud;
         border-bottom: none;
+        font-size: $p2-text-size;
       }
 
       &-name {
@@ -112,6 +113,7 @@
       @include tablet {
         width: 50%;
         padding: 0 1rem 1rem 1rem;
+        font-size: $p2-text-size;
       }
 
       &-title {
