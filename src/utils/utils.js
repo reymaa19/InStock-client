@@ -9,6 +9,7 @@ export const validateRequiredFields = (fields) => {
       foundErrors[key] =
         key
           .trim()
+          .replace("id", "")
           .split("_")
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
           .join(" ") + " is required";
@@ -23,6 +24,7 @@ export const validateRequiredField = (field) => {
     return (
       name
         .trim()
+        .replace("id", "")
         .split("_")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ") + " is required"
