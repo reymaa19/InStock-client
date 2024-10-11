@@ -85,7 +85,7 @@ function EditWarehouse() {
   const errorNotification = (errorMessage) => {
     if (!errorMessage) return null;
     return (
-      <p className="details__address-label details__address-label--error">
+      <p className="details__label details__label--error">
         <img src={errorIcon} alt="error-icon" className="details__error-icon" />
         {errorMessage}
       </p>
@@ -124,7 +124,7 @@ function EditWarehouse() {
                 }`}
               />
               {errorNotification(error.warehouse_name)}
-              <label htmlFor="address" className="details__address-name">
+              <label htmlFor="address" className="details__address-label">
                 Street Address
               </label>
               <input
@@ -149,8 +149,11 @@ function EditWarehouse() {
                 value={values.city}
                 onChange={handleChange}
                 placeholder="City"
-                className="details__address-input"
+                className={`details__address-input ${
+                  error.city && "details__address-input--error"
+                }`}
               />
+              {errorNotification(error.city)}
               <label htmlFor="country" className="details__address-label">
                 Country
               </label>
@@ -161,8 +164,11 @@ function EditWarehouse() {
                 value={values.country}
                 onChange={handleChange}
                 placeholder="Country"
-                className="details__address-input"
+                className={`details__address-input ${
+                  error.country && "details__address-input--error"
+                }`}
               />
+              {errorNotification(error.country)}
             </div>
 
             <div className="details__contacts">
@@ -177,8 +183,11 @@ function EditWarehouse() {
                 value={values.contact_name}
                 onChange={handleChange}
                 placeholder="Contact Name"
-                className="details__contacts-input"
+                className={`details__contacts-input ${
+                  error.contact_name && "details__contacts-input--error"
+                }`}
               />
+              {errorNotification(error.contact_name)}
               <label htmlFor="position" className="details__contacts-name">
                 Position
               </label>
@@ -189,8 +198,11 @@ function EditWarehouse() {
                 value={values.contact_position}
                 onChange={handleChange}
                 placeholder="Position"
-                className="details__contacts-input"
+                className={`details__contacts-input ${
+                  error.contact_position && "details__contacts-input--error"
+                }`}
               />
+              {errorNotification(error.contact_position)}
               <label htmlFor="phone-number" className="details__contacts-name">
                 Phone Number
               </label>
@@ -201,8 +213,11 @@ function EditWarehouse() {
                 value={values.contact_phone}
                 onChange={handleChange}
                 placeholder="Phone Number"
-                className="details__contacts-input"
+                className={`details__contacts-input ${
+                  error.contact_phone && "details__contacts-input--error"
+                }`}
               />
+              {errorNotification(error.contact_phone)}
               <label htmlFor="Email" className="details__contacts-name">
                 Email
               </label>
@@ -213,8 +228,11 @@ function EditWarehouse() {
                 value={values.contact_email}
                 onChange={handleChange}
                 placeholder="Email"
-                className="details__contacts-input"
+                className={`details__contacts-input ${
+                  error.contact_email && "details__contacts-input--error"
+                }`}
               />
+              {errorNotification(error.contact_email)}
             </div>
           </div>
           <div className="details__button-container">
