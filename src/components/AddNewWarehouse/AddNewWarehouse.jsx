@@ -258,7 +258,7 @@ const AddNewWarehouse = () => {
                 type="text"
                 id="contact_position"
                 name="contact_position"
-                placeholder="Contact Position"
+                placeholder="Position"
                 className={`details__contacts-input ${
                   errors.contact_position ? "error" : ""
                 }`}
@@ -286,7 +286,7 @@ const AddNewWarehouse = () => {
                 type="text"
                 id="contact_phone"
                 name="contact_phone"
-                placeholder="Contact Phone"
+                placeholder="Phone Number"
                 className={`details__contacts-input ${
                   errors.contact_phone ? "error" : ""
                 }`}
@@ -314,7 +314,7 @@ const AddNewWarehouse = () => {
                 type="email"
                 id="contact_email"
                 name="contact_email"
-                placeholder="Contact Email"
+                placeholder="Email"
                 className={`details__contacts-input ${
                   errors.contact_email ? "error" : ""
                 }`}
