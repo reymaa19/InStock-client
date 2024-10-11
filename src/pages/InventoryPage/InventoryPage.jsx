@@ -34,7 +34,7 @@ function InventoryPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               />
-              <button className="warehouse__cta-button" onClick={() => handleNav(navigate, "/")}> 
+              <button className="warehouse__cta-button" onClick={() => handleNav(navigate, "/inventory/new")}>
                 + Add New Item 
 
               </button> 
