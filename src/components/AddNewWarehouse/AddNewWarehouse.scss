@@ -19,6 +19,7 @@
     font-size: $m-h1-text-size;
     line-height: $m-h1-line-height;
     @include tablet {
+      font-size: $h1-text-size;
       line-height: $h1-line-height;
     }
   }
@@ -29,12 +30,16 @@
     line-height: $m-h2-line-height;
     &__container {
       @include tablet {
+        font-size: $h1-text-size;
+        line-height: $h1-line-height;
         padding-top: 1rem;
         display: flex;
         flex-direction: row;
         width: 100%;
       }
       @include desktop {
+        font-size: $h1-text-size;
+        line-height: $h1-line-height;
         padding-top: 1rem;
         display: flex;
         flex-direction: row;
@@ -53,7 +58,7 @@
       }
     }
 
-    &__address {
+    &__address,&__contacts {
       display: flex;
       flex-direction: column;
       border-bottom: 0.06125rem solid $Cloud;
@@ -65,19 +70,29 @@
       @include tablet {
         width: 50%;
         border-bottom: none;
-        border-right: 0.06125rem solid $Cloud;
+        font-size: $p2-text-size;
+    
       }
       @include desktop {
         width: 50%;
         border-bottom: none;
-        border-right: 0.06125rem solid $Cloud;
+        font-size: $p2-text-size;
       }
       &-name {
         font-weight: $font-weight-semi-bold600;
+        @include tablet{
+          font-size: $h2-text-size;
+
+        }
       }
 
       &-label {
         font-weight: $font-weight-semi-bold600;
+        font-size: $m-h3-text-size;
+        @include tablet{
+          font-size: $h3-text-size;
+        }
+
       }
       &-input {
         border-radius: 1.25rem;
@@ -86,53 +101,20 @@
         padding-right: 1rem;
         border: 0.0625rem solid $Cloud;
         font-family: $primary-font;
+        font-size: $m-h3-text-size;
         &.error {
           border-color: $Red;
         }
-      }
-    }
-    &__contacts {
-      display: flex;
-      flex-direction: column;
-      line-height: 3rem;
-      font-size: $m-p2-text-size;
-      padding: 1rem;
-      padding-bottom: 2rem;
-
-      @include tablet {
-        width: 50%;
-        border-bottom: none;
-      }
-      @include desktop {
-        width: 50%;
-        border-bottom: none;
-      }
-
-      &-title {
-        font-weight: $font-weight-semi-bold600;
-      }
-      &-name {
-        font-weight: $font-weight-semi-bold600;
-      }
-
-      &-label {
-        font-weight: $font-weight-semi-bold600;
-      }
-      &-input {
-        border-radius: 1.25rem;
-        height: 2.25rem;
-        padding: 1rem;
-        border-color: $Cloud;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        border: 0.0625rem solid $Cloud;
-        font-family: $primary-font;
-        &.error {
-          border-color: $Red;
+        @include tablet{
+          font-size: $h3-text-size;
         }
       }
     }
-
+    &__address{
+      @include tablet{
+      border-right: 0.06125rem solid $Cloud;
+    }
+    }
     &__button-container {
       @include flex-container;
       gap: 1rem;

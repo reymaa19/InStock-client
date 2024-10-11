@@ -40,8 +40,6 @@ export async function getSingleWarehouse(id) {
 export async function addWarehouse(warehouseData) {
   try {
     const url = `${BASE_URL}/warehouses`;
-    console.log("Sending data:", warehouseData);
-
     const response = await axios.post(url, warehouseData);
     
     return response.data;
