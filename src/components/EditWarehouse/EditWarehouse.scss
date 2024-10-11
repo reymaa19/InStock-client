@@ -46,11 +46,29 @@
       }
     }
 
+    //* error notification style *//
+    &__label {
+      font-weight: $font-weight-semi-bold600;
+
+      &--error {
+        @include flex-container($align: center);
+        margin-top: 0.25rem;
+        color: $Red;
+      }
+    }
+
+    &__error-icon {
+      height: 1rem;
+      width: 1rem;
+      margin-right: 0.25rem;
+    }
+    //* error notification style *//
+
     &__address {
       display: flex;
       flex-direction: column;
       border-bottom: 0.06125rem solid $Cloud;
-      line-height: 3rem;
+      line-height: 2.5rem;
       font-size: $m-p2-text-size;
       padding: 1rem;
       padding-bottom: 2rem;
@@ -60,6 +78,7 @@
         padding: 0 1rem 1rem 1rem;
         border-right: 0.06125rem solid $Cloud;
         border-bottom: none;
+        font-size: $p2-text-size;
       }
 
       &-name {
@@ -69,19 +88,24 @@
       &-label {
         font-weight: $font-weight-semi-bold600;
       }
+
       &-input {
-        border-radius: 1.25rem;
-        height: 2.25rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        border: 0.0625rem solid $Cloud;
-        font-family: $primary-font;
+        @include reset-field;
+        @include form-field;
+
+        @include tablet {
+          width: 100%;
+        }
+
+        &--error {
+          border: 0.0625rem solid $Red;
+        }
       }
     }
     &__contacts {
       display: flex;
       flex-direction: column;
-      line-height: 3rem;
+      line-height: 2.5rem;
       font-size: $m-p2-text-size;
       padding: 1rem;
       padding-bottom: 2rem;
@@ -89,6 +113,7 @@
       @include tablet {
         width: 50%;
         padding: 0 1rem 1rem 1rem;
+        font-size: $p2-text-size;
       }
 
       &-title {
@@ -101,15 +126,18 @@
       &-label {
         font-weight: $font-weight-semi-bold600;
       }
+      
       &-input {
-        border-radius: 1.25rem;
-        height: 2.25rem;
-        padding: 1rem;
-        border-color: $Cloud;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        border: 0.0625rem solid $Cloud;
-        font-family: $primary-font;
+        @include reset-field;
+        @include form-field;
+
+        @include tablet {
+          width: 100%;
+        }
+
+        &--error {
+          border: 0.0625rem solid $Red;
+        }
       }
     }
     &__button-container {
