@@ -3,9 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { handleNav } from "../../utils/utils.js";
 import "./InventoryListItem.scss";
 import chevronRight from "../../assets/images/icons/navigation/chevron_right-24px.svg";
-import DeleteModal from "../../components/DeleteModal/DeleteModal.jsx";
+import DeleteModal from "../DeleteModal/DeleteModal.jsx";
 
-/// import hooks, assets, components...
 
 function InventoryListItem({ item }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,13 +19,13 @@ function InventoryListItem({ item }) {
                     className="list-item__value list-item__value--link"
                     key={item.id}
                     to={`/inventory/${item.id}`}
-                >
-                {item.item_name}
-                <img
-                  className="list-item__chevron"
-                  src={chevronRight}
-                  alt="chevron right"
-                />
+                    >
+                    {item.item_name}
+                    <img
+                      className="list-item__chevron"
+                      src={chevronRight}
+                      alt="chevron right"
+                    />
                 </Link>
             </div>
             <div className="list-item__container">

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./InventoryPage.scss";
-import InventoryListItem from "../../components/InventoryList/InventoryListItem.jsx";
+import InventoryListItem from "../../components/InventoryListItem/InventoryListItem.jsx";
 import { useState, useEffect } from "react";
 import { getInventory } from "../../services/inventory-api.js";
 import unfoldMore from "../../assets/images/icons/navigation/sort-24px.svg";
