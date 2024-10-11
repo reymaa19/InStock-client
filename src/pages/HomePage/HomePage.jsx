@@ -7,7 +7,7 @@ import unfoldMore from "../../assets/images/icons/navigation/sort-24px.svg";
 import "./HomePage.scss";
 import { Link } from "react-router-dom";
 
-function HomePage({ headers }) {
+const HomePage = ({ type }) => {
   const [search, setSearch] = useState("");
   const [inventories, setInventories] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
@@ -29,20 +29,35 @@ function HomePage({ headers }) {
     fetchInventory();
   }, []);
 
+  const inventoryHeaders = [
+    "INVENTORY ITEM",
+    "CATEGORY",
+    "STATUS",
+    "QTY",
+    "WAREHOUSE",
+  ];
+
+  const warehouseHeaders = [
+    "WAREHOUSE",
+    "ADDRESS",
+    "CONTACT NAME",
+    "CONTACT INFORMATION",
+  ];
+
   const homeHeader = (header) => (
-    <h4
-      key={header}
-      className={`home__header${header === "CONTACT NAME" ? " home__header--contact-name" : ""}`}
-    >
+    <h4 key={header} className="home__header">
       {header}
       <img className="home__sort" src={unfoldMore} alt="sort" />
     </h4>
   );
+
   return (
     <main className="main">
       <section className="home">
         <div className="home__container home__container--search">
-          <h1 className="home__page-header">Warehouses</h1>
+          <h1 className="home__page-header">
+            {type === "warehouse" ? "Warehouses" : "Inventory"}
+          </h1>
           <div className="home__wrapper">
             <input
               className="home__search"
@@ -51,30 +66,35 @@ function HomePage({ headers }) {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <Link className="home__cta-button" to="/warehouse/add">
-              + Add New Warehouse
+            <Link
+              className="home__cta-button"
+              to={`/${type === "warehouse" ? "warehouse" : "inventory"}/add`}
+            >
+              + Add New {type === "warehouse" ? "Warehouse" : "Inventory"}
             </Link>
           </div>
         </div>
         <div className="home__container--headers">
-          {headers.map((header, i) => homeHeader(header, i))}
+          {(type === "warehouse" ? warehouseHeaders : inventoryHeaders).map(
+            (header) => homeHeader(header),
+          )}
           <h4 className="home__header">ACTION</h4>
         </div>
-        {headers.length === 4 &&
+        {type === "warehouse" &&
           warehouses.map((item) => (
             <ListItem
               key={item.id}
-              headers={headers}
+              headers={warehouseHeaders}
               item={item}
               fetchItems={fetchWarehouses}
               inventories={inventories}
             />
           ))}
-        {headers.length === 5 &&
+        {type === "inventory" &&
           inventories.map((item) => (
             <ListItem
               key={item.id}
-              headers={headers}
+              headers={inventoryHeaders}
               item={item}
               fetchItems={fetchInventory}
               warehouses={warehouses}
@@ -83,6 +103,6 @@ function HomePage({ headers }) {
       </section>
     </main>
   );
-}
+};
 
 export default HomePage;

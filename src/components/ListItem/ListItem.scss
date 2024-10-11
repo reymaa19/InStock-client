@@ -18,33 +18,44 @@
   }
 
   &__wrapper {
-    @include flex-container(column, space-between);
-    align-content: space-around;
+    @include flex-container(column);
+    // align-content: space-around;
+    gap: 1.5rem;
     flex-wrap: wrap;
-    height: 9.5rem;
+    height: 12.25rem;
 
-    &--group-first {
+    @include tablet {
       flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      gap: 3.7rem;
-      align-items: flex-start;
-      width: 600px;
+      height: auto;
     }
 
-    &--group-second {
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-items: flex-start;
-      width: 300px;
+    &--secondary {
+      justify-content: space-between;
+      gap: 1rem;
     }
 
-    &--inventory {
-      gap: 2rem;
-      @include tablet {
-        flex-wrap: nowrap;
-      }
-    }
+    // &--group-first {
+    //   flex-direction: row;
+    //   flex-wrap: nowrap;
+    //   justify-content: flex-start;
+    //   gap: 3.7rem;
+    //   align-items: flex-start;
+    //   width: 600px;
+    // }
+    //
+    // &--group-second {
+    //   flex-direction: row;
+    //   flex-wrap: nowrap;
+    //   align-items: flex-start;
+    //   width: 300px;
+    // }
+    //
+    // &--inventory {
+    //   gap: 2rem;
+    //   @include tablet {
+    //     flex-wrap: nowrap;
+    //   }
+    // }
 
     @include tablet {
       flex-direction: row;
@@ -53,13 +64,13 @@
   }
 
   &__container {
-    width: 44%;
-    max-width: 8.5rem;
+    width: 46%;
+    // max-width: 8.5rem;
 
-    &--inventory {
-      width: 8rem;
-      max-width: none;
-    }
+    // &--inventory {
+    //   width: 8rem;
+    //   max-width: none;
+    // }
 
     &--actions {
       @include flex-container(row, flex-end, center);
@@ -146,10 +157,16 @@
 
     &--delete {
       background-image: url("../../assets/images/icons/action/delete_outline-24px.svg");
+      margin-top: 1.5rem;
+      // margin-top: 2.2rem;
 
       @include tablet {
         display: none;
       }
+    }
+
+    &--secondary {
+      margin-top: 2.2rem;
     }
 
     &--primary {
@@ -158,10 +175,6 @@
       @include tablet {
         display: block;
       }
-    }
-
-    &--inventory {
-      margin-top: 1.1rem;
     }
   }
 }
