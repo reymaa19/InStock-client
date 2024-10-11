@@ -23,6 +23,7 @@ const AddNewWarehouse = () => {
   });
 
   const [errors, setErrors] = useState({});
+
   // Reset form data on mount
   useEffect(() => {
     setFormData({
@@ -36,6 +37,7 @@ const AddNewWarehouse = () => {
       contact_email: "",
     });
   }, []);
+
   // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,6 +68,7 @@ const AddNewWarehouse = () => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -126,13 +129,19 @@ const AddNewWarehouse = () => {
                 id="warehouse_name"
                 name="warehouse_name"
                 placeholder="Warehouse Name"
-                className="details__address-input"
+                className={`details__address-input ${
+                  errors.warehouse_name ? "error" : ""
+                }`}
                 value={formData.warehouse_name}
                 onChange={handleChange}
               />
               {errors.warehouse_name && (
                 <span className="details__error">
-                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  <img
+                    src={errorIcon}
+                    alt="Warning Icon"
+                    className="details__error-icon"
+                  />
                   {errors.warehouse_name}
                 </span>
               )}
@@ -145,13 +154,19 @@ const AddNewWarehouse = () => {
                 id="address"
                 name="address"
                 placeholder="Address"
-                className="details__address-input"
+                className={`details__address-input ${
+                  errors.address ? "error" : ""
+                }`}
                 value={formData.address}
                 onChange={handleChange}
               />
               {errors.address && (
                 <span className="details__error">
-                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  <img
+                    src={errorIcon}
+                    alt="Warning Icon"
+                    className="details__error-icon"
+                  />
                   {errors.address}
                 </span>
               )}
@@ -164,13 +179,19 @@ const AddNewWarehouse = () => {
                 id="city"
                 name="city"
                 placeholder="City"
-                className="details__address-input"
+                className={`details__address-input ${
+                  errors.city ? "error" : ""
+                }`}
                 value={formData.city}
                 onChange={handleChange}
               />
               {errors.city && (
                 <span className="details__error">
-                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  <img
+                    src={errorIcon}
+                    alt="Warning Icon"
+                    className="details__error-icon"
+                  />
                   {errors.city}
                 </span>
               )}
@@ -183,13 +204,19 @@ const AddNewWarehouse = () => {
                 id="country"
                 name="country"
                 placeholder="Country"
-                className="details__address-input"
+                className={`details__address-input ${
+                  errors.country ? "error" : ""
+                }`}
                 value={formData.country}
                 onChange={handleChange}
               />
               {errors.country && (
                 <span className="details__error">
-                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  <img
+                    src={errorIcon}
+                    alt="Warning Icon"
+                    className="details__error-icon"
+                  />
                   {errors.country}
                 </span>
               )}
@@ -205,13 +232,19 @@ const AddNewWarehouse = () => {
                 id="contact_name"
                 name="contact_name"
                 placeholder="Contact Name"
-                className="details__contacts-input"
+                className={`details__contacts-input ${
+                  errors.contact_name ? "error" : ""
+                }`}
                 value={formData.contact_name}
                 onChange={handleChange}
               />
               {errors.contact_name && (
                 <span className="details__error">
-                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  <img
+                    src={errorIcon}
+                    alt="Warning Icon"
+                    className="details__error-icon"
+                  />
                   {errors.contact_name}
                 </span>
               )}
@@ -227,13 +260,19 @@ const AddNewWarehouse = () => {
                 id="contact_phone"
                 name="contact_phone"
                 placeholder="Contact Phone"
-                className="details__contacts-input"
+                className={`details__contacts-input ${
+                  errors.contact_phone ? "error" : ""
+                }`}
                 value={formData.contact_phone}
                 onChange={handleChange}
               />
               {errors.contact_phone && (
                 <span className="details__error">
-                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  <img
+                    src={errorIcon}
+                    alt="Warning Icon"
+                    className="details__error-icon"
+                  />
                   {errors.contact_phone}
                 </span>
               )}
@@ -249,13 +288,19 @@ const AddNewWarehouse = () => {
                 id="contact_position"
                 name="contact_position"
                 placeholder="Contact Position"
-                className="details__contacts-input"
+                className={`details__contacts-input ${
+                  errors.contact_position ? "error" : ""
+                }`} 
                 value={formData.contact_position}
                 onChange={handleChange}
               />
               {errors.contact_position && (
                 <span className="details__error">
-                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  <img
+                    src={errorIcon}
+                    alt="Warning Icon"
+                    className="details__error-icon"
+                  />
                   {errors.contact_position}
                 </span>
               )}
@@ -271,13 +316,19 @@ const AddNewWarehouse = () => {
                 id="contact_email"
                 name="contact_email"
                 placeholder="Contact Email"
-                className="details__contacts-input"
+                className={`details__contacts-input ${
+                  errors.contact_email ? "error" : ""
+                }`}
                 value={formData.contact_email}
                 onChange={handleChange}
               />
               {errors.contact_email && (
                 <span className="details__error">
-                  <img src={errorIcon} alt="Warning Icon" className="details__error-icon" />
+                  <img
+                    src={errorIcon}
+                    alt="Warning Icon"
+                    className="details__error-icon"
+                  />
                   {errors.contact_email}
                 </span>
               )}
@@ -287,19 +338,26 @@ const AddNewWarehouse = () => {
           <div className="details__button-container">
             <button
               type="button"
-              className="details__button details__button-cancel"
+              className="details__button details__button--cancel"
               onClick={() => handleNav(navigate, "/warehouse")}
             >
               Cancel
             </button>
-
-            <button
-              type="submit"
-              className="details__button details__button-save"
-            >
-              + Add Warehouse
+            <button type="submit" className="details__button">
+              Add New Warehouse
             </button>
           </div>
+
+          {errors.general && (
+            <span className="details__error details__error--general">
+              <img
+                src={errorIcon}
+                alt="Warning Icon"
+                className="details__error-icon"
+              />
+              {errors.general}
+            </span>
+          )}
         </form>
       </div>
     </main>

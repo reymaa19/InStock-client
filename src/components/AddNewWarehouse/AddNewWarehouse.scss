@@ -42,13 +42,13 @@
       }
     }
     &__error {
-      color:$Red;
+      color: $Red;
       display: flex;
       align-items: center;
-    
-      &-icon{
+
+      &-icon {
         width: $m-p2-text-size;
-        height:$m-p2-text-size;
+        height: $m-p2-text-size;
         margin-right: 0.5rem;
       }
     }
@@ -61,9 +61,7 @@
       font-size: $m-p2-text-size;
       padding: 1rem;
       padding-bottom: 2rem;
-      &.error{
-        border-color: #d22d2d;
-      }
+
       @include tablet {
         width: 50%;
         border-bottom: none;
@@ -88,6 +86,9 @@
         padding-right: 1rem;
         border: 0.0625rem solid $Cloud;
         font-family: $primary-font;
+        &.error {
+          border-color: $Red;
+        }
       }
     }
     &__contacts {
@@ -97,6 +98,7 @@
       font-size: $m-p2-text-size;
       padding: 1rem;
       padding-bottom: 2rem;
+
       @include tablet {
         width: 50%;
         border-bottom: none;
@@ -125,9 +127,11 @@
         padding-right: 1rem;
         border: 0.0625rem solid $Cloud;
         font-family: $primary-font;
+        &.error {
+          border-color: $Red;
+        }
       }
     }
-    
 
     &__button-container {
       @include flex-container;
@@ -144,8 +148,8 @@
       @include reset-field;
       @include cta-button;
 
-      &-cancel {
-        background-color: white;
+      &--cancel {
+        background-color:$White;
         color: $Slate;
         border: 1px solid $Cloud;
 
