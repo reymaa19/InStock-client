@@ -125,13 +125,8 @@
 
       &-label {
         font-weight: $font-weight-semi-bold600;
-
-        // &--error {
-        //   @include flex-container($align: center);
-        //   margin-top: 0.25rem;
-        //   color: $Red;
-        // }
       }
+      
       &-input {
         @include reset-field;
         @include form-field;
@@ -143,14 +138,6 @@
         &--error {
           border: 0.0625rem solid $Red;
         }
-        // border-radius: 1.25rem;
-        // height: 2.25rem;
-        // padding: 1rem;
-        // border-color: $Cloud;
-        // padding-left: 1rem;
-        // padding-right: 1rem;
-        // border: 0.0625rem solid $Cloud;
-        // font-family: $primary-font;
       }
     }
     &__button-container {
