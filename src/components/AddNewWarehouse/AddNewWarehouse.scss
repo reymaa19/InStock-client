@@ -42,7 +42,6 @@
     }
     &__error {
       color: $Red;
-      display: flex;
       align-items: center;
 
       &-icon {
@@ -93,6 +92,7 @@
         font-size: $m-h3-text-size;
         &.error {
           border-color: $Red;
+
         }
         @include tablet{
           font-size: $h3-text-size;
