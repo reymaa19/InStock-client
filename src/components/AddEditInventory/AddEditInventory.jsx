@@ -44,7 +44,9 @@ const AddEditForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const message = validateRequiredField(e.target);
+
+    const message = validateRequiredField({ name, value });
+    delete error[name];
 
     if (message) setError({ ...error, [name]: message });
 
