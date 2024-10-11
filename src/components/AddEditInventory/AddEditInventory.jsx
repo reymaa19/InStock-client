@@ -34,7 +34,7 @@ const AddEditForm = () => {
     };
 
     const fetchWarehouses = async () => {
-      const response = await getWarehouses("id, warehouse_name");
+      const response = await getWarehouses(["id", "warehouse_name"]);
       setWarehouseOptions(response.data);
     };
 
