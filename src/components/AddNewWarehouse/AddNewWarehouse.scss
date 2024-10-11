@@ -37,14 +37,6 @@
         flex-direction: row;
         width: 100%;
       }
-      @include desktop {
-        font-size: $h1-text-size;
-        line-height: $h1-line-height;
-        padding-top: 1rem;
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-      }
     }
     &__error {
       color: $Red;
@@ -72,11 +64,6 @@
         border-bottom: none;
         font-size: $p2-text-size;
     
-      }
-      @include desktop {
-        width: 50%;
-        border-bottom: none;
-        font-size: $p2-text-size;
       }
       &-name {
         font-weight: $font-weight-semi-bold600;
