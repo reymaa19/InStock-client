@@ -25,7 +25,7 @@ const AddEditForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [values, setValues] = useState({
-    warehouse_id: "",
+    warehouse_id: 1,
     item_name: "",
     description: "",
     category: "",
@@ -48,7 +48,7 @@ const AddEditForm = () => {
     const { name, value } = e.target;
 
     if (name === "status" && value === "Out of Stock")
-      setValues({ ...values, warehouse_id: "", quantity: 0, [name]: value });
+      setValues({ ...values, warehouse_id: 1, quantity: 0, [name]: value });
     else setValues({ ...values, [name]: value });
   };
 
@@ -241,7 +241,7 @@ const AddEditForm = () => {
                   value={HARD_CODED_WAREHOUSE_OPTIONS[values.warehouse_id - 1]}
                   onChange={handleChange}
                 >
-                  <option value="" disabled hidden default>
+                  <option value={1} disabled hidden default>
                     Please select
                   </option>
                   {HARD_CODED_WAREHOUSE_OPTIONS.map((option) => (
