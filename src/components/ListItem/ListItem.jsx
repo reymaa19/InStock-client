@@ -57,7 +57,7 @@ function ListItem({ item }) {
           />
           <button
             className="list-item__button list-item__button--edit"
-            onClick={() => handleNav(navigate, "/warehouse/edit/:id")}
+            onClick={() => handleNav(navigate, `/warehouse/edit/${item.id}`)}
           />
         </div>
       </div>

@@ -5,6 +5,11 @@ import {
   updateInventoryItem,
   addInventoryItem,
 } from "../../services/inventory-api.js";
+import { getWarehouses } from "../../services/warehouse-api.js";
+import {
+  validateRequiredFields,
+  validateRequiredField,
+} from "../../utils/utils.js";
 import errorIcon from "../../assets/images/icons/notification/error-24px.svg";
 import "./AddEditInventory.scss";
 
@@ -12,13 +17,14 @@ const AddEditForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [values, setValues] = useState({
-    warehouse_id: "",
+    warehouse_id: 1,
     item_name: "",
     description: "",
     category: "",
     status: "",
     quantity: 0,
   });
+  const [warehouseOptions, setWarehouseOptions] = useState([]);
   const [error, setError] = useState({});
 
   useEffect(() => {
@@ -27,19 +33,38 @@ const AddEditForm = () => {
       setValues(response.data);
     };
 
+    const fetchWarehouses = async () => {
+      const response = await getWarehouses("id, warehouse_name");
+      setWarehouseOptions(response.data);
+    };
+
+    fetchWarehouses();
     id && fetchInventoryItem();
   }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    const message = validateRequiredField({ name, value });
+    delete error[name];
+
+    if (message) setError({ ...error, [name]: message });
+
     if (name === "status" && value === "Out of Stock")
-      setValues({ ...values, warehouse_id: "", quantity: 0, [name]: value });
+      setValues({ ...values, warehouse_id: 1, quantity: 0, [name]: value });
     else setValues({ ...values, [name]: value });
+
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+
+    const foundErrors = validateRequiredFields(values);
+    if (Object.keys(foundErrors).length > 0) {
+      setError(foundErrors);
+      return;
+    }
+
     if (id) {
       const updatedData = values;
       delete updatedData.id;
@@ -50,30 +75,20 @@ const AddEditForm = () => {
       return response;
     } else {
       const result = await addInventoryItem(values);
-      if (result.status === 201) return navigate("/");
+
+      if (result.status === 201) return navigate("/inventory");
       else
         setError(
           result.data.message.reduce((errors, message) => {
             const [key, value] = Object.entries(message)[0];
             errors[key] = value;
             return errors;
-          }, {}),
+          }, {})
         );
     }
   };
 
   const options = ["Health", "Gear", "Electronics", "Apparel", "Accessories"]; // QUERY DATABASE LATER
-  const HARD_CODED_WAREHOUSE_OPTIONS = [
-    "Manhattan",
-    "Washington",
-    "Jersey",
-    "SF",
-    "Santa Moncica",
-    "Seatle",
-    "Miami",
-    "Boston",
-    "Chicago",
-  ]; // QUERY DATABASE LATER Manhattan id is 1 (warehouse_id is incorrect still)
 
   const errorNotification = (errorMessage) => {
     if (!errorMessage) return;
@@ -101,7 +116,9 @@ const AddEditForm = () => {
           <label htmlFor="item_name" className="inventory-form__label">
             Item Name
             <input
-              className={`inventory-form__input ${error.item_name && "inventory-form__input--error"}`}
+              className={`inventory-form__input ${
+                error.item_name && "inventory-form__input--error"
+              }`}
               id="item_name"
               name="item_name"
               value={values.item_name}
@@ -114,7 +131,9 @@ const AddEditForm = () => {
           <label htmlFor="description" className="inventory-form__label">
             Description
             <textarea
-              className={`inventory-form__input inventory-form__input--text-area ${error.description && "inventory-form__input--error"}`}
+              className={`inventory-form__input inventory-form__input--text-area ${
+                error.description && "inventory-form__input--error"
+              }`}
               id="description"
               name="description"
               value={values.description}
@@ -126,7 +145,9 @@ const AddEditForm = () => {
           <label htmlFor="category" className="inventory-form__label">
             Category
             <select
-              className={`inventory-form__input inventory-form__input--select ${error.category && "inventory-form__input--error"}`}
+              className={`inventory-form__input inventory-form__input--select ${
+                error.category && "inventory-form__input--error"
+              }`}
               id="category"
               name="category"
               value={values.category}
@@ -199,7 +220,9 @@ const AddEditForm = () => {
               <label htmlFor="quantity" className="inventory-form__label">
                 Quantity
                 <input
-                  className={`inventory-form__input ${error.quantity && "inventory-form__input--error"}`}
+                  className={`inventory-form__input ${
+                    error.quantity && "inventory-form__input--error"
+                  }`}
                   id="quantity"
                   name="quantity"
                   value={values.quantity}
@@ -211,18 +234,20 @@ const AddEditForm = () => {
               <label htmlFor="warehouse" className="inventory-form__label">
                 Warehouse
                 <select
-                  className={`inventory-form__input inventory-form__input--select ${error.warehouse_id && "inventory-form__input--error"}`}
+                  className={`inventory-form__input inventory-form__input--select ${
+                    error.warehouse_id && "inventory-form__input--error"
+                  }`}
                   id="warehouse"
                   name="warehouse_id"
                   value={values.warehouse_id}
                   onChange={handleChange}
                 >
-                  <option value="" disabled hidden default>
+                  <option value={1} disabled hidden default>
                     Please select
                   </option>
-                  {HARD_CODED_WAREHOUSE_OPTIONS.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
+                  {warehouseOptions.map((option) => (
+                    <option key={option.id} value={option.id}>
+                      {option.warehouse_name}
                     </option>
                   ))}
                 </select>
