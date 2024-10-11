@@ -217,7 +217,7 @@
       background-image: url("../../assets/images/icons/navigation/arrow_drop_down-24px.svg");
       color: #000;
 
-      &:not(:focus):not([value=""]) {
+      &:invalid {
         color: #999;
       }
     }
