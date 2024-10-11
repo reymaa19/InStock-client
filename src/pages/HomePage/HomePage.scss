@@ -37,6 +37,7 @@
       @include flex-container(column);
       gap: 1rem;
       padding: 1.5rem 1rem;
+
       @include tablet {
         flex-direction: row;
         justify-content: space-between;
@@ -50,8 +51,8 @@
       background-color: $Light-Grey;
       position: relative;
       top: 1px;
+
       @include tablet {
-        display: block;
         @include flex-container(row, space-between);
       }
     }
@@ -94,18 +95,53 @@
     line-height: $m-h4-line-height;
     font-weight: $font-weight-semi-bold600;
 
+    // SET FOR WAREHOUSE
+    &:nth-child(1) {
+      flex: 1.5;
+    }
+    &:nth-child(2) {
+      flex: 1.5;
+    }
+    &:nth-child(3) {
+      flex: 1.25;
+    }
+    &:nth-child(4) {
+      flex: 2;
+    }
+
+    &--secondary {
+      // SPACING FOR INVENTORY
+      &:nth-child(1) {
+        flex: 1.35;
+      }
+      &:nth-child(2) {
+        flex: 1;
+      }
+      &:nth-child(3) {
+        flex: 1;
+      }
+      &:nth-child(4) {
+        flex: 0.5;
+      }
+      &:nth-child(5) {
+        flex: 1.25;
+      }
+    }
+
     @include tablet {
-      display: block;
       display: inline-flex;
       font-size: $h4-text-size;
       line-height: $h4-line-height;
-      max-width: 9.1rem;
+      text-wrap: nowrap;
     }
 
-    // &--contact-name {
-    //   position: relative;
-    //   left: 1rem;
-    // }
+    &--action {
+      flex: 0 0 auto;
+    }
+
+    &--start {
+      justify-content: flex-start;
+    }
   }
 
   &__sort {
