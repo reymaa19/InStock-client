@@ -49,8 +49,6 @@
 
     @include flex-container($justify: center, $align: center);
 
-    @include tablet {
-    }
     &:hover {
       color: $White;
       text-decoration: underline;
@@ -64,6 +62,12 @@
 
     &:visited {
       text-decoration: none;
+    }
+
+    &--active {
+      color: $White;
+      border-radius: 20px;
+      background-color: $Instock-Black;
     }
   }
 }
