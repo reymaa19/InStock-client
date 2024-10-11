@@ -8,6 +8,19 @@ import {
 import errorIcon from "../../assets/images/icons/notification/error-24px.svg";
 import "./AddEditInventory.scss";
 
+const options = ["Health", "Gear", "Electronics", "Apparel", "Accessories"]; // QUERY DATABASE LATER
+const HARD_CODED_WAREHOUSE_OPTIONS = [
+  "Manhattan",
+  "Washington",
+  "Jersey",
+  "SF",
+  "Santa Monica",
+  "Seatle",
+  "Miami",
+  "Boston",
+  "Chicago",
+]; // QUERY DATABASE LATER Manhattan id is 1 (warehouse_id is incorrect still)
+
 const AddEditForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -19,11 +32,13 @@ const AddEditForm = () => {
     status: "",
     quantity: 0,
   });
+
   const [error, setError] = useState({});
 
   useEffect(() => {
     const fetchInventoryItem = async () => {
       const response = await getSingleItem(id);
+      console.log(" my data is ", response.data);
       setValues(response.data);
     };
 
@@ -41,11 +56,23 @@ const AddEditForm = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (id) {
-      const updatedData = values;
-      delete updatedData.id;
-      delete updatedData.created_at;
-      delete updatedData.updated_at;
-      delete updatedData.warehouse_name;
+      let warehouseId = 1;
+      if (typeof values.warehouse_id != "number") {
+        warehouseId =
+          HARD_CODED_WAREHOUSE_OPTIONS.findIndex(
+            (x) => x == values.warehouse_id
+          ) + 1;
+      }
+      const updatedData = {
+        category: values.category,
+        description: values.description,
+        item_name: values.item_name,
+        quantity: values.quantity,
+        status: values.status,
+        warehouse_id: warehouseId,
+      };
+      setValues(updatedData);
+
       const response = await updateInventoryItem(id, updatedData);
       return response;
     } else {
@@ -57,23 +84,10 @@ const AddEditForm = () => {
             const [key, value] = Object.entries(message)[0];
             errors[key] = value;
             return errors;
-          }, {}),
+          }, {})
         );
     }
   };
-
-  const options = ["Health", "Gear", "Electronics", "Apparel", "Accessories"]; // QUERY DATABASE LATER
-  const HARD_CODED_WAREHOUSE_OPTIONS = [
-    "Manhattan",
-    "Washington",
-    "Jersey",
-    "SF",
-    "Santa Moncica",
-    "Seatle",
-    "Miami",
-    "Boston",
-    "Chicago",
-  ]; // QUERY DATABASE LATER Manhattan id is 1 (warehouse_id is incorrect still)
 
   const errorNotification = (errorMessage) => {
     if (!errorMessage) return;
@@ -101,7 +115,9 @@ const AddEditForm = () => {
           <label htmlFor="item_name" className="inventory-form__label">
             Item Name
             <input
-              className={`inventory-form__input ${error.item_name && "inventory-form__input--error"}`}
+              className={`inventory-form__input ${
+                error.item_name && "inventory-form__input--error"
+              }`}
               id="item_name"
               name="item_name"
               value={values.item_name}
@@ -114,7 +130,9 @@ const AddEditForm = () => {
           <label htmlFor="description" className="inventory-form__label">
             Description
             <textarea
-              className={`inventory-form__input inventory-form__input--text-area ${error.description && "inventory-form__input--error"}`}
+              className={`inventory-form__input inventory-form__input--text-area ${
+                error.description && "inventory-form__input--error"
+              }`}
               id="description"
               name="description"
               value={values.description}
@@ -126,7 +144,9 @@ const AddEditForm = () => {
           <label htmlFor="category" className="inventory-form__label">
             Category
             <select
-              className={`inventory-form__input inventory-form__input--select ${error.category && "inventory-form__input--error"}`}
+              className={`inventory-form__input inventory-form__input--select ${
+                error.category && "inventory-form__input--error"
+              }`}
               id="category"
               name="category"
               value={values.category}
@@ -199,7 +219,9 @@ const AddEditForm = () => {
               <label htmlFor="quantity" className="inventory-form__label">
                 Quantity
                 <input
-                  className={`inventory-form__input ${error.quantity && "inventory-form__input--error"}`}
+                  className={`inventory-form__input ${
+                    error.quantity && "inventory-form__input--error"
+                  }`}
                   id="quantity"
                   name="quantity"
                   value={values.quantity}
@@ -211,10 +233,12 @@ const AddEditForm = () => {
               <label htmlFor="warehouse" className="inventory-form__label">
                 Warehouse
                 <select
-                  className={`inventory-form__input inventory-form__input--select ${error.warehouse_id && "inventory-form__input--error"}`}
+                  className={`inventory-form__input inventory-form__input--select ${
+                    error.warehouse_id && "inventory-form__input--error"
+                  }`}
                   id="warehouse"
                   name="warehouse_id"
-                  value={values.warehouse_id}
+                  value={HARD_CODED_WAREHOUSE_OPTIONS[values.warehouse_id - 1]}
                   onChange={handleChange}
                 >
                   <option value="" disabled hidden default>

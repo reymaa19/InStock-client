@@ -27,6 +27,7 @@ export async function getSingleItem(id) {
 // Updates single inventory item
 export async function updateInventoryItem(id, data) {
   try {
+    console.log("got to put");
     const url = `${BASE_URL}/inventories/${id}`;
     await axios.put(url, data);
     return "OK";
@@ -51,7 +52,7 @@ export async function deleteInventoryItem(id) {
     const url = `${BASE_URL}/inventories/${id}`;
     const response = await axios.delete(url);
     return response;
-  } catch(error) {
+  } catch (error) {
     return error.response;
   }
 }
