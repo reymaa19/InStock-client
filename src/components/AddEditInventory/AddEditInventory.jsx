@@ -19,7 +19,7 @@ const HARD_CODED_WAREHOUSE_OPTIONS = [
   "Miami",
   "Boston",
   "Chicago",
-]; // QUERY DATABASE LATER Manhattan id is 1 (warehouse_id is incorrect still)
+];
 
 const AddEditForm = () => {
   const { id } = useParams();
@@ -38,7 +38,6 @@ const AddEditForm = () => {
   useEffect(() => {
     const fetchInventoryItem = async () => {
       const response = await getSingleItem(id);
-      console.log(" my data is ", response.data);
       setValues(response.data);
     };
 
@@ -74,6 +73,7 @@ const AddEditForm = () => {
       setValues(updatedData);
 
       const response = await updateInventoryItem(id, updatedData);
+      if (response == "OK") return navigate("/inventory");
       return response;
     } else {
       const result = await addInventoryItem(values);
