@@ -41,6 +41,17 @@
         width: 100%;
       }
     }
+    &__error {
+      color:$Red;
+      display: flex;
+      align-items: center;
+    
+      &-icon{
+        width: $m-p2-text-size;
+        height:$m-p2-text-size;
+        margin-right: 0.5rem;
+      }
+    }
 
     &__address {
       display: flex;
@@ -50,6 +61,9 @@
       font-size: $m-p2-text-size;
       padding: 1rem;
       padding-bottom: 2rem;
+      &.error{
+        border-color: #d22d2d;
+      }
       @include tablet {
         width: 50%;
         border-bottom: none;
@@ -113,6 +127,7 @@
         font-family: $primary-font;
       }
     }
+    
 
     &__button-container {
       @include flex-container;

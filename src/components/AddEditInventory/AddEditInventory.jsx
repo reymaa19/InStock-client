@@ -53,6 +53,7 @@ const AddEditForm = () => {
     if (name === "status" && value === "Out of Stock")
       setValues({ ...values, warehouse_id: 1, quantity: 0, [name]: value });
     else setValues({ ...values, [name]: value });
+
   };
 
   const handleFormSubmit = async (e) => {
@@ -82,7 +83,7 @@ const AddEditForm = () => {
             const [key, value] = Object.entries(message)[0];
             errors[key] = value;
             return errors;
-          }, {}),
+          }, {})
         );
     }
   };
@@ -115,7 +116,9 @@ const AddEditForm = () => {
           <label htmlFor="item_name" className="inventory-form__label">
             Item Name
             <input
-              className={`inventory-form__input ${error.item_name && "inventory-form__input--error"}`}
+              className={`inventory-form__input ${
+                error.item_name && "inventory-form__input--error"
+              }`}
               id="item_name"
               name="item_name"
               value={values.item_name}
@@ -128,7 +131,9 @@ const AddEditForm = () => {
           <label htmlFor="description" className="inventory-form__label">
             Description
             <textarea
-              className={`inventory-form__input inventory-form__input--text-area ${error.description && "inventory-form__input--error"}`}
+              className={`inventory-form__input inventory-form__input--text-area ${
+                error.description && "inventory-form__input--error"
+              }`}
               id="description"
               name="description"
               value={values.description}
@@ -140,7 +145,9 @@ const AddEditForm = () => {
           <label htmlFor="category" className="inventory-form__label">
             Category
             <select
-              className={`inventory-form__input inventory-form__input--select ${error.category && "inventory-form__input--error"}`}
+              className={`inventory-form__input inventory-form__input--select ${
+                error.category && "inventory-form__input--error"
+              }`}
               id="category"
               name="category"
               value={values.category}
@@ -213,7 +220,9 @@ const AddEditForm = () => {
               <label htmlFor="quantity" className="inventory-form__label">
                 Quantity
                 <input
-                  className={`inventory-form__input ${error.quantity && "inventory-form__input--error"}`}
+                  className={`inventory-form__input ${
+                    error.quantity && "inventory-form__input--error"
+                  }`}
                   id="quantity"
                   name="quantity"
                   value={values.quantity}
@@ -225,7 +234,9 @@ const AddEditForm = () => {
               <label htmlFor="warehouse" className="inventory-form__label">
                 Warehouse
                 <select
-                  className={`inventory-form__input inventory-form__input--select ${error.warehouse_id && "inventory-form__input--error"}`}
+                  className={`inventory-form__input inventory-form__input--select ${
+                    error.warehouse_id && "inventory-form__input--error"
+                  }`}
                   id="warehouse"
                   name="warehouse_id"
                   value={values.warehouse_id}
