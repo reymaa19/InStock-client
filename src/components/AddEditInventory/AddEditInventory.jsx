@@ -6,6 +6,10 @@ import {
   addInventoryItem,
 } from "../../services/inventory-api.js";
 import { getWarehouses } from "../../services/warehouse-api.js";
+import {
+  validateRequiredFields,
+  validateRequiredField,
+} from "../../utils/utils.js";
 import errorIcon from "../../assets/images/icons/notification/error-24px.svg";
 import "./AddEditInventory.scss";
 
@@ -41,14 +45,26 @@ const AddEditForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    if (name === "status" && value === "Out of Stock") {
-      console.log("id is running");
+    const message = validateRequiredField({ name, value });
+    delete error[name];
+
+    if (message) setError({ ...error, [name]: message });
+
+    if (name === "status" && value === "Out of Stock")
       setValues({ ...values, warehouse_id: 1, quantity: 0, [name]: value });
-    } else setValues({ ...values, [name]: value });
+    else setValues({ ...values, [name]: value });
+
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+
+    const foundErrors = validateRequiredFields(values);
+    if (Object.keys(foundErrors).length > 0) {
+      setError(foundErrors);
+      return;
+    }
+
     if (id) {
       const updatedData = values;
       delete updatedData.id;
@@ -59,6 +75,7 @@ const AddEditForm = () => {
       return response;
     } else {
       const result = await addInventoryItem(values);
+
       if (result.status === 201) return navigate("/inventory");
       else
         setError(
@@ -225,7 +242,7 @@ const AddEditForm = () => {
                   value={values.warehouse_id}
                   onChange={handleChange}
                 >
-                  <option value="" disabled hidden default>
+                  <option value={1} disabled hidden default>
                     Please select
                   </option>
                   {warehouseOptions.map((option) => (
