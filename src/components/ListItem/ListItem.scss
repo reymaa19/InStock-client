@@ -25,38 +25,18 @@
     height: 12.25rem;
 
     @include tablet {
+      flex-wrap: nowrap;
       flex-direction: row;
       height: auto;
     }
 
     &--secondary {
-      justify-content: space-between;
-      gap: 0.9rem;
-      height: 11.25rem;
-    }
+      height: 9.7rem;
+      gap: 0.2rem;
 
-    // &--group-first {
-    //   flex-direction: row;
-    //   flex-wrap: nowrap;
-    //   justify-content: flex-start;
-    //   gap: 3.7rem;
-    //   align-items: flex-start;
-    //   width: 600px;
-    // }
-    //
-    // &--group-second {
-    //   flex-direction: row;
-    //   flex-wrap: nowrap;
-    //   align-items: flex-start;
-    //   width: 300px;
-    // }
-    //
-    // &--inventory {
-    //   gap: 2rem;
-    //   @include tablet {
-    //     flex-wrap: nowrap;
-    //   }
-    // }
+      @include tablet {
+      }
+    }
 
     @include tablet {
       flex-direction: row;
@@ -66,14 +46,46 @@
 
   &__container {
     width: 46%;
-    // max-width: 8.5rem;
 
-    // &--inventory {
-    //   width: 8rem;
-    //   max-width: none;
-    // }
+    @include tablet {
+      width: auto;
+      // SPACING FOR WAREHOUSES
+      &:nth-child(1) {
+        flex: 1.5;
+      }
+      &:nth-child(2) {
+        flex: 1.35;
+      }
+      &:nth-child(4) {
+        flex: 1.25;
+      }
+      &:nth-child(5) {
+        flex: 2;
+      }
+    }
 
     &--secondary {
+      // SPACING FOR INVENTORY
+      @include tablet {
+        &:nth-child(1) {
+          flex: 1.35;
+        }
+        &:nth-child(2) {
+          flex: 1;
+        }
+        &:nth-child(4) {
+          flex: 1;
+        }
+        &:nth-child(5) {
+          flex: 0.48;
+        }
+        &:nth-child(6) {
+          flex: 1.2;
+        }
+      }
+    }
+
+    &--hidden {
       @include tablet {
         display: none;
       }
@@ -81,20 +93,10 @@
 
     &--actions {
       @include flex-container(row, flex-end, center);
-      gap: 1rem;
 
       @include tablet {
-        width: 6rem;
+        flex: 0 0 auto;
       }
-    }
-
-    @include tablet {
-      box-sizing: content-box;
-      max-width: 7.2rem;
-    }
-
-    @include desktop {
-      max-width: 13rem;
     }
   }
 
@@ -129,6 +131,7 @@
     }
 
     @include tablet {
+      max-width: 85%;
       font-size: $p2-text-size;
       line-height: $p2-line-height;
     }
@@ -166,22 +169,18 @@
 
     &--delete {
       background-image: url("../../assets/images/icons/action/delete_outline-24px.svg");
-      // margin-top: 1.5rem;
-      // margin-top: 2.2rem;
 
       @include tablet {
         display: none;
       }
     }
 
-    // &--secondary {
-    //  margin-top: 2.2rem;
-    // }
-
     &--primary {
       display: none;
 
       @include tablet {
+        position: relative;
+        right: 1rem;
         display: block;
       }
     }

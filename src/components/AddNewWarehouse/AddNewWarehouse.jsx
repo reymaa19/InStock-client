@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./AddNewWarehouse.scss";
 import arrowBackIcon from "../../assets/images/icons/navigation/arrow_back-24px.svg";
 import errorIcon from "../../assets/images/icons/notification/error-24px.svg";
-import validator from "validator";
 import { useNavigate } from "react-router-dom";
-import { handleNav } from "../../utils/utils";
+import { handleNav, validatePhoneNumber,validateEmail } from "../../utils/utils";
 import { addWarehouse } from "../../services/warehouse-api.js";
 
 const AddNewWarehouse = () => {
@@ -56,12 +55,12 @@ const AddNewWarehouse = () => {
     // Validate phone number
     if (
       formData.contact_phone &&
-      !validator.isMobilePhone(formData.contact_phone, "any", { strict: false })
+      !validatePhoneNumber(formData.contact_phone, "any", { strict: false })
     ) {
       newErrors.contact_phone = "Phone number is invalid";
     }
     // Validate email
-    if (formData.contact_email && !validator.isEmail(formData.contact_email)) {
+    if (formData.contact_email && !validateEmail(formData.contact_email)) {
       newErrors.contact_email = "Email is invalid";
     }
 
