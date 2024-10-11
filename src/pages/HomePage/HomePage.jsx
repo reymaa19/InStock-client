@@ -44,13 +44,6 @@ const HomePage = ({ type }) => {
     "CONTACT INFORMATION",
   ];
 
-  const homeHeader = (header) => (
-    <h4 key={header} className="home__header">
-      {header}
-      <img className="home__sort" src={unfoldMore} alt="sort" />
-    </h4>
-  );
-
   return (
     <main className="main">
       <section className="home">
@@ -76,9 +69,17 @@ const HomePage = ({ type }) => {
         </div>
         <div className="home__container--headers">
           {(type === "warehouse" ? warehouseHeaders : inventoryHeaders).map(
-            (header) => homeHeader(header),
+            (header) => (
+              <h4
+                key={header}
+                className={`home__header ${type === "inventory" ? "home__header--secondary" : ""}`}
+              >
+                {header}
+                <img className="home__sort" src={unfoldMore} alt="sort" />
+              </h4>
+            ),
           )}
-          <h4 className="home__header">ACTION</h4>
+          <h4 className="home__header home__header--action">ACTION</h4>
         </div>
         {type === "warehouse" &&
           warehouses.map((item) => (

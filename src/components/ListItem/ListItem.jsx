@@ -25,7 +25,9 @@ function ListItem({
       <div
         className={`list-item__wrapper ${isInventory ? "list-item__wrapper--secondary" : ""}`}
       >
-        <div className="list-item__container">
+        <div
+          className={`list-item__container ${isInventory ? "list-item__container--secondary" : ""}`}
+        >
           <h4 className="list-item__header">{headers[0]}</h4>
           <Link
             className="list-item__value list-item__value--link"
@@ -41,7 +43,9 @@ function ListItem({
           </Link>
         </div>
 
-        <div className={`list-item__container`}>
+        <div
+          className={`list-item__container ${isInventory ? "list-item__container--secondary" : ""}`}
+        >
           <h4 className="list-item__header">{headers[1]}</h4>
           <p className="list-item__value">
             {isInventory
@@ -51,15 +55,17 @@ function ListItem({
         </div>
 
         <div
-          className={`list-item__container ${isInventory ? "list-item__container--secondary" : ""}`}
+          className={`list-item__container ${isInventory ? "list-item__container--hidden" : ""}`}
         >
           <button
-            className={`list-item__button list-item__button--delete ${isInventory ? "list-item__button--secondary" : ""}`}
+            className={`list-item__button list-item__button--delete`}
             onClick={() => setIsOpen(true)}
           />
         </div>
 
-        <div className={`list-item__container`}>
+        <div
+          className={`list-item__container ${isInventory ? "list-item__container--secondary" : ""}`}
+        >
           <h4 className="list-item__header">{headers[2]}</h4>
           {isInventory ? (
             <p
@@ -72,7 +78,9 @@ function ListItem({
           )}
         </div>
 
-        <div className={`list-item__container`}>
+        <div
+          className={`list-item__container ${isInventory ? "list-item__container--secondary" : ""}`}
+        >
           <h4 className="list-item__header">{headers[3]}</h4>
           <p className="list-item__value">
             {isInventory
@@ -82,7 +90,9 @@ function ListItem({
         </div>
 
         {isInventory && (
-          <div className={`list-item__container`}>
+          <div
+            className={`list-item__container list-item__container--secondary`}
+          >
             <h4 className="list-item__header">{headers[4]}</h4>
             <p className="list-item__value">
               {
