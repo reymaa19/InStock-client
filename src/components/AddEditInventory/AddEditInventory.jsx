@@ -53,7 +53,6 @@ const AddEditForm = () => {
     if (name === "status" && value === "Out of Stock")
       setValues({ ...values, warehouse_id: 1, quantity: 0, [name]: value });
     else setValues({ ...values, [name]: value });
-
   };
 
   const handleFormSubmit = async (e) => {
@@ -72,6 +71,7 @@ const AddEditForm = () => {
       delete updatedData.updated_at;
       delete updatedData.warehouse_name;
       const response = await updateInventoryItem(id, updatedData);
+      if (response == "OK") return navigate("/inventory");
       return response;
     } else {
       const result = await addInventoryItem(values);
