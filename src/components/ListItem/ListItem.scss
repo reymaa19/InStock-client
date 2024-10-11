@@ -2,7 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 .list-item {
-  padding: 1rem;
+  padding: 1.5rem;
   border-top: 1px solid $Cloud;
 
   &:first-child {
@@ -19,9 +19,24 @@
 
   &__wrapper {
     @include flex-container(column, space-between);
-    align-content: space-between;
+    align-content: space-around;
+    gap: 1.5rem;
     flex-wrap: wrap;
-    height: 9.5rem;
+    height: 12.25rem;
+
+    @include tablet {
+      flex-wrap: nowrap;
+      flex-direction: row;
+      height: auto;
+    }
+
+    &--secondary {
+      height: 9.7rem;
+      gap: 0.2rem;
+
+      @include tablet {
+      }
+    }
 
     @include tablet {
       flex-direction: row;
@@ -30,23 +45,58 @@
   }
 
   &__container {
-    box-sizing: border-box;
-    width: 44%;
-    max-width: 8.5rem;
-
-    &--edit {
-      @include flex-container(row, flex-end, center);
-      gap: 1rem;
-      width: 6rem;
-    }
+    width: 46%;
 
     @include tablet {
-      box-sizing: content-box;
-      max-width: 7.2rem;
+      width: auto;
+      // SPACING FOR WAREHOUSES
+      &:nth-child(1) {
+        flex: 1.5;
+      }
+      &:nth-child(2) {
+        flex: 1.35;
+      }
+      &:nth-child(4) {
+        flex: 1.25;
+      }
+      &:nth-child(5) {
+        flex: 2;
+      }
     }
 
-    @include desktop {
-      max-width: 13rem;
+    &--secondary {
+      // SPACING FOR INVENTORY
+      @include tablet {
+        &:nth-child(1) {
+          flex: 1.35;
+        }
+        &:nth-child(2) {
+          flex: 1;
+        }
+        &:nth-child(4) {
+          flex: 1;
+        }
+        &:nth-child(5) {
+          flex: 0.48;
+        }
+        &:nth-child(6) {
+          flex: 1.2;
+        }
+      }
+    }
+
+    &--hidden {
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--actions {
+      @include flex-container(row, flex-end, center);
+
+      @include tablet {
+        flex: 0 0 auto;
+      }
     }
   }
 
@@ -81,8 +131,23 @@
     }
 
     @include tablet {
+      max-width: 85%;
       font-size: $p2-text-size;
       line-height: $p2-line-height;
+    }
+  }
+
+  &__status {
+    @include stock-tag;
+
+    &--out-of-stock {
+      color: $Red;
+      background-color: rgba($Red, 0.07);
+    }
+
+    &--in-stock {
+      color: $Green;
+      background-color: rgba($Green, 0.07);
     }
   }
 
@@ -114,6 +179,8 @@
       display: none;
 
       @include tablet {
+        position: relative;
+        right: 1rem;
         display: block;
       }
     }
