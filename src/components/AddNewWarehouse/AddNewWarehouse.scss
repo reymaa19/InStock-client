@@ -12,7 +12,7 @@
     gap: 1rem;
     border-bottom: 0.0625rem solid $Cloud;
     width: 100%;
-    padding: 1rem;
+    padding: 1.5rem 2rem;
   }
   &__title {
     font-weight: $font-weight-semi-bold600;
@@ -28,6 +28,7 @@
     flex-direction: column;
     font-size: $m-h2-text-size;
     line-height: $m-h2-line-height;
+    padding:1rem 1rem;
     &__container {
       @include tablet {
         font-size: $h1-text-size;
