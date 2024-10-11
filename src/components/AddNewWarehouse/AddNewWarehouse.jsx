@@ -343,7 +343,7 @@ const AddNewWarehouse = () => {
               Cancel
             </button>
             <button type="submit" className="details__button">
-              Add New Warehouse
+              + Add Warehouse
             </button>
           </div>
 
