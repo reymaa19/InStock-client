@@ -19,6 +19,7 @@
 
   &__container {
     width: 100%;
+    height: fit-content;
 
     @include tablet {
       justify-content: flex-start;
@@ -76,11 +77,13 @@
       width: 170%;
     }
     &--top-row {
-      margin-bottom: 1.5rem;
       @include tablet {
-        font-size: $p2-text-size;
-        line-height: $p2-line-height;
-        width: 170%;
+        margin-bottom: 1.5rem;
+      }
+    }
+    &--bottom-row {
+      @include tablet {
+        margin-bottom: 0.5rem;
       }
     }
   }

@@ -9,7 +9,6 @@ import {
 
 function InventoryDetailsPage(details) {
     const params = useParams();
-    const [search, setSearch] = useState("");
     const [inventory, setInventory] = useState([]);
     const [selectedInventory, setSelectedInventory] = useState([])
     const [id, setId] = useState("");
@@ -22,6 +21,7 @@ function InventoryDetailsPage(details) {
         console.log("my inventory item is ", response.data);
         setId(params.id);
       };
+    
       fetchSingleInventory();
     }, [params.id]);
 
