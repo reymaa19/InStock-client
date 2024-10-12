@@ -16,6 +16,8 @@ import "./AddEditInventory.scss";
 const AddEditForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [warehouseOptions, setWarehouseOptions] = useState([]);
+  const [error, setError] = useState({});
   const [values, setValues] = useState({
     warehouse_id: "",
     item_name: "",
@@ -24,8 +26,6 @@ const AddEditForm = () => {
     status: "Out of Stock",
     quantity: 0,
   });
-  const [warehouseOptions, setWarehouseOptions] = useState([]);
-  const [error, setError] = useState({});
 
   useEffect(() => {
     const fetchInventoryItem = async () => {
@@ -74,7 +74,15 @@ const AddEditForm = () => {
       if (values.warehouse_id === "") updatedData.warehouse_id = 1;
       const response = await updateInventoryItem(id, updatedData);
       if (response == "OK") return navigate("/inventory");
-      return response;
+      else {
+        setError(
+          response.data.errors.reduce((errors, message) => {
+            const { path, msg } = message;
+            errors[path] = msg;
+            return errors;
+          }, {}),
+        );
+      }
     } else {
       const result = await addInventoryItem(
         values.warehouse_id === 0 ? { ...values, warehouse_id: 1 } : values,
