@@ -47,6 +47,7 @@
 
       @include tablet {
         padding: 0 0 0 3rem;
+        margin-top: 0;
         justify-content: space-around;
         border-left: 1px solid $Cloud;
       }
@@ -130,10 +131,11 @@
     width: 1.75rem;
     height: 1.75rem;
     border-radius: 50%;
-    display: flex;
+    //display: flex;
     justify-content: center;
 
     @include tablet {
+      display: flex;
       width: 5.0625rem;
       height: 2.375rem;
       border-radius: 1.25rem;
@@ -146,6 +148,7 @@
   &__edit {
     filter: brightness(0) invert(1);
     width: 70%;
+    margin: 0.25rem 0 0 0.25rem;
 
     &-text {
       display: none;
