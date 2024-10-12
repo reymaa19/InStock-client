@@ -57,17 +57,17 @@ const AddNewWarehouse = () => {
       }
     });
     // Validate phone number
-    if (
-      formData.contact_phone &&
-      !validatePhoneNumber(formData.contact_phone, "any", { strict: false })
+    // if (formData.contact_phone &&!validatePhoneNumber(formData.contact_phone, "any", { strict: false })
+    if (formData.contact_phone &&!validatePhoneNumber(formData.contact_phone, "any", { strict: false })
+
     ) {
       newErrors.contact_phone =
-        "Phone number is invalid. Please enter a valid one (e.g., +1 (123) 456-7890)";
+        "Phone number is invalid. Please enter a valid Phone Number (e.g., +1 (123) 456-7890)";
     }
     // Validate email
     if (formData.contact_email && !validateEmail(formData.contact_email)) {
       newErrors.contact_email =
-        "Email is invalid. Please enter a valid one (e.g., example@example.com)";
+        "Email is invalid. Please enter a valid Email (e.g., example@example.com)";
     }
 
     setErrors(newErrors);
@@ -118,7 +118,7 @@ const AddNewWarehouse = () => {
           <h1 className="add-warehouse__title">Add New Warehouse</h1>
         </div>
 
-        <form className="details" onSubmit={handleSubmit}>
+        <form className="details" onSubmit={handleSubmit} noValidate>
           <div className="details__container">
             <div className="details__address">
               <h2 className="details__address-name">Warehouse Details</h2>
