@@ -1,7 +1,6 @@
 import "./EditWarehouse.scss";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { handleNav } from "../../utils/utils";
 import arrowBackIcon from "../../assets/images/icons/navigation/arrow_back-24px.svg";
 import errorIcon from "../../assets/images/icons/notification/error-24px.svg";
 import {
@@ -9,8 +8,11 @@ import {
   editSingleWarehouse,
 } from "../../services/warehouse-api";
 import {
+  handleNav,
   validateRequiredFields,
   validateRequiredField,
+  validatePhoneNumber,
+  validateEmail,
 } from "../../utils/utils";
 
 function EditWarehouse() {
@@ -62,7 +64,25 @@ function EditWarehouse() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const foundError = validateRequiredFields(values);
+    let foundError = {};
+
+    //validate phone number
+    const phoneValid = validatePhoneNumber(values.contact_phone);
+    if (!phoneValid) {
+      foundError.contact_phone =
+        "Phone number is invalid. Please enter a valid one (e.g., +1 (123) 456-7890)";
+    }
+
+    //validate email
+    const emailValid = validateEmail(values.contact_email);
+    if (!emailValid) {
+      foundError.contact_email =
+        "Email is invalid. Please enter a valid one (e.g., example@example.com)";
+    }
+
+    //validate other required fields
+    const requiredFieldsError = validateRequiredFields(values);
+    foundError = { ...foundError, ...requiredFieldsError };
 
     //if there are any validation errors
     //set the error state and prevent submission
