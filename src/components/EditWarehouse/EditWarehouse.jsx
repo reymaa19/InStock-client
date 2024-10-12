@@ -64,7 +64,6 @@ function EditWarehouse() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const foundError = validateRequiredFields(values);
     let foundError = {};
 
     //validate phone number
