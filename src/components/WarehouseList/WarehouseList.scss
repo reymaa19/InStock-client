@@ -1,0 +1,58 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.warehouse-list {
+  &__container {
+    display: none;
+    padding: 1rem 2rem;
+    background-color: $Light-Grey;
+    position: relative;
+    top: 1px;
+
+    @include tablet {
+      @include flex-container(row, space-between);
+    }
+  }
+
+  &__header {
+    display: none;
+    color: $Slate;
+    font-size: $m-h4-text-size;
+    line-height: $m-h4-line-height;
+    font-weight: $font-weight-semi-bold600;
+
+    @include tablet {
+      display: inline-flex;
+      font-size: $h4-text-size;
+      line-height: $h4-line-height;
+      text-wrap: nowrap;
+
+      &:nth-child(1) {
+        flex: 1.5;
+      }
+      &:nth-child(2) {
+        flex: 1.5;
+      }
+      &:nth-child(3) {
+        flex: 1.25;
+      }
+      &:nth-child(4) {
+        flex: 2;
+      }
+      &:last-child {
+        flex: 0 0 auto;
+      }
+    }
+  }
+
+  &__sort {
+    padding-left: 0.25rem;
+    height: 1rem;
+    width: 1rem;
+    align-content: baseline;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

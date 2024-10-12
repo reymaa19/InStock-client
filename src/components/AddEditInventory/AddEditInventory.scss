@@ -2,6 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 .inventory-form {
+  height: 100vh;
   background-color: $Light-Grey;
   padding: 0 1rem;
 
@@ -217,7 +218,7 @@
       background-image: url("../../assets/images/icons/navigation/arrow_drop_down-24px.svg");
       color: #000;
 
-      &:not(:focus):not([value=""]) {
+      &:invalid {
         color: #999;
       }
     }

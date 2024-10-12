@@ -5,7 +5,7 @@ import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage/HomePage";
 import WarehouseInventoryPage from "./pages/WarehouseInventoryPage/WarehouseInventoryPage";
 import AddNewWarehouse from "./components/AddNewWarehouse/AddNewWarehouse";
-import EditWarehouse from "./components/EditWarehouse/EditWarehouse.jsx";
+import EditWarehouse from "./components/EditWarehouse/EditWarehouse";
 import AddEditInventory from "./components/AddEditInventory/AddEditInventory";
 import InventoryDetailsPage from "./pages/InventoryDetailsPage/InventoryDetailsPage";
 
@@ -14,12 +14,14 @@ const App = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<HomePage type={"warehouse"} />} />
-        <Route path="/warehouse" element={<HomePage type="warehouse" />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/warehouse" element={<HomePage />} />
         <Route path="/warehouse/:id" element={<WarehouseInventoryPage />} />
         <Route path="/warehouse/add" element={<AddNewWarehouse />} />
         <Route path="/warehouse/edit/:id" element={<EditWarehouse />} />
-        <Route path="/inventory" element={<HomePage type="inventory" />} />
+
+        <Route path="/inventory" element={<HomePage />} />
+        <Route path="/inventory/:id" element={<InventoryDetailsPage />} />
         <Route path="/inventory/add" element={<AddEditInventory />} />
         <Route path="/inventory/:id" element={<InventoryDetailsPage />} />
         <Route path="/inventory/edit/:id" element={<AddEditInventory />} />

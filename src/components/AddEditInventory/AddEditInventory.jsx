@@ -21,7 +21,7 @@ const AddEditForm = () => {
     item_name: "",
     description: "",
     category: "",
-    status: "",
+    status: "Out of Stock",
     quantity: 0,
   });
   const [warehouseOptions, setWarehouseOptions] = useState([]);
@@ -153,12 +153,12 @@ const AddEditForm = () => {
               name="category"
               value={values.category}
               onChange={handleChange}
+              required
             >
               <option
                 value=""
                 disabled
                 hidden
-                default
                 className="inventory-form__option"
               >
                 Please select
@@ -230,6 +230,7 @@ const AddEditForm = () => {
               name="warehouse_id"
               value={values.warehouse_id}
               onChange={handleChange}
+              required
             >
               <option
                 value=""
