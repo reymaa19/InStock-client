@@ -64,10 +64,21 @@ export async function addWarehouse(warehouseData) {
   }
 }
 
+export async function getWarehouseInventory(id) {
+  try {
+    const url = `${BASE_URL}/warehouses/${id}/inventories`;
+    const response = await axios.get(url);
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+}
+
 export default {
   getWarehouses,
   deleteWarehouse,
   getSingleWarehouse,
   editSingleWarehouse,
   addWarehouse,
+  getWarehouseInventory,
 };

@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import "./WarehouseDetails.scss";
 import arrow from "../../assets/images/icons/navigation/arrow_back-24px.svg";
-import editHeader from "../../assets/images/icons/action/edit-24px.svg";
+import editIcon from "../../assets/images/icons/action/edit-24px.svg";
+import InventoryList from "../InventoryList/InventoryList";
 
-function WarehouseDetails(details) {
-  const warehouse = details.details;
+function WarehouseDetails({ details }) {
+  const warehouse = details;
+
+  const HEADERS = ["INVENTORY ITEM", "CATEGORY", "STATUS", "QUANTITY"];
+
   return (
     <div className="details">
       <div className="nav">
@@ -15,11 +19,7 @@ function WarehouseDetails(details) {
         <div className="nav__end">
           <Link to={`/warehouse/edit/${warehouse.id}`} className="nav__link">
             <div className="nav__color">
-              <img
-                className="nav__edit"
-                src={editHeader}
-                alt="Edit Warehouse"
-              />
+              <img className="nav__edit" src={editIcon} alt="Edit Warehouse" />
               <p className="nav__edit-text">Edit</p>
             </div>
           </Link>
@@ -47,6 +47,7 @@ function WarehouseDetails(details) {
           </div>
         </div>
       </div>
+      <InventoryList headers={HEADERS} warehouse={warehouse.id} />
     </div>
   );
 }

@@ -4,35 +4,24 @@ import "./ListItem.scss";
 import chevronRight from "../../assets/images/icons/navigation/chevron_right-24px.svg";
 import DeleteModal from "../../components/DeleteModal/DeleteModal.jsx";
 
-function ListItem({
-  headers,
-  item,
-  fetchItems,
-  inventories = [],
-  warehouses = [],
-}) {
+function ListItem({ headers, item, fetchItems, type, warehouseName }) {
   const [isOpen, setIsOpen] = useState(false);
-  const type = inventories.length === 0 ? "inventory" : "warehouse";
-  const isInventory = type === "inventory";
+  const isInventory = type === "inventory" || type === "warehouse-inventory";
 
-  const handleCloseModal = (deleted = false) => {
-    if (deleted) fetchItems();
+  const handleCloseModal = (isDeleted = false) => {
+    if (isDeleted) fetchItems();
     setIsOpen(false);
   };
 
   return (
     <div className="list-item">
-      <div
-        className={`list-item__wrapper ${isInventory ? "list-item__wrapper--secondary" : ""}`}
-      >
-        <div
-          className={`list-item__container ${isInventory ? "list-item__container--secondary" : ""}`}
-        >
+      <div className={`list-item__wrapper list-item__wrapper--${type}`}>
+        <div className={`list-item__container list-item__container--${type}`}>
           <h4 className="list-item__header">{headers[0]}</h4>
           <Link
             className="list-item__value list-item__value--link"
             key={item.id}
-            to={`/${type}/${item.id}`}
+            to={`/${isInventory ? "inventory" : "warehouse"}/${item.id}`}
           >
             {isInventory ? item.item_name : item.warehouse_name}
             <img
@@ -43,9 +32,7 @@ function ListItem({
           </Link>
         </div>
 
-        <div
-          className={`list-item__container ${isInventory ? "list-item__container--secondary" : ""}`}
-        >
+        <div className={`list-item__container list-item__container--${type}`}>
           <h4 className="list-item__header">{headers[1]}</h4>
           <p className="list-item__value">
             {isInventory
@@ -54,18 +41,14 @@ function ListItem({
           </p>
         </div>
 
-        <div
-          className={`list-item__container ${isInventory ? "list-item__container--hidden" : ""}`}
-        >
+        <div className="list-item__container list-item__container--hidden">
           <button
             className={`list-item__button list-item__button--delete`}
             onClick={() => setIsOpen(true)}
           />
         </div>
 
-        <div
-          className={`list-item__container ${isInventory ? "list-item__container--secondary" : ""}`}
-        >
+        <div className={`list-item__container list-item__container--${type}`}>
           <h4 className="list-item__header">{headers[2]}</h4>
           {isInventory ? (
             <p
@@ -78,9 +61,7 @@ function ListItem({
           )}
         </div>
 
-        <div
-          className={`list-item__container ${isInventory ? "list-item__container--secondary" : ""}`}
-        >
+        <div className={`list-item__container list-item__container--${type}`}>
           <h4 className="list-item__header">{headers[3]}</h4>
           <p className="list-item__value">
             {isInventory
@@ -89,21 +70,14 @@ function ListItem({
           </p>
         </div>
 
-        {isInventory && (
-          <div
-            className={`list-item__container list-item__container--secondary`}
-          >
+        {headers[4] && (
+          <div className={`list-item__container list-item__container--${type}`}>
             <h4 className="list-item__header">{headers[4]}</h4>
-            <p className="list-item__value">
-              {
-                warehouses.find(({ id }) => id === item.warehouse_id)
-                  ?.warehouse_name
-              }
-            </p>
+            <p className="list-item__value">{warehouseName}</p>
           </div>
         )}
 
-        <div className="list-item__container list-item__container--actions">
+        <div className="list-item__container list-item__container--action">
           <button
             className="list-item__button list-item__button--delete list-item__button--primary"
             onClick={() => setIsOpen(true)}
@@ -120,7 +94,7 @@ function ListItem({
           closeModal={handleCloseModal}
           id={item.id}
           name={isInventory ? item.item_name : item.warehouse_name}
-          type={type}
+          type={isInventory ? "inventory" : "warehouse"}
         />
       )}
     </div>
