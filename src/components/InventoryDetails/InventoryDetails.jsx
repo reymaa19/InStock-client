@@ -8,7 +8,7 @@ function InventoryDetails(details) {
   return (
     <div className="details">
       <div className="nav">
-        <Link to="/inventory" className="nav__link">
+        <Link to="/inventory" className="nav__link nav__arrow-link">
           <img className="nav__arrow" src={arrow} alt="Return to Inventory" />
         </Link>
         <h1 className="nav__name">{inventory.item_name}</h1>
@@ -29,7 +29,7 @@ function InventoryDetails(details) {
         <div className="details__wrapper">
           <div className="details__container details__container--left">
             <h4 className="details__header">ITEM DESCRIPTION:</h4>
-            <p className="details__value">{`${inventory.description}`}</p>
+            <p className="details__value--top-row">{`${inventory.description}`}</p>
             <h4 className="details__header">CATEGORY:</h4>
             <p className="details__value">{`${inventory.category}`}</p>
           </div>
@@ -37,14 +37,14 @@ function InventoryDetails(details) {
         <div className="details__wrapper details__wrapper--right">
           <div className="details__container">
             <h4 className="details__header">STATUS:</h4>
-            <p className="details__value">{inventory.status}</p>
+            <p className="details__value--top-row">{inventory.status}</p>
             
             <h4 className="details__header">WAREHOUSE:</h4>
             <p className="details__value">{inventory.warehouse_id}</p>
           </div>
           <div className="details__container">
             <h4 className="details__header">QUANTITY:</h4>
-            <p className="details__value">{inventory.quantity}</p>
+            <p className="details__value--top-row">{inventory.quantity}</p>
         </div>
       </div>
     </div>

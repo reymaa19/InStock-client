@@ -22,9 +22,9 @@
 
     @include tablet {
       justify-content: flex-start;
-      //align-items: stretch;
       gap: 1rem;
       width: 50%;
+      margin-left: 2rem;
     }
 
     &--left {
@@ -73,7 +73,15 @@
     @include tablet {
       font-size: $p2-text-size;
       line-height: $p2-line-height;
-      width: 180%;
+      width: 170%;
+    }
+    &--top-row {
+      margin-bottom: 1.5rem;
+      @include tablet {
+        font-size: $p2-text-size;
+        line-height: $p2-line-height;
+        width: 170%;
+      }
     }
   }
 }
@@ -83,6 +91,13 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid $Cloud;
+  
+  &__arrow-link {
+    margin-top: 0.5rem;
+    @include tablet {
+      margin-left: 2rem;
+    }
+  }
 
   &__name {
     text-align: left;
@@ -96,8 +111,6 @@
     @include tablet {
       font-size: $h1-text-size;
       line-height: $h1-line-height;
-    }
-    @include desktop {
     }
   }
   &__end {
@@ -120,6 +133,7 @@
       border-radius: 1.25rem;
       justify-content: space-evenly;
       align-items: center;
+      margin-right: 2rem;
     }
   }
 
@@ -136,12 +150,14 @@
         font-size: $p2-text-size;
         line-height: $p2-line-height;
         font-weight: $font-weight-semi-bold600;
+        margin-left: 0.35rem;
       }
     }
 
     @include tablet {
       width: 0.9375rem;
       height: 0.9375rem;
+      //margin-right: 2rem;
     }
   }
 }
