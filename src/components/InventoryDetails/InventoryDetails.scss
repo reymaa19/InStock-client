@@ -6,7 +6,6 @@
   &__inventory {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
     padding: 1.5rem 1rem;
     border-bottom: 1px solid $Cloud;
 
@@ -94,7 +93,7 @@
 }
 
 .nav {
-  padding: 1rem;
+  padding: 1.5rem;
   display: flex;
   align-items: center;
   border-bottom: 1px solid $Cloud;
