@@ -52,6 +52,7 @@ const AddEditForm = () => {
 
     if (name === "status" && value === "Out of Stock")
       setValues({ ...values, warehouse_id: "", quantity: 0, [name]: value });
+    else if (name === "quantity" && isNaN(value)) return;
     else setValues({ ...values, [name]: value });
   };
 
@@ -178,7 +179,7 @@ const AddEditForm = () => {
         </div>
         <div className="inventory-form__wrapper--section inventory-form__wrapper--right">
           <h2 className="inventory-form__section-header">Item Availability</h2>
-          <label htmlFor="status" className="inventory-form__label">
+          <div className="inventory-form__label">
             Status
             <div className="inventory-form__wrapper--radio">
               <label
@@ -221,7 +222,7 @@ const AddEditForm = () => {
               </label>
             </div>
             {errorNotification(error.status)}
-          </label>
+          </div>
           <label htmlFor="warehouse" className="inventory-form__label">
             Warehouse
             <select
@@ -236,7 +237,6 @@ const AddEditForm = () => {
                 value=""
                 disabled
                 hidden
-                default
                 className="inventory-form__option"
               >
                 please select
@@ -262,7 +262,6 @@ const AddEditForm = () => {
                 name="quantity"
                 value={values.quantity}
                 onChange={handleChange}
-                type="number"
               />
               {errorNotification(error.quantity)}
             </label>
