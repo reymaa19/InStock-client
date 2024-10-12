@@ -14,13 +14,13 @@ const App = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<HomePage type={"warehouse"} />} />
-        <Route path="/warehouse" element={<HomePage type="warehouse" />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/warehouse" element={<HomePage />} />
         <Route path="/warehouse/:id" element={<WarehouseInventoryPage />} />
         <Route path="/warehouse/add" element={<AddNewWarehouse />} />
         <Route path="/warehouse/edit/:id" element={<EditWarehouse />} />
 
-        <Route path="/inventory" element={<HomePage type="inventory" />} />
+        <Route path="/inventory" element={<HomePage />} />
         <Route path="/inventory/:id" element={<InventoryDetailsPage />} />
         <Route path="/inventory/add" element={<AddEditInventory />} />
         <Route path="/inventory/:id" element={<InventoryDetailsPage />} />
