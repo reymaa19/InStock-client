@@ -278,6 +278,7 @@ const AddEditForm = () => {
         <button
           type="submit"
           className="inventory-form__button inventory-form__button--primary"
+          formNoValidate
         >
           {id ? "Save" : "+ Add Item"}
         </button>
