@@ -13,11 +13,16 @@ function WarehouseDetails(details) {
         </Link>
         <h1 className="nav__name">{warehouse.warehouse_name}</h1>
         <div className="nav__end">
-          <div className="nav__color">
-            <img className="nav__edit" src={editHeader} alt="Edit Warehouse" />
-
-            <p className="nav__edit-text">Edit</p>
-          </div>
+          <Link to={`/warehouse/edit/${warehouse.id}`} className="nav__link">
+            <div className="nav__color">
+              <img
+                className="nav__edit"
+                src={editHeader}
+                alt="Edit Warehouse"
+              />
+              <p className="nav__edit-text">Edit</p>
+            </div>
+          </Link>
         </div>
       </div>
       <div className="details__warehouse">

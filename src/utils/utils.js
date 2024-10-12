@@ -1,24 +1,36 @@
 // Contains reusable helper functions to keep components clean, improve maintainability, and avoid code duplication.
 
-// Formats the timestamp to a more human-readable format.
-export const formatTimestamp = (timestamp) => {
-  const difference = Math.floor(new Date() - new Date(timestamp)) / 1000;
-  const timeUnits = [
-    { name: "year", seconds: 12 * 30.437 * 24 * 60 * 60 },
-    { name: "month", seconds: 30.437 * 24 * 60 * 60 },
-    { name: "day", seconds: 24 * 60 * 60 },
-    { name: "hour", seconds: 60 * 60 },
-    { name: "minute", seconds: 60 },
-  ];
+// Validates all the passed in required form fields
+export const validateRequiredFields = (fields) => {
+  const foundErrors = {};
 
-  if (difference < 60) return "Just now";
+  for (const [key, value] of Object.entries(fields))
+    if (value === "")
+      foundErrors[key] =
+        key
+          .trim()
+          .replace("id", "")
+          .split("_")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ") + " is required";
 
-  for (const unit of timeUnits) {
-    if (difference >= unit.seconds) {
-      const value = Math.floor(difference / unit.seconds);
-      return `${value} ${unit.name}${value > 1 ? "s" : ""} ago`;
-    }
-  }
+  return foundErrors;
+};
+
+export const validateRequiredField = (field) => {
+  const { name, value } = field;
+
+  if (value === "")
+    return (
+      name
+        .trim()
+        .replace("id", "")
+        .split("_")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ") + " is required"
+    );
+
+  return false;
 };
 
 // Scrolls to top of page.
@@ -31,4 +43,23 @@ export const sortByLatest = (data) => {
   return data.sort((a, b) => {
     return new Date(b.timestamp) - new Date(a.timestamp);
   });
+};
+
+// navigation function
+export const handleNav = (navigation, path) => {
+  navigation(path);
+};
+
+
+export const validatePhoneNumber = (phoneNumber) => {
+  return String(phoneNumber)
+    .toLowerCase()
+    .match(/^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/);
+};
+export const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    );
 };

@@ -33,7 +33,10 @@
   width: 100%;
   font-size: 0.8125rem;
   line-height: 1.25rem;
-  color: white;
+  text-align: center;
+  text-decoration: none;
+  align-content: center;
+  color: $White;
   background-color: $Instock-Indigo;
   border-radius: 1.25rem;
 
@@ -50,7 +53,7 @@
   }
 }
 
-@mixin search-field {
+@mixin form-field {
   padding: 0 1rem;
   height: 2.25rem;
   font-size: 0.8125rem;
@@ -59,7 +62,6 @@
   background-color: white;
   border-radius: 1.25rem;
   border: 0.0625rem solid $Cloud;
-  background-image: url("../../assets/images/icons/action/search-24px.svg");
   background-repeat: no-repeat;
   background-position: right 1rem center;
 
@@ -99,5 +101,24 @@
 
   @include desktop {
     width: 1020px;
+  }
+}
+
+@mixin stock-tag {
+  padding: 0 0.5rem;
+  width: fit-content;
+  height: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  align-content: center;
+  font-size: $m-h4-text-size;
+  line-height: $m-h4-line-height;
+  font-weight: $font-weight-semi-bold600;
+  border-radius: 1.25rem;
+
+  @include tablet {
+    height: 1.625rem;
+    font-size: $h4-text-size;
+    line-height: $h4-line-height;
   }
 }

@@ -15,13 +15,10 @@
     );
 
     @include tablet {
-      padding: 1rem 1rem 6.5rem 1rem;
-      @include flex-container($justify: space-between);
-    }
-
-    @include desktop {
-      max-width: 68rem;
+      padding: 1rem 2rem 6.5rem 1rem;
+      max-width: 66rem;
       margin: 0 auto;
+      @include flex-container($justify: space-between);
     }
   }
 
@@ -49,8 +46,6 @@
 
     @include flex-container($justify: center, $align: center);
 
-    @include tablet {
-    }
     &:hover {
       color: $White;
       text-decoration: underline;
@@ -64,6 +59,12 @@
 
     &:visited {
       text-decoration: none;
+    }
+
+    &--active {
+      color: $White;
+      border-radius: 20px;
+      background-color: $Instock-Black;
     }
   }
 }
