@@ -43,6 +43,7 @@
       width: 100%;
       gap: 1rem;
       padding-top: 2rem;
+      margin-top: -1rem;
 
       @include tablet {
         padding: 0 0 0 3rem;
@@ -57,6 +58,7 @@
     color: $Slate;
     line-height: $m-h4-line-height;
     font-weight: $font-weight-semi-bold600;
+    margin-bottom: 0.35rem;
 
     @include tablet {
       font-size: $h4-text-size;
@@ -77,6 +79,7 @@
       width: 170%;
     }
     &--top-row {
+      margin-bottom: 1.25rem;
       @include tablet {
         margin-bottom: 1.5rem;
       }
