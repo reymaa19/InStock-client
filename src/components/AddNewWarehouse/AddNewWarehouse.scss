@@ -12,7 +12,7 @@
     gap: 1rem;
     border-bottom: 0.0625rem solid $Cloud;
     width: 100%;
-    padding: 1rem;
+    padding: 1.5rem 2rem;
   }
   &__title {
     font-weight: $font-weight-semi-bold600;
@@ -29,6 +29,8 @@
     font-size: $m-h2-text-size;
     line-height: $m-h2-line-height;
     &__container {
+      padding-right:1rem;
+      padding-left:1rem;
       @include tablet {
         font-size: $h1-text-size;
         line-height: $h1-line-height;
@@ -40,7 +42,6 @@
     }
     &__error {
       color: $Red;
-      display: flex;
       align-items: center;
 
       &-icon {
@@ -91,6 +92,7 @@
         font-size: $m-h3-text-size;
         &.error {
           border-color: $Red;
+
         }
         @include tablet{
           font-size: $h3-text-size;

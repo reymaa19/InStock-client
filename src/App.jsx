@@ -23,6 +23,7 @@ const App = () => {
         <Route path="/inventory" element={<HomePage type="inventory" />} />
         <Route path="/inventory/:id" element={<InventoryDetailsPage />} />
         <Route path="/inventory/add" element={<AddEditInventory />} />
+        <Route path="/inventory/:id" element={<InventoryDetailsPage />} />
         <Route path="/inventory/edit/:id" element={<AddEditInventory />} />
       </Routes>
       <Footer />

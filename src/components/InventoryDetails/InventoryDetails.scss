@@ -19,12 +19,13 @@
 
   &__container {
     width: 100%;
+    height: fit-content;
 
     @include tablet {
       justify-content: flex-start;
-      align-items: stretch;
       gap: 1rem;
       width: 50%;
+      margin-left: 2rem;
     }
 
     &--left {
@@ -42,9 +43,11 @@
       width: 100%;
       gap: 1rem;
       padding-top: 2rem;
+      margin-top: -1rem;
 
       @include tablet {
         padding: 0 0 0 3rem;
+        margin-top: 0;
         justify-content: space-around;
         border-left: 1px solid $Cloud;
       }
@@ -56,6 +59,7 @@
     color: $Slate;
     line-height: $m-h4-line-height;
     font-weight: $font-weight-semi-bold600;
+    margin-bottom: 0.35rem;
 
     @include tablet {
       font-size: $h4-text-size;
@@ -73,6 +77,18 @@
     @include tablet {
       font-size: $p2-text-size;
       line-height: $p2-line-height;
+      width: 170%;
+    }
+    &--top-row {
+      margin-bottom: 1.25rem;
+      @include tablet {
+        margin-bottom: 1.5rem;
+      }
+    }
+    &--bottom-row {
+      @include tablet {
+        margin-bottom: 0.5rem;
+      }
     }
   }
 }
@@ -82,6 +98,13 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid $Cloud;
+  
+  &__arrow-link {
+    margin-top: 0.5rem;
+    @include tablet {
+      margin-left: 2rem;
+    }
+  }
 
   &__name {
     text-align: left;
@@ -90,6 +113,7 @@
     line-height: $m-h2-line-height;
     font-weight: $font-weight-semi-bold600;
     color: $Instock-Black;
+    width: 100%;
 
     @include tablet {
       font-size: $h1-text-size;
@@ -107,21 +131,24 @@
     width: 1.75rem;
     height: 1.75rem;
     border-radius: 50%;
-    display: flex;
+    //display: flex;
     justify-content: center;
 
     @include tablet {
+      display: flex;
       width: 5.0625rem;
       height: 2.375rem;
       border-radius: 1.25rem;
       justify-content: space-evenly;
       align-items: center;
+      margin-right: 2rem;
     }
   }
 
   &__edit {
     filter: brightness(0) invert(1);
     width: 70%;
+    margin: 0.25rem 0 0 0.25rem;
 
     &-text {
       display: none;
@@ -132,12 +159,14 @@
         font-size: $p2-text-size;
         line-height: $p2-line-height;
         font-weight: $font-weight-semi-bold600;
+        margin-left: 0.35rem;
       }
     }
 
     @include tablet {
       width: 0.9375rem;
       height: 0.9375rem;
+      //margin-right: 2rem;
     }
   }
 }
