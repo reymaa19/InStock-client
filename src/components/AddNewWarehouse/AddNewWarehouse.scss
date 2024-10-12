@@ -83,20 +83,20 @@
 
       }
       &-input {
-        border-radius: 1.25rem;
-        height: 2.25rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        border: 0.0625rem solid $Cloud;
-        font-family: $primary-font;
-        font-size: $m-h3-text-size;
+        @include reset-field;
+        @include form-field;
+
         &.error {
           border-color: $Red;
 
         }
-        @include tablet{
-          font-size: $h3-text-size;
+        @include tablet {
+          width: 100%;
         }
+       
+        // @include tablet{
+        //   font-size: $h3-text-size;
+        // }
       }
     }
     &__address{
