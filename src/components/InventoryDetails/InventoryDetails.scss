@@ -22,7 +22,7 @@
 
     @include tablet {
       justify-content: flex-start;
-      align-items: stretch;
+      //align-items: stretch;
       gap: 1rem;
       width: 50%;
     }
@@ -73,6 +73,7 @@
     @include tablet {
       font-size: $p2-text-size;
       line-height: $p2-line-height;
+      width: 180%;
     }
   }
 }
@@ -90,10 +91,13 @@
     line-height: $m-h2-line-height;
     font-weight: $font-weight-semi-bold600;
     color: $Instock-Black;
+    width: 100%;
 
     @include tablet {
       font-size: $h1-text-size;
       line-height: $h1-line-height;
+    }
+    @include desktop {
     }
   }
   &__end {
