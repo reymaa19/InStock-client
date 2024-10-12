@@ -109,7 +109,7 @@ const AddEditForm = () => {
   return (
     <form className="inventory-form" onSubmit={handleFormSubmit}>
       <div className="inventory-form__wrapper inventory-form__wrapper--header">
-        <Link className="inventory-form__back-button" to="/inventory" />
+        <Link className="inventory-form__back-button" to={-1} />
         <h1 className="inventory-form__header">
           {id ? "Edit Inventory Item" : "Add New Inventory Item"}
         </h1>
@@ -269,13 +269,12 @@ const AddEditForm = () => {
         </div>
       </div>
       <div className="inventory-form__wrapper inventory-form__wrapper--options">
-        <button
-          type="button"
+        <Link
           className="inventory-form__button inventory-form__button--secondary"
-          onClick={() => navigate("/inventory")}
+          to={-1}
         >
           Cancel
-        </button>
+        </Link>
         <button
           type="submit"
           className="inventory-form__button inventory-form__button--primary"
