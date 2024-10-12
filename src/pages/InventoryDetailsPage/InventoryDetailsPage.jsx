@@ -1,33 +1,20 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "./InventoryDetailsPage.scss";
+import { getSingleItem } from "../../services/inventory-api.js";
 import InventoryDetails from "../../components/InventoryDetails/InventoryDetails.jsx";
-import { getInventory, getSingleItem } from "../../services/inventory-api.js";
+import "./InventoryDetailsPage.scss";
 
-function InventoryDetailsPage(details) {
-  const params = useParams();
-  const [inventory, setInventory] = useState([]);
+function InventoryDetailsPage() {
+  const { id } = useParams();
   const [selectedInventory, setSelectedInventory] = useState([]);
-  const [id, setId] = useState("");
-
-  useState(() => {
-    setId(params.id);
-    const fetchSingleInventory = async () => {
-      const response = await getSingleItem(params.id);
-      setSelectedInventory(response.data);
-      console.log("my inventory item is ", response.data);
-      setId(params.id);
-    };
-
-    fetchSingleInventory();
-  }, [params.id]);
 
   useEffect(() => {
-    const fetchInventory = async () => {
-      const response = await getInventory();
-      setInventory(response.data);
+    const fetchSingleInventoryItem = async () => {
+      const response = await getSingleItem(id);
+      setSelectedInventory(response.data);
     };
-    fetchInventory();
+
+    fetchSingleInventoryItem();
   }, []);
 
   return (
