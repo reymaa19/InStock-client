@@ -48,7 +48,8 @@
 
     //* error notification style *//
     &__label {
-      font-weight: $font-weight-semi-bold600;
+      font-weight: $font-weight-regular400;
+      line-height: $p2-line-height;
 
       &--error {
         @include flex-container($align: center);
@@ -126,7 +127,7 @@
       &-label {
         font-weight: $font-weight-semi-bold600;
       }
-      
+
       &-input {
         @include reset-field;
         @include form-field;
