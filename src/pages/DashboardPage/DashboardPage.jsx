@@ -25,7 +25,7 @@ const DashboardPage = () => {
 
   return (
     <main className="main">
-      <section className="home">
+      <section className="dashboard">
         <div className="dashboard__container dashboard__container--search">
           <h1 className="dashboard__page-header">
             {isInventory ? "Inventory" : "Warehouses"}
