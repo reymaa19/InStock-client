@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./ListItem.scss";
 import chevronRight from "../../assets/images/icons/navigation/chevron_right-24px.svg";
 import DeleteModal from "../../components/DeleteModal/DeleteModal.jsx";
+import "./ListItem.scss";
 
 function ListItem({ headers, item, fetchItems, type, warehouseName }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +41,9 @@ function ListItem({ headers, item, fetchItems, type, warehouseName }) {
           </p>
         </div>
 
-        <div className="list-item__container list-item__container--hidden">
+        <div
+          className={`list-item__container list-item__container--hidden list-item__container--${type}-delete`}
+        >
           <button
             className={`list-item__button list-item__button--delete`}
             onClick={() => setIsOpen(true)}
@@ -64,9 +66,15 @@ function ListItem({ headers, item, fetchItems, type, warehouseName }) {
         <div className={`list-item__container list-item__container--${type}`}>
           <h4 className="list-item__header">{headers[3]}</h4>
           <p className="list-item__value">
-            {isInventory
-              ? item.quantity
-              : `${item.contact_phone} ${item.contact_email}`}
+            {isInventory ? (
+              item.quantity
+            ) : (
+              <>
+                {item.contact_phone}
+                <br />
+                {item.contact_email}
+              </>
+            )}
           </p>
         </div>
 
