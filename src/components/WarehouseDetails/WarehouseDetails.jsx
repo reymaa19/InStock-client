@@ -29,7 +29,7 @@ function WarehouseDetails({ details }) {
         <div className="details__wrapper">
           <div className="details__container details__container--left">
             <h4 className="details__header">WAREHOUSE ADDRESS:</h4>
-            <p className="details__value">{`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}</p>
+            <p className="details__value">{`${warehouse.address},`}<br />{`${warehouse.city}, ${warehouse.country}`}</p>
           </div>
         </div>
 
