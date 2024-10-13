@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import "./HomePage.scss";
+import "./DashboardPage.scss";
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
 import { Link } from "react-router-dom";
 import InventoryList from "../../components/InventoryList/InventoryList";
 
-const HomePage = () => {
+const DashboardPage = () => {
   const location = useLocation();
   const [search, setSearch] = useState("");
   const WAREHOUSE_HEADERS = [
@@ -57,40 +57,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
-
-//  <div className="home__container--headers">
-//    {(type === "warehouse" ? warehouseHeaders : inventoryHeaders).map(
-//      (header) => (
-//        <h4
-//          key={header}
-//          className={`home__header ${type === "inventory" ? "home__header--secondary" : ""}`}
-//        >
-//          {header}
-//          <img className="home__sort" src={unfoldMore} alt="sort" />
-//        </h4>
-//      ),
-//    )}
-//    <h4 className="home__header home__header--action">ACTION</h4>
-//  </div>
-//  {type === "warehouse" &&
-//    warehouses.map((item) => (
-//      <ListItem
-//        key={item.id}
-//        headers={warehouseHeaders}
-//        item={item}
-//        fetchItems={fetchWarehouses}
-//        inventories={inventories}
-//      />
-//    ))}
-//  {type === "inventory" &&
-//    inventories.map((item) => (
-//      <ListItem
-//        key={item.id}
-//        headers={inventoryHeaders}
-//        item={item}
-//        fetchItems={fetchInventory}
-//        warehouses={warehouses}
-//      />
-//    ))}
-//</section>
+export default DashboardPage;
