@@ -6,7 +6,6 @@
   &__inventory {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
     padding: 1.5rem 1rem;
     border-bottom: 1px solid $Cloud;
 
@@ -94,11 +93,11 @@
 }
 
 .nav {
-  padding: 1rem;
+  padding: 1.5rem;
   display: flex;
   align-items: center;
   border-bottom: 1px solid $Cloud;
-  
+
   &__arrow-link {
     margin-top: 0.5rem;
     @include tablet {
@@ -131,24 +130,22 @@
     width: 1.75rem;
     height: 1.75rem;
     border-radius: 50%;
-    //display: flex;
+    display: flex;
     justify-content: center;
 
     @include tablet {
-      display: flex;
       width: 5.0625rem;
       height: 2.375rem;
       border-radius: 1.25rem;
-      justify-content: space-evenly;
+      justify-content: center;
+      gap: 0.25rem;
       align-items: center;
-      margin-right: 2rem;
     }
   }
 
   &__edit {
     filter: brightness(0) invert(1);
     width: 70%;
-    margin: 0.25rem 0 0 0.25rem;
 
     &-text {
       display: none;
@@ -159,14 +156,12 @@
         font-size: $p2-text-size;
         line-height: $p2-line-height;
         font-weight: $font-weight-semi-bold600;
-        margin-left: 0.35rem;
       }
     }
 
     @include tablet {
       width: 0.9375rem;
       height: 0.9375rem;
-      //margin-right: 2rem;
     }
   }
 }

@@ -9,7 +9,7 @@ function Header() {
   return (
     <header className="header">
       <section className="header__container">
-        <NavLink to="/warehouse">
+        <NavLink to="/">
           <img src={logo} alt="InStock-logo" className="header__logo" />
         </NavLink>
 
@@ -17,7 +17,7 @@ function Header() {
           <NavLink
             to="/warehouse"
             className={({ isActive }) =>
-              isActive || location.pathname.startsWith("/warehouse")
+              isActive || !location.pathname.startsWith("/inventory")
                 ? "header__link header__link--active"
                 : "header__link"
             }

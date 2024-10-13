@@ -16,6 +16,8 @@ import "./AddEditInventory.scss";
 const AddEditForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [warehouseOptions, setWarehouseOptions] = useState([]);
+  const [error, setError] = useState({});
   const [values, setValues] = useState({
     warehouse_id: "",
     item_name: "",
@@ -24,8 +26,6 @@ const AddEditForm = () => {
     status: "Out of Stock",
     quantity: 0,
   });
-  const [warehouseOptions, setWarehouseOptions] = useState([]);
-  const [error, setError] = useState({});
 
   useEffect(() => {
     const fetchInventoryItem = async () => {
@@ -52,6 +52,7 @@ const AddEditForm = () => {
 
     if (name === "status" && value === "Out of Stock")
       setValues({ ...values, warehouse_id: "", quantity: 0, [name]: value });
+    else if (name === "quantity" && isNaN(value)) return;
     else setValues({ ...values, [name]: value });
   };
 
@@ -73,7 +74,15 @@ const AddEditForm = () => {
       if (values.warehouse_id === "") updatedData.warehouse_id = 1;
       const response = await updateInventoryItem(id, updatedData);
       if (response == "OK") return navigate("/inventory");
-      return response;
+      else {
+        setError(
+          response.data.errors.reduce((errors, message) => {
+            const { path, msg } = message;
+            errors[path] = msg;
+            return errors;
+          }, {}),
+        );
+      }
     } else {
       const result = await addInventoryItem(
         values.warehouse_id === 0 ? { ...values, warehouse_id: 1 } : values,
@@ -108,7 +117,7 @@ const AddEditForm = () => {
   return (
     <form className="inventory-form" onSubmit={handleFormSubmit}>
       <div className="inventory-form__wrapper inventory-form__wrapper--header">
-        <Link className="inventory-form__back-button" to="/inventory" />
+        <Link className="inventory-form__back-button" to={-1} />
         <h1 className="inventory-form__header">
           {id ? "Edit Inventory Item" : "Add New Inventory Item"}
         </h1>
@@ -178,7 +187,7 @@ const AddEditForm = () => {
         </div>
         <div className="inventory-form__wrapper--section inventory-form__wrapper--right">
           <h2 className="inventory-form__section-header">Item Availability</h2>
-          <label htmlFor="status" className="inventory-form__label">
+          <div className="inventory-form__label">
             Status
             <div className="inventory-form__wrapper--radio">
               <label
@@ -221,7 +230,7 @@ const AddEditForm = () => {
               </label>
             </div>
             {errorNotification(error.status)}
-          </label>
+          </div>
           <label htmlFor="warehouse" className="inventory-form__label">
             Warehouse
             <select
@@ -236,7 +245,6 @@ const AddEditForm = () => {
                 value=""
                 disabled
                 hidden
-                default
                 className="inventory-form__option"
               >
                 please select
@@ -262,7 +270,6 @@ const AddEditForm = () => {
                 name="quantity"
                 value={values.quantity}
                 onChange={handleChange}
-                type="number"
               />
               {errorNotification(error.quantity)}
             </label>
@@ -270,16 +277,16 @@ const AddEditForm = () => {
         </div>
       </div>
       <div className="inventory-form__wrapper inventory-form__wrapper--options">
-        <button
-          type="button"
+        <Link
           className="inventory-form__button inventory-form__button--secondary"
-          onClick={() => navigate("/inventory")}
+          to={-1}
         >
           Cancel
-        </button>
+        </Link>
         <button
           type="submit"
           className="inventory-form__button inventory-form__button--primary"
+          formNoValidate
         >
           {id ? "Save" : "+ Add Item"}
         </button>

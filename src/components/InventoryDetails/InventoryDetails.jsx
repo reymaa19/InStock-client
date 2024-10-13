@@ -1,12 +1,11 @@
 import "./InventoryDetails.scss";
 import { Link } from "react-router-dom";
 import arrow from "../../assets/images/icons/navigation/arrow_back-24px.svg";
-import editHeader from "../../assets/images/icons/action/edit-24px.svg";
+import editIcon from "../../assets/images/icons/action/edit-24px.svg";
 import { getWarehouses } from "../../services/warehouse-api";
 import { useState, useEffect } from "react";
 
 function InventoryDetails(details) {
-
   const inventory = details.details;
   const [warehouses, setWarehouses] = useState([]);
 
@@ -26,16 +25,12 @@ function InventoryDetails(details) {
         </Link>
         <h1 className="nav__name">{inventory.item_name}</h1>
         <div className="nav__end">
-          <div className="nav__color">
-            <Link to={`/inventory/edit/${inventory.id}`} className="nav__link">
-              <img
-                className="nav__edit"
-                src={editHeader}
-                alt="Edit Inventory"
-              />
+          <Link to={`/warehouse/edit/${inventory.id}`} className="nav__link">
+            <div className="nav__color">
+              <img className="nav__edit" src={editIcon} alt="Edit Warehouse" />
               <p className="nav__edit-text">Edit</p>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       </div>
       <div className="details__inventory">
@@ -50,7 +45,9 @@ function InventoryDetails(details) {
         <div className="details__wrapper details__wrapper--right">
           <div className="details__container">
             <h4 className="details__header">STATUS:</h4>
-            <p className={`list-item__status details__value--top-row ${inventory.status === "In Stock" ? "list-item__status--in-stock" : "list-item__status--out-of-stock"}`}>
+            <p
+              className={`list-item__status details__value--top-row ${inventory.status === "In Stock" ? "list-item__status--in-stock" : "list-item__status--out-of-stock"}`}
+            >
               {inventory.status}
             </p>
             <h4 className="details__header">WAREHOUSE:</h4>
@@ -63,12 +60,14 @@ function InventoryDetails(details) {
           </div>
           <div className="details__container">
             <h4 className="details__header">QUANTITY:</h4>
-            <p className="details__value details__value--top-row">{inventory.quantity}</p>
+            <p className="details__value details__value--top-row">
+              {inventory.quantity}
+            </p>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-  )
-};
+  );
+}
 
 export default InventoryDetails;

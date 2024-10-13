@@ -6,9 +6,7 @@
   &__warehouse {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
     padding: 1.5rem 1rem;
-    border-bottom: 1px solid $Cloud;
 
     @include tablet {
       flex-direction: row;
@@ -114,7 +112,8 @@
       width: 5.0625rem;
       height: 2.375rem;
       border-radius: 1.25rem;
-      justify-content: space-evenly;
+      justify-content: center;
+      gap: 0.25rem;
       align-items: center;
     }
   }
