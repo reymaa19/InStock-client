@@ -6,13 +6,17 @@
 }
 .add-warehouse {
   @include page-container;
+  margin: 0;
 
   &__header {
     display: flex;
     gap: 1rem;
     border-bottom: 0.0625rem solid $Cloud;
     width: 100%;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 1rem;
+    @include tablet{
+      padding: 1.5rem 2rem;
+    }
   }
   &__title {
     font-weight: $font-weight-semi-bold600;
@@ -28,16 +32,13 @@
     flex-direction: column;
     font-size: $m-h2-text-size;
     line-height: $m-h2-line-height;
+
     &__container {
-      padding-right:1rem;
-      padding-left:1rem;
+      width: 100%;
+      margin-left: 0;
       @include tablet {
-        font-size: $h1-text-size;
-        line-height: $h1-line-height;
-        padding-top: 1rem;
-        display: flex;
-        flex-direction: row;
-        width: 100%;
+        padding: 1rem 1rem;
+        @include flex-container($justify: space-between);
       }
     }
     &__error {
@@ -54,7 +55,6 @@
     &__address,&__contacts {
       display: flex;
       flex-direction: column;
-      border-bottom: 0.06125rem solid $Cloud;
       line-height: 3rem;
       font-size: $m-p2-text-size;
       padding: 1rem;
@@ -66,14 +66,13 @@
         font-size: $p2-text-size;
     
       }
-      &-name {
-        font-weight: $font-weight-semi-bold600;
+      &-title{
+        font-size: $m-h2-text-size;
         @include tablet{
           font-size: $h2-text-size;
-
+          
         }
       }
-
       &-label {
         font-weight: $font-weight-semi-bold600;
         font-size: $m-h3-text-size;
@@ -93,15 +92,13 @@
         @include tablet {
           width: 100%;
         }
-       
-        // @include tablet{
-        //   font-size: $h3-text-size;
-        // }
       }
     }
     &__address{
+      border-bottom: 0.06125rem solid $Cloud;
       @include tablet{
       border-right: 0.06125rem solid $Cloud;
+      border-bottom:none;
     }
     }
     &__button-container {
