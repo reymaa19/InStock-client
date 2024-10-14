@@ -29,7 +29,6 @@ const App = () => {
         <Route path="/inventory/edit/:id" element={<EditInventoryPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
-        <Route path="/NFP" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
