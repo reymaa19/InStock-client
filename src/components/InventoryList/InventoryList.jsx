@@ -19,10 +19,10 @@ const InventoryList = ({ headers, warehouse, searchQuery }) => {
     if (query.length > 0 && searchQuery.length > 0) {
       const response = await getInventory(`${query}&s=${searchQuery}`);
       setInventories(response.data);
-    } else if (query.length > 0) {
+    } else if (query && query.length > 0) {
       const response = await getInventory(query);
       setInventories(response.data);
-    } else if (searchQuery.length > 0) {
+    } else if (searchQuery && searchQuery.length > 0) {
       const response = await getInventory(`s=${searchQuery}`);
       setInventories(response.data);
     } else {
