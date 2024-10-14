@@ -7,11 +7,13 @@
     display: flex;
     flex-direction: column;
     padding: 1.5rem 1rem;
+    padding-left: 1.5rem;
 
     @include tablet {
       flex-direction: row;
       border-bottom: none;
       width: 90%;
+      padding-left: 0;
     }
   }
 
@@ -67,10 +69,23 @@
     line-height: $m-p2-line-height;
     color: $Instock-Black;
     font-weight: $font-weight-regular400;
+    &--mobile {
+      display: block;
+    }
+    &--desktab {
+      display: none;
+    }
+
 
     @include tablet {
       font-size: $p2-text-size;
       line-height: $p2-line-height;
+      &--desktab {
+        display: block;
+      }
+      &--mobile {
+        display: none
+      }
     }
   }
 }

@@ -57,7 +57,6 @@ const AddNewWarehouse = () => {
       }
     });
     // Validate phone number
-    // if (formData.contact_phone &&!validatePhoneNumber(formData.contact_phone, "any", { strict: false })
     if (formData.contact_phone &&!validatePhoneNumber(formData.contact_phone, "any", { strict: false })
 
     ) {
@@ -121,7 +120,7 @@ const AddNewWarehouse = () => {
         <form className="details" onSubmit={handleSubmit} noValidate>
           <div className="details__container">
             <div className="details__address">
-              <h2 className="details__address-name">Warehouse Details</h2>
+              <h2 className="details__address-title">Warehouse Details</h2>
 
               <label
                 htmlFor="warehouse_name"
