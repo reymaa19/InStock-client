@@ -6,7 +6,6 @@
 }
 .add-warehouse {
   @include page-container;
-  margin: 0;
 
   &__header {
     display: flex;
@@ -14,7 +13,7 @@
     border-bottom: 0.0625rem solid $Cloud;
     width: 100%;
     padding: 1.5rem 1rem;
-    @include tablet{
+    @include tablet {
       padding: 1.5rem 2rem;
     }
   }
@@ -52,7 +51,8 @@
       }
     }
 
-    &__address,&__contacts {
+    &__address,
+    &__contacts {
       display: flex;
       flex-direction: column;
       line-height: 3rem;
@@ -64,22 +64,19 @@
         width: 50%;
         border-bottom: none;
         font-size: $p2-text-size;
-    
       }
-      &-title{
+      &-title {
         font-size: $m-h2-text-size;
-        @include tablet{
+        @include tablet {
           font-size: $h2-text-size;
-          
         }
       }
       &-label {
         font-weight: $font-weight-semi-bold600;
         font-size: $m-h3-text-size;
-        @include tablet{
+        @include tablet {
           font-size: $h3-text-size;
         }
-
       }
       &-input {
         @include reset-field;
@@ -87,19 +84,18 @@
 
         &.error {
           border-color: $Red;
-
         }
         @include tablet {
           width: 100%;
         }
       }
     }
-    &__address{
+    &__address {
       border-bottom: 0.06125rem solid $Cloud;
-      @include tablet{
-      border-right: 0.06125rem solid $Cloud;
-      border-bottom:none;
-    }
+      @include tablet {
+        border-right: 0.06125rem solid $Cloud;
+        border-bottom: none;
+      }
     }
     &__button-container {
       @include flex-container;
@@ -117,7 +113,7 @@
       @include cta-button;
 
       &--cancel {
-        background-color:$White;
+        background-color: $White;
         color: $Slate;
         border: 1px solid $Cloud;
 
