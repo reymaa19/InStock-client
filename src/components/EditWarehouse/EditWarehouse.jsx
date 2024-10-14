@@ -120,7 +120,7 @@ function EditWarehouse() {
             src={arrowBackIcon}
             alt="Go back"
             className="edit-warehouse__back-icon"
-            onClick={() => handleNav(navigate, "/warehouse")}
+            onClick={() => handleNav(navigate, -1)}
           />
           <h1 className="edit-warehouse__title">Edit Warehouse</h1>
         </div>
@@ -259,7 +259,7 @@ function EditWarehouse() {
             <button
               type="button"
               className="details__button details__button-cancel"
-              onClick={() => handleNav(navigate, "/warehouse")}
+              onClick={() => handleNav(navigate, -1)}
             >
               Cancel
             </button>
