@@ -9,9 +9,15 @@ import {
 import { scrollToTop } from "../../utils/utils";
 import "./InventoryList.scss";
 
-const InventoryList = ({ headers, warehouse }) => {
+const InventoryList = ({ headers, warehouse, searchQuery }) => {
   const [inventories, setInventories] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
+
+  async function fetchInventoriesFiltered() {
+    const response = await getInventory(`s=${searchQuery}`);
+    setInventories(response.data);
+    scrollToTop();
+  }
 
   const fetchInventories = async () => {
     const response = await getInventory();
@@ -30,14 +36,23 @@ const InventoryList = ({ headers, warehouse }) => {
       const response = await getWarehouses(["id", "warehouse_name"]);
       setWarehouses(response.data);
     };
+    async function fetchWarehousesFiltered() {
+      const response = await getWarehouses(`s=${searchQuery}`);
+      setWarehouses(response.data);
+      scrollToTop();
+    }
 
     if (warehouse) {
       fetchWarehouseInventories();
     } else {
+      if (searchQuery.length > 0) {
+        fetchWarehouses();
+        fetchInventoriesFiltered();
+      }
       fetchWarehouses();
       fetchInventories();
     }
-  }, [warehouse]);
+  }, [warehouse, searchQuery]);
 
   return (
     <section className="inventory-list">
@@ -45,7 +60,9 @@ const InventoryList = ({ headers, warehouse }) => {
         {headers.map((header) => (
           <h4
             key={header}
-            className={`inventory-list__header ${warehouse ? "inventory-list__header--warehouse-inventory" : ""}`}
+            className={`inventory-list__header ${
+              warehouse ? "inventory-list__header--warehouse-inventory" : ""
+            }`}
           >
             {header}
             <img className="inventory-list__sort" src={sort} alt="sort" />

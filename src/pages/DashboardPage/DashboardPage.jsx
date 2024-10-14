@@ -47,7 +47,7 @@ const DashboardPage = () => {
           </div>
         </div>
         {isInventory ? (
-          <InventoryList headers={INVENTORY_HEADERS} />
+          <InventoryList headers={INVENTORY_HEADERS} searchQuery={search} />
         ) : (
           <WarehouseList headers={WAREHOUSE_HEADERS} searchQuery={search} />
         )}

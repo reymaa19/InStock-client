@@ -3,9 +3,9 @@ import axios from "axios";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // Fetches all the inventory items.
-export async function getInventory() {
+export async function getInventory(query) {
   try {
-    const url = `${BASE_URL}/inventories`;
+    const url = `${BASE_URL}/inventories${query ? "?" + query : ""}`;
     const response = await axios.get(url);
     return response;
   } catch (err) {
