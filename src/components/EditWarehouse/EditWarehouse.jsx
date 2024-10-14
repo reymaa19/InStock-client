@@ -15,9 +15,9 @@ import {
   validateEmail,
 } from "../../utils/utils";
 
-function EditWarehouse() {
+function EditWarehouse(details) {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const id = details.details.id;
 
   //state to store the form values
   const [values, setValues] = useState({
