@@ -25,9 +25,9 @@ function InventoryDetails(details) {
         </Link>
         <h1 className="nav__name">{inventory.item_name}</h1>
         <div className="nav__end">
-          <Link to={`/warehouse/edit/${inventory.id}`} className="nav__link">
+          <Link to={`/inventory/edit/${inventory.id}`} className="nav__link">
             <div className="nav__color">
-              <img className="nav__edit" src={editIcon} alt="Edit Warehouse" />
+              <img className="nav__edit" src={editIcon} alt="Edit Inventory" />
               <p className="nav__edit-text">Edit</p>
             </div>
           </Link>
@@ -46,7 +46,11 @@ function InventoryDetails(details) {
           <div className="details__container">
             <h4 className="details__header">STATUS:</h4>
             <p
-              className={`list-item__status details__value--top-row ${inventory.status === "In Stock" ? "list-item__status--in-stock" : "list-item__status--out-of-stock"}`}
+              className={`list-item__status details__value--top-row ${
+                inventory.status === "In Stock"
+                  ? "list-item__status--in-stock"
+                  : "list-item__status--out-of-stock"
+              }`}
             >
               {inventory.status}
             </p>
