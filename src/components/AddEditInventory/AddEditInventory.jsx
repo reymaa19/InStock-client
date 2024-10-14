@@ -10,11 +10,17 @@ import {
   validateRequiredFields,
   validateRequiredField,
 } from "../../utils/utils.js";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage.jsx";
 import errorIcon from "../../assets/images/icons/notification/error-24px.svg";
 import "./AddEditInventory.scss";
 
 const AddEditForm = () => {
   const { id } = useParams();
+
+  if (isNaN(id)) {
+    return <NotFoundPage />;
+  }
+
   const navigate = useNavigate();
   const [warehouseOptions, setWarehouseOptions] = useState([]);
   const [error, setError] = useState({});
@@ -80,12 +86,12 @@ const AddEditForm = () => {
             const { path, msg } = message;
             errors[path] = msg;
             return errors;
-          }, {}),
+          }, {})
         );
       }
     } else {
       const result = await addInventoryItem(
-        values.warehouse_id === 0 ? { ...values, warehouse_id: 1 } : values,
+        values.warehouse_id === 0 ? { ...values, warehouse_id: 1 } : values
       );
 
       if (result.status === 201) return navigate("/inventory");
@@ -95,7 +101,7 @@ const AddEditForm = () => {
             const [key, value] = Object.entries(message)[0];
             errors[key] = value;
             return errors;
-          }, {}),
+          }, {})
         );
     }
   };
@@ -128,7 +134,9 @@ const AddEditForm = () => {
           <label htmlFor="item_name" className="inventory-form__label">
             Item Name
             <input
-              className={`inventory-form__input inventory-form__input--text ${error.item_name ? "inventory-form__input--error" : ""}`}
+              className={`inventory-form__input inventory-form__input--text ${
+                error.item_name ? "inventory-form__input--error" : ""
+              }`}
               id="item_name"
               name="item_name"
               value={values.item_name}
@@ -234,7 +242,9 @@ const AddEditForm = () => {
           <label htmlFor="warehouse" className="inventory-form__label">
             Warehouse
             <select
-              className={`inventory-form__input inventory-form__input--select ${error.warehouse_id && "inventory-form__input--error"}`}
+              className={`inventory-form__input inventory-form__input--select ${
+                error.warehouse_id && "inventory-form__input--error"
+              }`}
               id="warehouse"
               name="warehouse_id"
               value={values.warehouse_id}
@@ -265,7 +275,9 @@ const AddEditForm = () => {
             <label htmlFor="quantity" className="inventory-form__label">
               Quantity
               <input
-                className={`inventory-form__input inventory-form__input--text ${error.quantity && "inventory-form__input--error"}`}
+                className={`inventory-form__input inventory-form__input--text ${
+                  error.quantity && "inventory-form__input--error"
+                }`}
                 id="quantity"
                 name="quantity"
                 value={values.quantity}
