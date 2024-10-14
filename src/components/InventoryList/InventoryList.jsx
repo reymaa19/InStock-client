@@ -63,10 +63,11 @@ const InventoryList = ({ headers, warehouse }) => {
         <h4 className="inventory-list__header">ACTION</h4>
       </div>
       {inventories?.map((item) => {
-        const warehouseName = !warehouse
-          ? warehouses?.find(({ id }) => id === item.warehouse_id)
-              .warehouse_name
-          : "";
+        const warehouseName =
+          !warehouse && warehouses.length > 0
+            ? warehouses.find(({ id }) => id === item.warehouse_id)
+                ?.warehouse_name || ""
+            : "";
 
         return (
           <ListItem
