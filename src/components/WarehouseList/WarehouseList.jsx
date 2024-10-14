@@ -88,6 +88,13 @@ const WarehouseList = ({ headers, searchQuery }) => {
         ))}
         <h4 className="warehouse-list__header">ACTION</h4>
       </div>
+      {warehouses.length === 0 && (
+        <div className="warehouse-list__not-found">
+          <p className="warehouse-list__not-found-description">
+            No Warehouse Found
+          </p>
+        </div>
+      )}
       {warehouses.map((item) => (
         <ListItem
           key={item.id}
