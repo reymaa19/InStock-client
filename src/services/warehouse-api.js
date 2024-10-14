@@ -7,7 +7,6 @@ export async function getWarehouses(query) {
   try {
     const url = `${BASE_URL}/warehouses${query ? "?" + query : ""}`;
     const response = await axios.get(url);
-
     return response;
   } catch (err) {
     return err.response;
@@ -64,9 +63,11 @@ export async function addWarehouse(warehouseData) {
   }
 }
 
-export async function getWarehouseInventory(id) {
+export async function getWarehouseInventory(id, query) {
   try {
-    const url = `${BASE_URL}/warehouses/${id}/inventories`;
+    const url = `${BASE_URL}/warehouses/${id}/inventories${
+      query ? "?" + query : ""
+    }`;
     const response = await axios.get(url);
     return response;
   } catch (error) {
