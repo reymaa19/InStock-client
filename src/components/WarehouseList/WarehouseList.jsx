@@ -5,14 +5,20 @@ import { scrollToTop } from "../../utils/utils";
 import sort from "../../assets/images/icons/navigation/sort-24px.svg";
 import "./WarehouseList.scss";
 
-const WarehouseList = ({ headers }) => {
+const WarehouseList = ({ headers, searchQuery }) => {
   const [warehouses, setWarehouses] = useState([]);
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState(false);
 
   const fetchWarehouses = async () => {
-    if (query.length > 0) {
+    if (query.length > 0 && searchQuery.length > 0) {
+      const response = await getWarehouses(`${query}&s=${searchQuery}`);
+      setWarehouses(response.data);
+    } else if (query.length > 0) {
       const response = await getWarehouses(query);
+      setWarehouses(response.data);
+    } else if (searchQuery.length > 0) {
+      const response = await getWarehouses(`s=${searchQuery}`);
       setWarehouses(response.data);
     } else {
       const response = await getWarehouses();
@@ -62,7 +68,7 @@ const WarehouseList = ({ headers }) => {
 
   useEffect(() => {
     fetchWarehouses();
-  }, [query]);
+  }, [query, searchQuery]);
 
   return (
     <section className="warehouse-list">

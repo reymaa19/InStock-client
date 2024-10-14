@@ -9,15 +9,21 @@ import {
 import { scrollToTop } from "../../utils/utils";
 import "./InventoryList.scss";
 
-const InventoryList = ({ headers, warehouse }) => {
+const InventoryList = ({ headers, warehouse, searchQuery }) => {
   const [inventories, setInventories] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState(false);
 
   const fetchInventories = async () => {
-    if (query.length > 0) {
+    if (query.length > 0 && searchQuery.length > 0) {
+      const response = await getInventory(`${query}&s=${searchQuery}`);
+      setInventories(response.data);
+    } else if (query.length > 0) {
       const response = await getInventory(query);
+      setInventories(response.data);
+    } else if (searchQuery.length > 0) {
+      const response = await getInventory(`s=${searchQuery}`);
       setInventories(response.data);
     } else {
       const response = await getInventory();
@@ -89,7 +95,7 @@ const InventoryList = ({ headers, warehouse }) => {
       fetchWarehouses();
       fetchInventories();
     }
-  }, [warehouse, query]);
+  }, [warehouse, query, searchQuery]);
 
   return (
     <section className="inventory-list">
