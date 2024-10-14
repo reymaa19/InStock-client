@@ -56,4 +56,22 @@
       cursor: pointer;
     }
   }
+
+  &__not-found {
+    @include flex-container(row, center);
+    background-color: $Light-Grey;
+    padding: 1rem;
+  }
+
+  &__not-found-description {
+    color: $Slate;
+    font-size: $m-p1-text-size;
+    line-height: $m-p1-line-height;
+    font-weight: $font-weight-semi-bold600;
+
+    @include tablet {
+      font-size: $p1-text-size;
+      line-height: $p1-line-height;
+    }
+  }
 }

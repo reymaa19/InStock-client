@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import InventoryList from "../../components/InventoryList/InventoryList";
 import WarehouseList from "../../components/WarehouseList/WarehouseList";

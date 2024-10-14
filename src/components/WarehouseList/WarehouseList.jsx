@@ -70,6 +70,15 @@ const WarehouseList = ({ headers, searchQuery }) => {
     fetchWarehouses();
   }, [query, searchQuery]);
 
+  if (warehouses.length === 0)
+    return (
+      <div className="warehouse-list__not-found">
+        <p className="warehouse-list__not-found-description">
+          No Warehouse Found
+        </p>
+      </div>
+    );
+
   return (
     <section className="warehouse-list">
       <div className="warehouse-list__container">
