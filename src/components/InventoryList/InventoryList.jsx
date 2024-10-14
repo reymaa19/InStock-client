@@ -39,6 +39,15 @@ const InventoryList = ({ headers, warehouse }) => {
     }
   }, [warehouse]);
 
+  if (inventories.length === 0)
+    return (
+      <div className="inventory-list__not-found">
+        <p className="inventory-list__not-found-description">
+          No Inventory Found
+        </p>
+      </div>
+    );
+
   return (
     <section className="inventory-list">
       <div className="inventory-list__container">
