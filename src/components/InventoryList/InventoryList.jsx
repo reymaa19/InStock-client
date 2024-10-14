@@ -45,10 +45,11 @@ const InventoryList = ({ headers, warehouse, searchQuery }) => {
   };
 
   const handleSort = (header) => {
+    console.log(header);
     let querySort = "";
     switch (header) {
       case "WAREHOUSE":
-        querySort = "warehouse_id";
+        querySort = "warehouse_name";
         break;
       case "ADDRESS":
         querySort = "address";
@@ -97,15 +98,6 @@ const InventoryList = ({ headers, warehouse, searchQuery }) => {
     }
   }, [warehouse, query, searchQuery]);
 
-  if (inventories.length === 0)
-    return (
-      <div className="inventory-list__not-found">
-        <p className="inventory-list__not-found-description">
-          No Inventory Found
-        </p>
-      </div>
-    );
-
   return (
     <section className="inventory-list">
       <div className="inventory-list__container">
@@ -129,6 +121,15 @@ const InventoryList = ({ headers, warehouse, searchQuery }) => {
         ))}
         <h4 className="inventory-list__header">ACTION</h4>
       </div>
+
+      {inventories.length === 0 && (
+        <div className="inventory-list__not-found">
+          <p className="inventory-list__not-found-description">
+            No Inventory Found
+          </p>
+        </div>
+      )}
+
       {inventories?.map((item) => {
         const warehouseName =
           !warehouse && warehouses.length > 0
