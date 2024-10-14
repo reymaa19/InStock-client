@@ -52,16 +52,16 @@
       line-height: $p2-line-height;
 
       &--error {
-        @include flex-container($align: center);
-        margin-top: 0.25rem;
         color: $Red;
+        align-items: center;
       }
     }
 
     &__error-icon {
-      height: 1rem;
-      width: 1rem;
-      margin-right: 0.25rem;
+      width: $m-p2-text-size;
+      height: $m-p2-text-size;
+      margin-right: 0.5rem;
+      margin-top: 0.5rem;
     }
     //* error notification style *//
 
