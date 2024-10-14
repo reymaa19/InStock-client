@@ -36,16 +36,11 @@ const InventoryList = ({ headers, warehouse, searchQuery }) => {
       const response = await getWarehouses(["id", "warehouse_name"]);
       setWarehouses(response.data);
     };
-    async function fetchWarehousesFiltered() {
-      const response = await getWarehouses(`s=${searchQuery}`);
-      setWarehouses(response.data);
-      scrollToTop();
-    }
 
     if (warehouse) {
       fetchWarehouseInventories();
     } else {
-      if (searchQuery.length > 0) {
+      if (searchQuery && searchQuery.length > 0) {
         fetchWarehouses();
         fetchInventoriesFiltered();
       }
