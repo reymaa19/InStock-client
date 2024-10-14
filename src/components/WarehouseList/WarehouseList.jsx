@@ -5,8 +5,14 @@ import { scrollToTop } from "../../utils/utils";
 import sort from "../../assets/images/icons/navigation/sort-24px.svg";
 import "./WarehouseList.scss";
 
-const WarehouseList = ({ headers }) => {
+const WarehouseList = ({ headers, searchQuery }) => {
   const [warehouses, setWarehouses] = useState([]);
+
+  async function fetchWarehousesFiltered() {
+    const response = await getWarehouses(`s=${searchQuery}`);
+    setWarehouses(response.data);
+    scrollToTop();
+  }
 
   const fetchWarehouses = async () => {
     const response = await getWarehouses();
@@ -15,8 +21,8 @@ const WarehouseList = ({ headers }) => {
   };
 
   useEffect(() => {
-    fetchWarehouses();
-  }, []);
+    searchQuery.length > 0 ? fetchWarehousesFiltered() : fetchWarehouses();
+  }, [searchQuery]);
 
   return (
     <section className="warehouse-list">

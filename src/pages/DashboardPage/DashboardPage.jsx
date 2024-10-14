@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import InventoryList from "../../components/InventoryList/InventoryList";
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
@@ -7,6 +7,7 @@ import "./DashboardPage.scss";
 const DashboardPage = () => {
   const location = useLocation();
   const [search, setSearch] = useState("");
+  const isInventory = location.pathname.startsWith("/inventory");
   const WAREHOUSE_HEADERS = [
     "WAREHOUSE",
     "ADDRESS",
@@ -20,8 +21,6 @@ const DashboardPage = () => {
     "QTY",
     "WAREHOUSE",
   ];
-
-  const isInventory = location.pathname.startsWith("/inventory");
 
   return (
     <main className="main">
@@ -50,7 +49,7 @@ const DashboardPage = () => {
         {isInventory ? (
           <InventoryList headers={INVENTORY_HEADERS} />
         ) : (
-          <WarehouseList headers={WAREHOUSE_HEADERS} />
+          <WarehouseList headers={WAREHOUSE_HEADERS} searchQuery={search} />
         )}
       </section>
     </main>
