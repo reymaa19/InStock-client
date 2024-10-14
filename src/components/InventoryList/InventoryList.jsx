@@ -12,17 +12,69 @@ import "./InventoryList.scss";
 const InventoryList = ({ headers, warehouse }) => {
   const [inventories, setInventories] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
+  const [query, setQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState(false);
 
   const fetchInventories = async () => {
-    const response = await getInventory();
-    setInventories(response.data);
-    scrollToTop();
+    if (query.length > 0) {
+      const response = await getInventory(query);
+      setInventories(response.data);
+    } else {
+      const response = await getInventory();
+      setInventories(response.data);
+      scrollToTop();
+    }
   };
 
   const fetchWarehouseInventories = async () => {
-    const response = await getWarehouseInventory(warehouse);
-    if (response.status === 200) setInventories(response.data);
-    else setInventories([]);
+    if (query.length > 0) {
+      const response = await getWarehouseInventory(warehouse, query);
+      if (response.status === 200) setInventories(response.data);
+      else setInventories([]);
+    } else {
+      const response = await getWarehouseInventory(warehouse);
+      if (response.status === 200) setInventories(response.data);
+      else setInventories([]);
+    }
+  };
+
+  const handleSort = (header) => {
+    let querySort = "";
+    switch (header) {
+      case "WAREHOUSE":
+        querySort = "warehouse_id";
+        break;
+      case "ADDRESS":
+        querySort = "address";
+        break;
+      case "CONTACT NAME":
+        querySort = "contact_name";
+        break;
+      case "CONTACT INFORMATION":
+        querySort = "contact_email";
+        break;
+      case "INVENTORY ITEM":
+        querySort = "item_name";
+        break;
+      case "CATEGORY":
+        querySort = "category";
+        break;
+      case "STATUS":
+        querySort = "status";
+        break;
+      case "QTY":
+        querySort = "quantity";
+        break;
+      case "QUANTITY":
+        querySort = "quantity";
+        break;
+    }
+
+    let order_by = "";
+    setSortOrder(!sortOrder);
+    sortOrder ? (order_by = "asc") : (order_by = "desc");
+    const queryText = `sort_by=${querySort}&order_by=${order_by}`;
+    setQuery(queryText);
   };
 
   useEffect(() => {
@@ -37,7 +89,7 @@ const InventoryList = ({ headers, warehouse }) => {
       fetchWarehouses();
       fetchInventories();
     }
-  }, [warehouse]);
+  }, [warehouse, query]);
 
   return (
     <section className="inventory-list">
@@ -45,10 +97,19 @@ const InventoryList = ({ headers, warehouse }) => {
         {headers.map((header) => (
           <h4
             key={header}
-            className={`inventory-list__header ${warehouse ? "inventory-list__header--warehouse-inventory" : ""}`}
+            className={`inventory-list__header ${
+              warehouse ? "inventory-list__header--warehouse-inventory" : ""
+            }`}
           >
             {header}
-            <img className="inventory-list__sort" src={sort} alt="sort" />
+            <img
+              className="inventory-list__sort"
+              src={sort}
+              alt="sort"
+              onClick={() => {
+                handleSort(header);
+              }}
+            />
           </h4>
         ))}
         <h4 className="inventory-list__header">ACTION</h4>
