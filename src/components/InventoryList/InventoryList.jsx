@@ -45,7 +45,6 @@ const InventoryList = ({ headers, warehouse, searchQuery }) => {
   };
 
   const handleSort = (header) => {
-    console.log(header);
     let querySort = "";
     switch (header) {
       case "WAREHOUSE":
