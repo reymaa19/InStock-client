@@ -70,14 +70,14 @@ function EditWarehouse(details) {
     const phoneValid = validatePhoneNumber(values.contact_phone);
     if (!phoneValid) {
       foundError.contact_phone =
-        "Phone number is invalid. Please enter a valid one (e.g., +1 (123) 456-7890)";
+        "Phone number is invalid. Please enter a valid Phone Number (e.g., +1 (123) 456-7890)";
     }
 
     //validate email
     const emailValid = validateEmail(values.contact_email);
     if (!emailValid) {
       foundError.contact_email =
-        "Email is invalid. Please enter a valid one (e.g., example@example.com)";
+        "Email is invalid. Please enter a valid Email (e.g., example@example.com)";
     }
 
     //validate other required fields
