@@ -87,6 +87,11 @@
           cursor: text;
         }
 
+        &[type="email"],
+        textarea {
+          cursor: text;
+        }
+
         &.error {
           border-color: $Red;
         }
