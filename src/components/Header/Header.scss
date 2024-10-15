@@ -1,0 +1,70 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/typography.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+.header {
+  background-color: $Graphite;
+  width: 100vw;
+
+  &__container {
+    padding: 1rem 1rem 5rem 1rem;
+    @include flex-container(
+      $direction: column,
+      $justify: center,
+      $align: center
+    );
+
+    @include tablet {
+      padding: 1rem 2rem 6.5rem 1rem;
+      max-width: 66rem;
+      margin: 0 auto;
+      @include flex-container($justify: space-between);
+    }
+  }
+
+  &__logo {
+    padding: 1rem;
+  }
+
+  &__nav {
+    width: 100%;
+    font-size: $m-h3-text-size;
+    @include flex-container($justify: space-around, $align: center);
+
+    @include tablet {
+      font-size: $h3-text-size;
+      width: 20rem;
+      @include flex-container($justify: flex-end, $align: center);
+    }
+  }
+  &__link {
+    cursor: pointer;
+    color: $Cloud;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    width: 40%;
+
+    @include flex-container($justify: center, $align: center);
+
+    &:hover {
+      color: $White;
+      text-decoration: underline;
+    }
+    &:focus,
+    &:active {
+      color: $White;
+      border-radius: 20px;
+      background-color: $Instock-Black;
+    }
+
+    &:visited {
+      text-decoration: none;
+    }
+
+    &--active {
+      color: $White;
+      border-radius: 20px;
+      background-color: $Instock-Black;
+    }
+  }
+}

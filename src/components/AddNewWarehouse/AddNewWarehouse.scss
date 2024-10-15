@@ -1,0 +1,133 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.main {
+  background-color: $Light-Grey;
+}
+.add-warehouse {
+  @include page-container;
+
+  &__header {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 0.0625rem solid $Cloud;
+    width: 100%;
+    padding: 1.5rem 1rem;
+    @include tablet {
+      padding: 1.5rem 2rem;
+    }
+  }
+  &__title {
+    font-weight: $font-weight-semi-bold600;
+    font-size: $m-h1-text-size;
+    line-height: $m-h1-line-height;
+    @include tablet {
+      font-size: $h1-text-size;
+      line-height: $h1-line-height;
+    }
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+    font-size: $m-h2-text-size;
+    line-height: $m-h2-line-height;
+
+    &__container {
+      width: 100%;
+      margin-left: 0;
+      @include tablet {
+        padding: 1rem 1rem;
+        @include flex-container($justify: space-between);
+      }
+    }
+    &__error {
+      color: $Red;
+      align-items: center;
+
+      &-icon {
+        width: $m-p2-text-size;
+        height: $m-p2-text-size;
+        margin-right: 0.5rem;
+      }
+    }
+
+    &__address,
+    &__contacts {
+      display: flex;
+      flex-direction: column;
+      line-height: 3rem;
+      font-size: $m-p2-text-size;
+      padding: 1rem;
+      padding-bottom: 2rem;
+
+      @include tablet {
+        width: 50%;
+        border-bottom: none;
+        font-size: $p2-text-size;
+      }
+      &-title {
+        font-size: $m-h2-text-size;
+        @include tablet {
+          font-size: $h2-text-size;
+        }
+      }
+      &-label {
+        font-weight: $font-weight-semi-bold600;
+        font-size: $m-h3-text-size;
+        @include tablet {
+          font-size: $h3-text-size;
+        }
+      }
+      &-input {
+        @include reset-field;
+        @include form-field;
+
+        &[type="text"],
+        textarea {
+          cursor: text;
+        }
+
+        &.error {
+          border-color: $Red;
+        }
+        @include tablet {
+          width: 100%;
+        }
+      }
+    }
+    &__address {
+      border-bottom: 0.06125rem solid $Cloud;
+      @include tablet {
+        border-right: 0.06125rem solid $Cloud;
+        border-bottom: none;
+      }
+    }
+    &__button-container {
+      @include flex-container;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: $Light-Grey;
+
+      @include tablet {
+        justify-content: flex-end;
+        padding: 1rem 2rem;
+      }
+    }
+    &__button {
+      @include reset-field;
+      @include cta-button;
+
+      &--cancel {
+        background-color: $White;
+        color: $Slate;
+        border: 1px solid $Cloud;
+
+        &:hover {
+          background-color: $White;
+          color: $Instock-Indigo;
+          border: 1px solid $Instock-Indigo;
+        }
+      }
+    }
+  }
+}

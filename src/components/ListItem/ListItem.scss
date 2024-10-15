@@ -1,0 +1,212 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.list-item {
+  padding: 1.5rem;
+  border-top: 1px solid $Cloud;
+
+  &:first-child {
+    border-top: none;
+  }
+
+  &:hover {
+    background-color: #f0f4fd;
+  }
+
+  @include tablet {
+    padding: 1rem 2rem;
+  }
+
+  &__wrapper {
+    @include flex-container(column, space-between);
+    align-content: space-around;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    height: 12.25rem;
+
+    &--inventory {
+      height: 11.5rem;
+      justify-content: flex-start;
+      gap: 0.82rem;
+    }
+
+    &--warehouse-inventory {
+      height: 9.7rem;
+    }
+
+    @include tablet {
+      flex-wrap: nowrap;
+      flex-direction: row;
+      height: auto;
+      gap: 0;
+    }
+  }
+
+  &__container {
+    width: 46%;
+    margin-top: 0;
+
+    &--inventory-delete {
+      margin-top: 3rem;
+    }
+
+    @include tablet {
+      width: auto;
+      margin-top: 0;
+
+      // SPACING FOR WAREHOUSES
+      &:nth-child(1) {
+        flex: 1.5;
+      }
+      &:nth-child(2) {
+        flex: 2;
+      }
+      &:nth-child(4) {
+        flex: 1.35;
+      }
+      &:nth-child(5) {
+        flex: 1.7;
+      }
+
+      // SPACING FOR INVENTORY
+      &--inventory {
+        &:nth-child(1) {
+          flex: 1.1;
+        }
+        &:nth-child(2) {
+          flex: 1;
+        }
+        &:nth-child(4) {
+          flex: 1;
+        }
+        &:nth-child(5) {
+          flex: 0.48;
+        }
+        &:nth-child(6) {
+          flex: 1.45;
+        }
+      }
+
+      // SPACING FOR WAREHOUSE INVENTORY
+      &--warehouse-inventory {
+        &:nth-child(1) {
+          flex: 1.5;
+        }
+        &:nth-child(2) {
+          flex: 1;
+        }
+        &:nth-child(4) {
+          flex: 2;
+        }
+        &:nth-child(5) {
+          flex: 1.95;
+        }
+      }
+
+      &:last-child {
+        flex: 0 0 auto;
+      }
+    }
+
+    &--hidden {
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--action {
+      @include flex-container(row, flex-end, center);
+    }
+  }
+
+  &__header {
+    color: $Slate;
+    font-size: $m-h4-text-size;
+    line-height: $m-h4-line-height;
+    font-weight: $font-weight-semi-bold600;
+
+    @include tablet {
+      display: none;
+      font-size: $h4-text-size;
+      line-height: $h4-line-height;
+    }
+  }
+
+  &__value {
+    max-width: 14.8rem;
+    color: $Instock-Black;
+    font-size: $m-p2-text-size;
+    line-height: $m-p2-line-height;
+    font-weight: $font-weight-regular400;
+
+    &--link {
+      display: inline-flex;
+      font-weight: $font-weight-semi-bold600;
+      color: $Instock-Indigo;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    @include tablet {
+      font-size: $p2-text-size;
+      line-height: $p2-line-height;
+    }
+  }
+
+  &__status {
+    @include stock-tag;
+
+    &--out-of-stock {
+      color: $Red;
+      background-color: rgba($Red, 0.07);
+    }
+
+    &--in-stock {
+      color: $Green;
+      background-color: rgba($Green, 0.07);
+    }
+  }
+
+  &__chevron {
+    padding-left: 0.25rem;
+    height: 1.25rem;
+    width: 1.25rem;
+    padding-top: 0.25rem;
+    transition: transform 0.3s ease; 
+    &:hover{
+      transform: translateX(0.25rem);
+    }
+  }
+
+  &__button {
+    @include reset-field;
+    background-repeat: no-repeat;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    &--edit {
+      background-image: url("../../assets/images/icons/action/edit-24px.svg");
+    }
+
+    &--delete {
+      background-image: url("../../assets/images/icons/action/delete_outline-24px.svg");
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--primary {
+      display: none;
+
+      @include tablet {
+        position: relative;
+        right: 1rem;
+        display: block;
+      }
+    }
+  }
+}

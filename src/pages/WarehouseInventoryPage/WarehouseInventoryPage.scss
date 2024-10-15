@@ -1,0 +1,19 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.main {
+  background-color: $Light-Grey;
+  padding: 0 1rem;
+
+  @include tablet {
+    padding: 0 2rem;
+  }
+
+  @include desktop {
+    padding: 0;
+  }
+}
+
+.warehouse-inventory {
+  @include page-container;
+}
