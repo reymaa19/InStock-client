@@ -88,12 +88,12 @@ const AddEditForm = () => {
             const { path, msg } = message;
             errors[path] = msg;
             return errors;
-          }, {})
+          }, {}),
         );
       }
     } else {
       const result = await addInventoryItem(
-        values.warehouse_id === 0 ? { ...values, warehouse_id: 1 } : values
+        values.warehouse_id === 0 ? { ...values, warehouse_id: 1 } : values,
       );
 
       if (result.status === 201) return navigate("/inventory");
@@ -103,7 +103,7 @@ const AddEditForm = () => {
             const [key, value] = Object.entries(message)[0];
             errors[key] = value;
             return errors;
-          }, {})
+          }, {}),
         );
     }
   };
@@ -241,6 +241,21 @@ const AddEditForm = () => {
             </div>
             {errorNotification(error.status)}
           </div>
+          {values.status === "In Stock" && (
+            <label htmlFor="quantity" className="inventory-form__label">
+              Quantity
+              <input
+                className={`inventory-form__input inventory-form__input--text ${
+                  error.quantity && "inventory-form__input--error"
+                }`}
+                id="quantity"
+                name="quantity"
+                value={values.quantity}
+                onChange={handleChange}
+              />
+              {errorNotification(error.quantity)}
+            </label>
+          )}
           <label htmlFor="warehouse" className="inventory-form__label">
             Warehouse
             <select
@@ -273,21 +288,6 @@ const AddEditForm = () => {
             </select>
             {errorNotification(error.warehouse_id)}
           </label>
-          {values.status === "In Stock" && (
-            <label htmlFor="quantity" className="inventory-form__label">
-              Quantity
-              <input
-                className={`inventory-form__input inventory-form__input--text ${
-                  error.quantity && "inventory-form__input--error"
-                }`}
-                id="quantity"
-                name="quantity"
-                value={values.quantity}
-                onChange={handleChange}
-              />
-              {errorNotification(error.quantity)}
-            </label>
-          )}
         </div>
       </div>
       <div className="inventory-form__wrapper inventory-form__wrapper--options">

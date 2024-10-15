@@ -2,6 +2,7 @@ import "./InventoryDetails.scss";
 import { Link } from "react-router-dom";
 import arrow from "../../assets/images/icons/navigation/arrow_back-24px.svg";
 import editIcon from "../../assets/images/icons/action/edit-24px.svg";
+import { scrollToTop } from "../../utils/utils.js";
 import { getWarehouses } from "../../services/warehouse-api";
 import { useState, useEffect } from "react";
 
@@ -13,6 +14,7 @@ function InventoryDetails(details) {
     const fetchWarehouses = async () => {
       const response = await getWarehouses();
       setWarehouses(response.data);
+      scrollToTop();
     };
     fetchWarehouses();
   }, []);
