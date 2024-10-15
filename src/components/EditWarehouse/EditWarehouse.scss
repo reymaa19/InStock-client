@@ -3,6 +3,11 @@
 * {
   box-sizing: border-box;
 }
+
+input {
+  cursor: text;
+}
+
 .main {
   background-color: $Light-Grey;
 }
@@ -101,6 +106,11 @@
         &--error {
           border: 0.0625rem solid $Red;
         }
+
+        &[type="text"],
+        textarea {
+          cursor: text;
+        }
       }
     }
     &__contacts {
@@ -138,6 +148,11 @@
 
         &--error {
           border: 0.0625rem solid $Red;
+        }
+
+        &[type="text"],
+        textarea {
+          cursor: text;
         }
       }
     }
