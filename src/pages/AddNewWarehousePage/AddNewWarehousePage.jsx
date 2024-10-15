@@ -1,5 +1,4 @@
 import AddNewWarehouse from "../../components/AddNewWarehouse/AddNewWarehouse";
-import "./AddNewWarehousePage.scss";
 
 function AddNewWarehousePage() {
   return (

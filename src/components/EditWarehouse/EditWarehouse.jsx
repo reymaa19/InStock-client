@@ -1,6 +1,6 @@
 import "./EditWarehouse.scss";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import arrowBackIcon from "../../assets/images/icons/navigation/arrow_back-24px.svg";
 import errorIcon from "../../assets/images/icons/notification/error-24px.svg";
 import {
