@@ -82,6 +82,11 @@
         @include reset-field;
         @include form-field;
 
+        &[type="text"],
+        textarea {
+          cursor: text;
+        }
+
         &.error {
           border-color: $Red;
         }
