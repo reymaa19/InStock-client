@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { getSingleWarehouse } from "../../services/warehouse-api.js";
 import EditWarehouse from "../../components/EditWarehouse/EditWarehouse.jsx";
 import NotFoundPage from "../NotFoundPage/NotFoundPage.jsx";
-import "./EditWarehousePage.scss";
 
 function EditWarehousePage() {
   const { id } = useParams();

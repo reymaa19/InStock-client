@@ -2,16 +2,12 @@ import { useEffect, useState } from "react";
 import sort from "../../assets/images/icons/navigation/sort-24px.svg";
 import ListItem from "../../components/ListItem/ListItem";
 import { getInventory } from "../../services/inventory-api";
-import {
-  getWarehouses,
-  getWarehouseInventory,
-} from "../../services/warehouse-api";
+import { getWarehouseInventory } from "../../services/warehouse-api";
 import { scrollToTop } from "../../utils/utils";
 import "./InventoryList.scss";
 
 const InventoryList = ({ headers, warehouse, searchQuery }) => {
   const [inventories, setInventories] = useState([]);
-  const [warehouses, setWarehouses] = useState([]);
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState(false);
 

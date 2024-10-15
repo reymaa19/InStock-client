@@ -1,5 +1,4 @@
 import AddEditInventory from "../../components/AddEditInventory/AddEditInventory";
-import "./EditInventoryPage.scss";
 
 function EditInventoryPage() {
   return (
