@@ -45,7 +45,6 @@ const InventoryList = ({ headers, warehouse, searchQuery }) => {
   };
 
   const handleSort = (header) => {
-    console.log(header);
     let querySort = "";
     switch (header) {
       case "WAREHOUSE":
@@ -85,15 +84,9 @@ const InventoryList = ({ headers, warehouse, searchQuery }) => {
   };
 
   useEffect(() => {
-    const fetchWarehouses = async () => {
-      const response = await getWarehouses(["id", "warehouse_name"]);
-      setWarehouses(response.data);
-    };
-
     if (warehouse) {
       fetchWarehouseInventories();
     } else {
-      fetchWarehouses();
       fetchInventories();
     }
   }, [warehouse, query, searchQuery]);
@@ -131,12 +124,6 @@ const InventoryList = ({ headers, warehouse, searchQuery }) => {
       )}
 
       {inventories?.map((item) => {
-        const warehouseName =
-          !warehouse && warehouses.length > 0
-            ? warehouses.find(({ id }) => id === item.warehouse_id)
-                ?.warehouse_name || ""
-            : "";
-
         return (
           <ListItem
             key={item.id}
@@ -146,7 +133,6 @@ const InventoryList = ({ headers, warehouse, searchQuery }) => {
               warehouse ? fetchWarehouseInventories : fetchInventories
             }
             type={warehouse ? "warehouse-inventory" : "inventory"}
-            warehouseName={warehouseName}
           />
         );
       })}

@@ -4,7 +4,7 @@ import chevronRight from "../../assets/images/icons/navigation/chevron_right-24p
 import DeleteModal from "../../components/DeleteModal/DeleteModal.jsx";
 import "./ListItem.scss";
 
-function ListItem({ headers, item, fetchItems, type, warehouseName }) {
+function ListItem({ headers, item, fetchItems, type }) {
   const [isOpen, setIsOpen] = useState(false);
   const isInventory = type === "inventory" || type === "warehouse-inventory";
 
@@ -54,7 +54,11 @@ function ListItem({ headers, item, fetchItems, type, warehouseName }) {
           <h4 className="list-item__header">{headers[2]}</h4>
           {isInventory ? (
             <p
-              className={`list-item__status ${item.status === "In Stock" ? "list-item__status--in-stock" : "list-item__status--out-of-stock"}`}
+              className={`list-item__status ${
+                item.status === "In Stock"
+                  ? "list-item__status--in-stock"
+                  : "list-item__status--out-of-stock"
+              }`}
             >
               {item.status}
             </p>
@@ -81,7 +85,7 @@ function ListItem({ headers, item, fetchItems, type, warehouseName }) {
         {headers[4] && (
           <div className={`list-item__container list-item__container--${type}`}>
             <h4 className="list-item__header">{headers[4]}</h4>
-            <p className="list-item__value">{warehouseName}</p>
+            <p className="list-item__value">{item.warehouse_name}</p>
           </div>
         )}
 
