@@ -17,8 +17,10 @@ import "./AddEditInventory.scss";
 const AddEditForm = () => {
   const { id } = useParams();
 
-  if (isNaN(id)) {
-    return <NotFoundPage />;
+  if (id) {
+    if (isNaN(id)) {
+      return <NotFoundPage />;
+    }
   }
 
   const navigate = useNavigate();
@@ -40,7 +42,7 @@ const AddEditForm = () => {
     };
 
     const fetchWarehouses = async () => {
-      const response = await getWarehouses(["id", "warehouse_name"]);
+      const response = await getWarehouses();
       setWarehouseOptions(response.data);
     };
 
